@@ -14,6 +14,7 @@ private:
 
 public:
     Experiencia(string codigoReserva, string decripcion, int precioBase, DTFecha fecha);
+    virtual ~Experiencia();
     DTExpe getDT();
     virtual float calcularCosto();
 };
