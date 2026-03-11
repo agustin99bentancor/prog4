@@ -1,4 +1,5 @@
-#include "./Expreiencia.h"
+#include "./Experiencia.h"
+#include "../datatypes/DTExpe.h"
 
 Experiencia::Experiencia(string codigoReserva, string decripcion, int precioBase, DTFecha fecha) {
     this->codigoReserva = codigoReserva;
@@ -8,5 +9,9 @@ Experiencia::Experiencia(string codigoReserva, string decripcion, int precioBase
 }
 
 DTExpe Experiencia::getDT() {
-    return;
+    std::set<std::string> turistas;
+    for (std::set<Turista *>::iterator it = this->turistas.begin(); it != this->turistas.end(); ++it) {
+        turistas.insert((*it)->getNombre());
+    }
+    return DTExpe(this->codigoReserva, this->decripcion, this->precioBase, this->fecha, turistas);
 }
