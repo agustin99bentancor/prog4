@@ -15,6 +15,7 @@ private:
     std::set<Turista *> turistas;
 
 public:
+    Experiencia();
     Experiencia(std::string codigoReserva, std::string decripcion, int precioBase, DTFecha fecha);
     virtual ~Experiencia();
     DTExpe getDT();
