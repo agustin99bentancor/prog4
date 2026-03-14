@@ -34,17 +34,3 @@ ostream& operator<<(ostream& os, DTExpe& dtexpe) {
     }
     return os;
 }
-
-std::ostream DTExpe::operator<<(const DTExpe& dtexpe) const {
-    std::cout << "Codigo Reserva: " << dtexpe.codigoReserva << std::endl;
-    std::cout << "Descripcion: " << dtexpe.descripcion << std::endl;
-    std::cout << "Fecha: " << dtexpe.fecha.toString() << std::endl;
-    std::cout << "Turistas: ";
-
-    for (std::string turista : dtexpe.turista) {
-        std::cout << turista;
-        std::cout << ",";
-    }
-
-    std::cout << std::endl;
-}
