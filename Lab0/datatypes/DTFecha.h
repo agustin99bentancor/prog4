@@ -1,3 +1,6 @@
+#ifndef DTFECHA_H
+#define DTFECHA_H
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -16,3 +19,5 @@ public:
     int get_anio();
     string toString();
 };
+
+#endif

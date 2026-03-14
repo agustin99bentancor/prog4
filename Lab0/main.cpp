@@ -2,6 +2,10 @@
 #include <iostream>
 #include <list>
 #include <map>
+#include <string>
+
+#include "./clases/Experiencia.h"
+#include "./clases/Turista.h"
 
 std::list<Experiencia*> experiencias;
 std::map<std::string, Experiencia*> map_experiencias;

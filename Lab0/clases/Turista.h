@@ -1,24 +1,17 @@
-#include <iostream>
-#include <string>
-#include <set>
-#include "../datatypes/DTFecha.h"
-#include "../datatypes/DTExpe.h"
+#ifndef TURISTA_H
+#define TURISTA_H
 
-class Experiencia;  // Forward declaration
+#include <string>
+using namespace std;
 
 class Turista {
 private:
-    std::string ci;
-    std::string nombre;
-    std::string email;
-    std::set<Experiencia *> experiencias;
+    string ci;
+    string nombre;
 
 public:
-    Turista(std::string ci, std::string nombre, std::string email);
-    virtual ~Turista();
-
-    std::string getNombre();
-
-    std::string toString();
-    std::set<std::string> listarExperiencias(DTFecha desde, float min, float max);
+    Turista(string ci, string nombre);
+    string getCi();
 };
+
+#endif
