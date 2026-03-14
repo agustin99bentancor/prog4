@@ -1,3 +1,6 @@
+#ifndef DTEXPE_H
+#define DTEXPE_H
+
 #include <iostream>
 #include <string>
 #include <set>
@@ -19,3 +22,5 @@ public:
     DTFecha getfecha();
     set<string> getTurista();
 };
+
+#endif

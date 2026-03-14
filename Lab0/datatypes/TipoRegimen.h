@@ -2,7 +2,7 @@
 #define TIPOREGIMEN_H
 
 enum TipoRegimen {
-    ALLInclusive,
+    AllInclusive,
     MediaPension
 };
 

@@ -1,3 +1,6 @@
+#ifndef EXPERIENCIA_H
+#define EXPERIENCIA_H
+
 #include <iostream>
 #include <string>
 #include "../datatypes/DTFecha.h"
@@ -25,3 +28,5 @@ public:
     DTExpe getDT();
     virtual float calcularCosto();
 };
+
+#endif
