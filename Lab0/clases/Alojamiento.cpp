@@ -13,5 +13,9 @@ Alojamiento::Alojamiento(std::string codigoReserva, std::string decripcion, int 
 Alojamiento::~Alojamiento() {}
 
 float Alojamiento::calcularCosto() {
-    return ;
+    float resultado = Experiencia::getPrecioBase() * this->cantNoches;
+    if(this->regimen == ALLInclusive) {
+        resultado += 10*this->cantNoches;
+    }
+    return resultado;
 }

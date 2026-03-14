@@ -15,9 +15,8 @@ private:
     int cantNoches;
 
 public:
-    Alojamiento();
     Alojamiento(std::string codigoReserva, std::string decripcion, int precioBase, DTFecha fecha, std::string hotel, int cantNoches);
-    
     ~Alojamiento();
+
     float calcularCosto();
 };

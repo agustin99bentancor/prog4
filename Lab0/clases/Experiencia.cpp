@@ -1,4 +1,8 @@
+#include <iostream>
+#include <string>
 #include "./Experiencia.h"
+#include "./Turista.h"
+
 
 Experiencia::Experiencia(string codigoReserva, string decripcion, int precioBase, DTFecha fecha) {
     this->codigoReserva = codigoReserva;
@@ -14,12 +18,19 @@ string Experiencia::getCodigoReserva() {
     return this->codigoReserva;
 }
 
-float Experiencia::calcularCosto() {
-    return precioBase;
+DTExpe Experiencia::getDT() {
+    set<string> nombresTuristas;
+    for (set<Turista *>::iterator it = this->turistas.begin(); it != this->turistas.end(); ++it) {
+        nombresTuristas.insert((*it)->getNombre());
+    }
+    DTExpe dt(codigoReserva, decripcion, fecha, nombresTuristas);
+    return dt;
 }
 
-DTExpe Experiencia::getDT() {
-    set<string> turistas;
-    DTExpe dt(codigoReserva, decripcion, fecha, turistas);
-    return dt;
+int Experiencia::getPrecioBase() {
+    return this->precioBase;
+}
+
+set<Turista *> Experiencia::getTuristas() {
+    return this->turistas;
 }
