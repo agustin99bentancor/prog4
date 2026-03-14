@@ -7,7 +7,11 @@
 #include "./clases/Experiencia.h"
 #include "./clases/Turista.h"
 #include "./clases/Alojamiento.h"
+#include "./clases/TourGuiado.h"
+#include "./datatypes/EventoCultural.h"
 #include "./datatypes/DTFecha.h"
+
+
 
 std::list<Experiencia*> experiencias;
 std::map<std::string, Experiencia*> map_experiencias;
@@ -48,9 +52,16 @@ void parte_a(){
 }
 
 void parte_b(){
+	TourGuiado tour1("TGO4657", "Plazas de Montevideo", 10, DTFecha(29, 8, 2024), "Paseos SA", {"Plaza Independencia", "Plaza Matriz"});
+	coleccion_guardarExperiencia(&tour1);
+
+	TourGuiado tour2("TGR3257", "Puntos emblematicos", 5, DTFecha(29, 8, 2024), "Recorre", {"Puerta de la ciudadela", "Mausoleo", "Cabildo", "Palacio Salvo"});
+	coleccion_guardarExperiencia(&tour2);
 }
 
 void parte_c(){
+	EventoCultural evento1("ECP1346", "Danza en el Solis", 10, DTFecha(29, 10, 2025), "Teatro Solis", true);
+	coleccion_guardarExperiencia(&evento1);
 }
 
 void parte_d(){

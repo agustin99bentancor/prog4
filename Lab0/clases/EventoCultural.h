@@ -11,10 +11,10 @@
 class EventoCultural: public Experiencia{
 private:
     std::string ubicacion;
-    bool useCupo;
+    bool usoCupon;
 
 public:
-    EventoCultural(std::string codigoReserva, std::string decripcion, int precioBase, DTFecha fecha, std::string ubicacion, bool useCupo);
+    EventoCultural(std::string codigoReserva, std::string decripcion, int precioBase, DTFecha fecha, std::string ubicacion, bool usoCupon);
     EventoCultural();
 
     virtual ~EventoCultural();
