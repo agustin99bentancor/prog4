@@ -6,6 +6,8 @@
 
 #include "./clases/Experiencia.h"
 #include "./clases/Turista.h"
+#include "./clases/Alojamiento.h"
+#include "./datatypes/DTFecha.h"
 
 std::list<Experiencia*> experiencias;
 std::map<std::string, Experiencia*> map_experiencias;
@@ -38,7 +40,11 @@ Experiencia* coleccion_getExperiencia(std::string codigoReserva){
 }
 
 void parte_a(){
+	Alojamiento alojamiento1("ALX5489", "Hotel moderno", 30, DTFecha(18, 5, 2020), "Hotel Lindorf", AllInclusive, 5);
+	coleccion_guardarExperiencia(&alojamiento1);
 
+	Alojamiento alojamiento2("ALJ4789", "Todas las habitaciones con vista al mar", 100, DTFecha(10, 2, 2025), "Hotel SeaView", MediaPension, 15);
+	coleccion_guardarExperiencia(&alojamiento2);
 }
 
 void parte_b(){

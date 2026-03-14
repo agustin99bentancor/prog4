@@ -1,5 +1,5 @@
 compilar-correr:
-	g++ -o ejecutable-entrega main.cpp ./datatypes/*.cpp ./clases/*.cpp
+	g++ -std=c++98 -o ejecutable-entrega main.cpp ./datatypes/*.cpp ./clases/*.cpp
 	echo "Compilo bien, corriendo el resultado:"
 	./ejecutable-entrega
 valgrind:
