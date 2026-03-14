@@ -14,7 +14,7 @@ Alojamiento::~Alojamiento() {}
 
 float Alojamiento::calcularCosto() {
     float resultado = Experiencia::getPrecioBase() * this->cantNoches;
-    if(this->regimen == ALLInclusive) {
+    if(this->regimen == AllInclusive) {
         resultado += 10*this->cantNoches;
     }
     return resultado;

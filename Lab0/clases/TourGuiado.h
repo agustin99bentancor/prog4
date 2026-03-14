@@ -1,4 +1,5 @@
-
+#ifndef TOURGUIADO_H
+#define TOURGUIADO_H
 
 #include <iostream>
 #include <string>
@@ -18,3 +19,5 @@ public:
     virtual ~TourGuiado();
     virtual float calcularCosto();
 };
+
+#endif

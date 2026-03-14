@@ -1,4 +1,5 @@
-
+#ifndef EVENTOCULTURAL_H
+#define EVENTOCULTURAL_H
 
 #include <iostream>
 #include <string>
@@ -19,3 +20,5 @@ public:
     virtual ~EventoCultural();
     float calcularCosto();
 };
+
+#endif

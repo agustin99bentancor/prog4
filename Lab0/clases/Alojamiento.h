@@ -1,5 +1,5 @@
-
-
+#ifndef ALOJAMIENTO_H
+#define ALOJAMIENTO_H
 
 #include <iostream>
 #include <string>
@@ -20,3 +20,5 @@ public:
 
     float calcularCosto();
 };
+
+#endif
