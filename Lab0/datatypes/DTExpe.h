@@ -14,17 +14,16 @@ private:
     string codigoReserva;
     string descripcion;
     DTFecha fecha;
-    set<string> turista;
-
+    set<string> turistas;
 public:
     DTExpe();
     DTExpe(string codigoReserva,string descripcion,DTFecha fecha,set<string> turista);
     string getCodigoReserva();
     string getDescripcion();
-    DTFecha getfecha();
-    set<string> getTurista();
-    
-    std::ostream operator<<(const DTExpe& dtexpe) const;
+    DTFecha getFecha();
+    set<string> getTuristas();
 };
+
+ostream& operator<<(ostream& os, DTExpe& dtexpe);
 
 #endif
