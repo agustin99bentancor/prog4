@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string>
 #include <set>
-using namespace std;
+
 #include "./DTFecha.h"
+
+using namespace std;
 
 class DTExpe {
 private:
@@ -18,4 +20,6 @@ public:
     string getDescripcion();
     DTFecha getfecha();
     set<string> getTurista();
+    
+    std::ostream operator<<(const DTExpe& dtexpe) const;
 };

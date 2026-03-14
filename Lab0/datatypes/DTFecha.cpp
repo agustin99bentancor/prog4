@@ -21,6 +21,6 @@ int DTFecha::get_anio() {
     return this->anio;
 }
 
-string DTFecha::toString() {
+string DTFecha::toString() const {
     return to_string(dia) + "/" + to_string(mes) + "/" + to_string(anio);
 }

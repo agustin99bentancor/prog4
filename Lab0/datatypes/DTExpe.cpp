@@ -1,4 +1,5 @@
 #include "DTExpe.h"
+#include "../clases/Turista.h"
 
 DTExpe::DTExpe() {
 }
@@ -24,4 +25,18 @@ DTFecha DTExpe::getfecha() {
 
 set<string> DTExpe::getTurista() {
     return this->turista;
+}
+
+std::ostream DTExpe::operator<<(const DTExpe& dtexpe) const {
+    std::cout << "Codigo Reserva: " << dtexpe.codigoReserva << std::endl;
+    std::cout << "Descripcion: " << dtexpe.descripcion << std::endl;
+    std::cout << "Fecha: " << dtexpe.fecha.toString() << std::endl;
+    std::cout << "Turistas: ";
+
+    for (std::string turista : dtexpe.turista) {
+        std::cout << turista;
+        std::cout << ",";
+    }
+
+    std::cout << std::endl;
 }
