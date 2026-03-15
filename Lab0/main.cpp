@@ -121,6 +121,20 @@ void parte_h(){
 }
 
 void parte_i(){
+    Experiencia* exp = coleccion_getExperiencia("TGR3257");
+
+    if (exp != NULL) {
+        std::set<Turista*> participantes = exp->getTuristas();
+        for (std::set<Turista*>::iterator it = participantes.begin(); it != participantes.end(); ++it) {
+            (*it)->desvincularExperiencia(exp);
+        }
+
+		coleccion_eliminarExperiencia(exp);
+
+        delete exp; 
+        
+        std::cout << "Eliminación de TGR3257 completada." << std::endl;
+    }
 }
 
 void parte_j(){
