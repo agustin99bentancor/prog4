@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <set>
 #include "../datatypes/DTFecha.h"
 #include "../datatypes/DTExpe.h"
 
@@ -26,7 +27,7 @@ public:
     int getPrecioBase();
     set<Turista *> getTuristas();
     DTExpe getDT();
-    virtual float calcularCosto();
+    virtual float calcularCosto() = 0;
 };
 
 #endif

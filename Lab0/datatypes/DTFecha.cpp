@@ -1,4 +1,5 @@
 #include "DTFecha.h"
+#include <sstream>
 
 DTFecha::DTFecha() {
 }
@@ -22,5 +23,7 @@ int DTFecha::get_anio() {
 }
 
 string DTFecha::toString() const {
-    return to_string(dia) + "/" + to_string(mes) + "/" + to_string(anio);
+    stringstream ss;
+    ss << dia << "/" << mes << "/" << anio;
+    return ss.str();
 }

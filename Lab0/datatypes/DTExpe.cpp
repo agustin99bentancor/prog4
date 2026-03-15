@@ -1,5 +1,6 @@
 #include "DTExpe.h"
 #include "../clases/Turista.h"
+#include <iterator>
 
 DTExpe::DTExpe() {
 }
@@ -11,26 +12,30 @@ DTExpe::DTExpe(string codigoReserva, string descripcion, DTFecha fecha, set<stri
     this->turistas = turistas;
 }
 
-string DTExpe::getCodigoReserva() {
+string DTExpe::getCodigoReserva() const {
     return this->codigoReserva;
 }
 
-string DTExpe::getDescripcion() {
+string DTExpe::getDescripcion() const {
     return this->descripcion;
 }
 
-DTFecha DTExpe::getFecha() {
+DTFecha DTExpe::getFecha() const {
     return this->fecha;
 }
 
-set<string> DTExpe::getTuristas() {
+set<string> DTExpe::getTuristas() const {
     return this->turistas;
 }
 
-ostream& operator<<(ostream& os, DTExpe& dtexpe) {
+ostream& operator<<(ostream& os, const DTExpe& dtexpe) {
     os << dtexpe.getCodigoReserva() << "->" << dtexpe.getDescripcion() << "(" << dtexpe.getFecha().toString() << ")/";
-    for (auto tur : dtexpe.getTuristas()) {
-        os << tur << ",";
+    set<string> turistas = dtexpe.getTuristas();
+    for (set<string>::iterator it = turistas.begin(); it != turistas.end(); ++it) {
+        if (it != turistas.begin()) {
+            os << ",";
+        }
+        os << *it;
     }
     return os;
 }

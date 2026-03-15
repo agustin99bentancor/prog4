@@ -41,8 +41,10 @@ bool esPosterior(DTFecha fecha, DTFecha desde) {
 
 set<string> Turista::listarExperiencias(DTFecha desde, float min, float max) {
     set<string> experiencias;
-    for (Experiencia* experiencia : this->participa) {
-        DTFecha fechaExperiencia = experiencia->getDT().getfecha();
+    set<Experiencia*> participa = this->participa;
+    for (set<Experiencia*>::iterator it = participa.begin(); it != participa.end(); ++it) {
+        Experiencia* experiencia = *it;
+        DTFecha fechaExperiencia = experiencia->getDT().getFecha();
         float costo = experiencia->calcularCosto();
 
         if (esPosterior(fechaExperiencia, desde) && costo >= min && costo <= max) {

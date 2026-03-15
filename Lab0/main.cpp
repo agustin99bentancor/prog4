@@ -8,10 +8,9 @@
 #include "./clases/Turista.h"
 #include "./clases/Alojamiento.h"
 #include "./clases/TourGuiado.h"
-#include "./datatypes/EventoCultural.h"
+#include "./clases/EventoCultural.h"
 #include "./datatypes/DTFecha.h"
-
-
+#include "./datatypes/DTExpe.h"
 
 std::list<Experiencia*> experiencias;
 std::map<std::string, Experiencia*> map_experiencias;
@@ -44,27 +43,39 @@ Experiencia* coleccion_getExperiencia(std::string codigoReserva){
 }
 
 void parte_a(){
-	Alojamiento alojamiento1("ALX5489", "Hotel moderno", 30, DTFecha(18, 5, 2020), "Hotel Lindorf", AllInclusive, 5);
-	coleccion_guardarExperiencia(&alojamiento1);
+	Alojamiento* alojamiento1 = new Alojamiento("ALX5489", "Hotel moderno", 30, DTFecha(18, 5, 2020), "Hotel Lindorf", AllInclusive, 5);
+	coleccion_guardarExperiencia(alojamiento1);
 
-	Alojamiento alojamiento2("ALJ4789", "Todas las habitaciones con vista al mar", 100, DTFecha(10, 2, 2025), "Hotel SeaView", MediaPension, 15);
-	coleccion_guardarExperiencia(&alojamiento2);
+	Alojamiento* alojamiento2 = new Alojamiento("ALJ4789", "Todas las habitaciones con vista al mar", 100, DTFecha(10, 2, 2025), "Hotel SeaView", MediaPension, 15);
+	coleccion_guardarExperiencia(alojamiento2);
 }
 
 void parte_b(){
-	TourGuiado tour1("TGO4657", "Plazas de Montevideo", 10, DTFecha(29, 8, 2024), "Paseos SA", {"Plaza Independencia", "Plaza Matriz"});
-	coleccion_guardarExperiencia(&tour1);
+	set<string> lugares1;
+	lugares1.insert("Plaza Independencia");
+	lugares1.insert("Plaza Matriz");
+	TourGuiado* tour1 = new TourGuiado("TGO4657", "Plazas de Montevideo", 10, DTFecha(29, 8, 2024), "Paseos SA", lugares1);
+	coleccion_guardarExperiencia(tour1);
 
-	TourGuiado tour2("TGR3257", "Puntos emblematicos", 5, DTFecha(29, 8, 2024), "Recorre", {"Puerta de la ciudadela", "Mausoleo", "Cabildo", "Palacio Salvo"});
-	coleccion_guardarExperiencia(&tour2);
+	set<string> lugares2;
+	lugares2.insert("Puerta de la ciudadela");
+	lugares2.insert("Mausoleo");
+	lugares2.insert("Cabildo");
+	lugares2.insert("Palacio Salvo");
+	TourGuiado* tour2 = new TourGuiado("TGR3257", "Puntos emblematicos", 5, DTFecha(29, 8, 2024), "Recorre", lugares2);
+	coleccion_guardarExperiencia(tour2);
 }
 
 void parte_c(){
-	EventoCultural evento1("ECP1346", "Danza en el Solis", 10, DTFecha(29, 10, 2025), "Teatro Solis", true);
-	coleccion_guardarExperiencia(&evento1);
+	EventoCultural* evento1 = new EventoCultural("ECP1346", "Danza en el Solis", 10, DTFecha(29, 10, 2025), "Teatro Solis", true);
+	coleccion_guardarExperiencia(evento1);
 }
 
 void parte_d(){
+	for (std::list<Experiencia*>::iterator it = experiencias.begin(); it != experiencias.end(); ++it) {
+		Experiencia* exp = *it;
+		std::cout << exp->getDT();
+	}
 }
 
 void parte_e(){

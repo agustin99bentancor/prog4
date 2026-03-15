@@ -2,7 +2,7 @@
 #define TURISTA_H
 
 #include <string>
-#include <set>
+#include <vector>
 #include "../datatypes/DTFecha.h"
 using namespace std;
 

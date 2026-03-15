@@ -21,7 +21,9 @@ string Experiencia::getCodigoReserva() {
 DTExpe Experiencia::getDT() {
     set<string> nombresTuristas;
     for (set<Turista *>::iterator it = this->turistas.begin(); it != this->turistas.end(); ++it) {
-        nombresTuristas.insert((*it)->getNombre());
+        if (*it != NULL) {
+            nombresTuristas.insert((*it)->getNombre());
+        }
     }
     DTExpe dt(codigoReserva, decripcion, fecha, nombresTuristas);
     return dt;

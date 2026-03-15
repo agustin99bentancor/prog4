@@ -18,12 +18,12 @@ private:
 public:
     DTExpe();
     DTExpe(string codigoReserva,string descripcion,DTFecha fecha,set<string> turista);
-    string getCodigoReserva();
-    string getDescripcion();
-    DTFecha getFecha();
-    set<string> getTuristas();
+    string getCodigoReserva() const;
+    string getDescripcion() const;
+    DTFecha getFecha() const;
+    set<string> getTuristas() const;
 };
 
-ostream& operator<<(ostream& os, DTExpe& dtexpe);
+ostream& operator<<(ostream& os, const DTExpe& dtexpe);
 
 #endif
