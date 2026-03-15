@@ -110,6 +110,14 @@ void parte_g(){
 }
 
 void parte_h(){
+	Turista* vanesa = coleccion_getTurista("4.951.278-9");
+
+    if (vanesa != NULL) {
+        std::set<std::string> resultado = vanesa->listarExperiencias(DTFecha(10, 12, 2023), 0, 1000);
+        for (std::set<std::string>::iterator it = resultado.begin(); it != resultado.end(); ++it) {
+            std::cout << *it << std::endl;
+        }
+    }
 }
 
 void parte_i(){
