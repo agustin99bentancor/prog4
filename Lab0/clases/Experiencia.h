@@ -23,6 +23,8 @@ public:
     Experiencia(string codigoReserva, string descripcion, int precioBase, DTFecha fecha);
     virtual ~Experiencia();
 
+    void linkTurista(Turista* t);
+
     string getCodigoReserva();
     int getPrecioBase();
     set<Turista *> getTuristas();
