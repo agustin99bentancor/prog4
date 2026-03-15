@@ -92,6 +92,21 @@ void parte_f(){
 }
 
 void parte_g(){
+    Turista* vanesa = coleccion_getTurista("4.951.278-9");
+    Turista* karen = coleccion_getTurista("1.535.442-0");
+	
+    Experiencia* hotelMod = coleccion_getExperiencia("ALX5489");
+    Experiencia* hotelVista = coleccion_getExperiencia("ALJ4789");
+    Experiencia* puntosEmblem = coleccion_getExperiencia("TGR3257");
+    Experiencia* danzaSolis = coleccion_getExperiencia("ECP1346");
+    Experiencia* plazasMdeo = coleccion_getExperiencia("TGO4657");
+
+    hotelMod->linkTurista(vanesa); vanesa->linkExperiencia(hotelMod);
+    hotelVista->linkTurista(vanesa); vanesa->linkExperiencia(hotelVista);
+    puntosEmblem->linkTurista(vanesa); vanesa->linkExperiencia(puntosEmblem);
+    danzaSolis->linkTurista(vanesa); vanesa->linkExperiencia(danzaSolis);
+    plazasMdeo->linkTurista(karen); karen->linkExperiencia(plazasMdeo);
+    puntosEmblem->linkTurista(karen); karen->linkExperiencia(puntosEmblem);
 }
 
 void parte_h(){
