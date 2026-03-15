@@ -149,6 +149,10 @@ void parte_j(){
 }
 
 void parte_k(){
+	    for (std::list<Experiencia*>::iterator it = experiencias.begin(); it != experiencias.end(); ++it) {
+        Experiencia* exp = *it;
+        std::cout << exp->getDT() << std::endl;
+    }
 }
 
 void cleanUp(){
