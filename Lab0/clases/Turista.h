@@ -19,6 +19,7 @@ public:
     Turista(string ci, string nombre, string email);
 
     void linkExperiencia(Experiencia* exp);
+    void desvincularExperiencia(Experiencia* exp);
     
     string getCi();
     string getNombre();
