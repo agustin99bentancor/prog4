@@ -57,3 +57,7 @@ set<string> Turista::listarExperiencias(DTFecha desde, float min, float max) {
 void Turista::linkExperiencia(Experiencia* exp) {
     this->participa.insert(exp);
 }
+
+void Turista::desvincularExperiencia(Experiencia* exp) {
+    this->participa.erase(exp);
+}
