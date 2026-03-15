@@ -14,7 +14,12 @@ EventoCultural::~EventoCultural() {}
 
 float EventoCultural::calcularCosto() {
     int cant = Experiencia::getTuristas().size();
-    int resultado = Experiencia::getPrecioBase();
-
+    int pbase = Experiencia::getPrecioBase();
+    float resultado = pbase * cant;
+    for (std::set<Turista*>::iterator it = listaTuristas.begin(); it != listaTuristas.end(); ++it) {
+        if ((*it) != NULL && (*it)->usoCupon()) { 
+            resultado -= 5.0f;
+        }
+    }
     return resultado;
 }
