@@ -36,3 +36,9 @@ int Experiencia::getPrecioBase() {
 set<Turista *> Experiencia::getTuristas() {
     return this->turistas;
 }
+
+void Experiencia::linkTurista(Turista* t) {
+    if (t != NULL) {
+        this->turistas.insert(t);
+    }
+}
