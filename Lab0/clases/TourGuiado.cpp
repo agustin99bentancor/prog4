@@ -4,8 +4,8 @@
 #include "../datatypes/DTFecha.h"
 
 
-TourGuiado::TourGuiado(std::string codigoReserva, std::string decripcion, int precioBase, DTFecha fecha, std::string agencia, std::set<std::string> lugarVisitados)
-    : Experiencia(codigoReserva, decripcion, precioBase, fecha) {
+TourGuiado::TourGuiado(std::string codigoReserva, std::string descripcion, int precioBase, DTFecha fecha, std::string agencia, std::set<std::string> lugarVisitados)
+    : Experiencia(codigoReserva, descripcion, precioBase, fecha) {
     this->agencia = agencia;
     this->lugarVisitados= lugarVisitados;
 }
