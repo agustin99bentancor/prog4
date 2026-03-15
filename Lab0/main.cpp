@@ -87,7 +87,7 @@ void parte_e(){
 
 void parte_f(){
 	for(list<Turista*>::iterator it = turistas.begin(); it != turistas.end(); ++it){
-		cout << (*it)->to_string() << endl;
+		cout << (*it)->toString() << endl;
 	}
 }
 

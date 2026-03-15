@@ -25,7 +25,7 @@ string Turista::getEmail() {
     return this->email;
 }
 
-string Turista::to_string() {
+string Turista::toString() {
     return this->ci + "->" + this->nombre + "/" + this->email;
 }
 

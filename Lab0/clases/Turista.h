@@ -22,7 +22,7 @@ public:
     string getNombre();
     string getEmail();
 
-    string to_string();
+    string toString();
     set<string> listarExperiencias(DTFecha desde, float min, float max);
 };
 
