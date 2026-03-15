@@ -4,8 +4,8 @@
 #include "../datatypes/DTFecha.h"
 
 
-EventoCultural::EventoCultural(std::string codigoReserva, std::string decripcion, int precioBase, DTFecha fecha, std::string ubicacion, bool usoCupon)
-    : Experiencia(codigoReserva, decripcion, precioBase, fecha) {
+EventoCultural::EventoCultural(std::string codigoReserva, std::string descripcion, int precioBase, DTFecha fecha, std::string ubicacion, bool usoCupon)
+    : Experiencia(codigoReserva, descripcion, precioBase, fecha) {
     this->ubicacion = ubicacion;
     this->usoCupon = usoCupon;
 }

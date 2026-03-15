@@ -15,7 +15,7 @@ private:
     std::set<std::string> lugarVisitados;
 
 public:
-    TourGuiado(std::string codigoReserva, std::string decripcion, int precioBase, DTFecha fecha, std::string agencia, std::set<std::string> lugarVisitados);
+    TourGuiado(std::string codigoReserva, std::string descripcion, int precioBase, DTFecha fecha, std::string agencia, std::set<std::string> lugarVisitados);
     virtual ~TourGuiado();
     virtual float calcularCosto();
 };

@@ -4,9 +4,9 @@
 #include "./Turista.h"
 
 
-Experiencia::Experiencia(string codigoReserva, string decripcion, int precioBase, DTFecha fecha) {
+Experiencia::Experiencia(string codigoReserva, string descripcion, int precioBase, DTFecha fecha) {
     this->codigoReserva = codigoReserva;
-    this->decripcion = decripcion;
+    this->descripcion = descripcion;
     this->precioBase = precioBase;
     this->fecha = fecha;
 }
@@ -25,7 +25,7 @@ DTExpe Experiencia::getDT() {
             nombresTuristas.insert((*it)->getNombre());
         }
     }
-    DTExpe dt(codigoReserva, decripcion, fecha, nombresTuristas);
+    DTExpe dt(codigoReserva, descripcion, fecha, nombresTuristas);
     return dt;
 }
 

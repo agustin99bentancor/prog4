@@ -79,9 +79,16 @@ void parte_d(){
 }
 
 void parte_e(){
+	Turista* turista1 = new Turista("4.951.278-9", "Vanesa Castro", "vcastro.uy@servidor.net");
+	Turista* turista2 = new Turista("1.535.442-0", "Karen Santos", "karen.s89@internet.uy");
+	coleccion_guardarTurista(turista1);
+	coleccion_guardarTurista(turista2);
 }
 
 void parte_f(){
+	for(list<Turista*>::iterator it = turistas.begin(); it != turistas.end(); ++it){
+		cout << (*it)->to_string() << endl;
+	}
 }
 
 void parte_g(){

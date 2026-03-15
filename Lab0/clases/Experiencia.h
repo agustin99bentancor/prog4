@@ -14,13 +14,13 @@ class Turista;
 class Experiencia {
 private:
     string codigoReserva;
-    string decripcion;
+    string descripcion;
     int precioBase;
     DTFecha fecha;
     set<Turista *> turistas;
 
 public:
-    Experiencia(string codigoReserva, string decripcion, int precioBase, DTFecha fecha);
+    Experiencia(string codigoReserva, string descripcion, int precioBase, DTFecha fecha);
     virtual ~Experiencia();
 
     string getCodigoReserva();
