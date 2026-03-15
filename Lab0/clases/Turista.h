@@ -18,10 +18,12 @@ private:
 public:
     Turista(string ci, string nombre, string email);
 
+    void linkExperiencia(Experiencia* exp);
+    
     string getCi();
     string getNombre();
     string getEmail();
-
+    
     string toString();
     set<string> listarExperiencias(DTFecha desde, float min, float max);
 };
