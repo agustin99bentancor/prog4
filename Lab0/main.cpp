@@ -138,6 +138,14 @@ void parte_i(){
 }
 
 void parte_j(){
+    Turista* karen = coleccion_getTurista("1.535.442-0");
+
+    if (karen != NULL) {
+        std::set<std::string> resultado = karen->listarExperiencias(DTFecha(10, 10, 2020), 0, 1000);
+        for (std::set<std::string>::iterator it = resultado.begin(); it != resultado.end(); ++it) {
+            std::cout << *it << std::endl;
+        }
+    }
 }
 
 void parte_k(){
