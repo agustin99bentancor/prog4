@@ -37,5 +37,6 @@ ostream& operator<<(ostream& os, const DTExpe& dtexpe) {
         }
         os << *it;
     }
+    os << '\n';
     return os;
 }
