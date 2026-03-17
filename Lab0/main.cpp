@@ -92,18 +92,67 @@ void parte_f(){
 }
 
 void parte_g(){
+    Turista* vanesa = coleccion_getTurista("4.951.278-9");
+    Turista* karen = coleccion_getTurista("1.535.442-0");
+	
+    Experiencia* hotelMod = coleccion_getExperiencia("ALX5489");
+    Experiencia* hotelVista = coleccion_getExperiencia("ALJ4789");
+    Experiencia* puntosEmblem = coleccion_getExperiencia("TGR3257");
+    Experiencia* danzaSolis = coleccion_getExperiencia("ECP1346");
+    Experiencia* plazasMdeo = coleccion_getExperiencia("TGO4657");
+
+    hotelMod->linkTurista(vanesa); vanesa->linkExperiencia(hotelMod);
+    hotelVista->linkTurista(vanesa); vanesa->linkExperiencia(hotelVista);
+    puntosEmblem->linkTurista(vanesa); vanesa->linkExperiencia(puntosEmblem);
+    danzaSolis->linkTurista(vanesa); vanesa->linkExperiencia(danzaSolis);
+    plazasMdeo->linkTurista(karen); karen->linkExperiencia(plazasMdeo);
+    puntosEmblem->linkTurista(karen); karen->linkExperiencia(puntosEmblem);
 }
 
 void parte_h(){
+	Turista* vanesa = coleccion_getTurista("4.951.278-9");
+
+    if (vanesa != NULL) {
+        std::set<std::string> resultado = vanesa->listarExperiencias(DTFecha(10, 12, 2023), 0, 1000);
+        for (std::set<std::string>::iterator it = resultado.begin(); it != resultado.end(); ++it) {
+            std::cout << *it << std::endl;
+        }
+    }
 }
 
 void parte_i(){
+    Experiencia* exp = coleccion_getExperiencia("TGR3257");
+
+    if (exp != NULL) {
+        std::set<Turista*> participantes = exp->getTuristas();
+        for (std::set<Turista*>::iterator it = participantes.begin(); it != participantes.end(); ++it) {
+            (*it)->desvincularExperiencia(exp);
+        }
+
+		coleccion_eliminarExperiencia(exp);
+
+        delete exp; 
+        
+        std::cout << "Eliminación de TGR3257 completada." << std::endl;
+    }
 }
 
 void parte_j(){
+    Turista* karen = coleccion_getTurista("1.535.442-0");
+
+    if (karen != NULL) {
+        std::set<std::string> resultado = karen->listarExperiencias(DTFecha(10, 10, 2020), 0, 1000);
+        for (std::set<std::string>::iterator it = resultado.begin(); it != resultado.end(); ++it) {
+            std::cout << *it << std::endl;
+        }
+    }
 }
 
 void parte_k(){
+	    for (std::list<Experiencia*>::iterator it = experiencias.begin(); it != experiencias.end(); ++it) {
+        Experiencia* exp = *it;
+        std::cout << exp->getDT() << std::endl;
+    }
 }
 
 void cleanUp(){
