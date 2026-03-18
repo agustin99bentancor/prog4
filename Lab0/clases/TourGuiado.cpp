@@ -10,8 +10,6 @@ TourGuiado::TourGuiado(std::string codigoReserva, std::string descripcion, int p
     this->lugarVisitados= lugarVisitados;
 }
 
-TourGuiado::~TourGuiado() {}
-
 float TourGuiado::calcularCosto() {
     int resultado = Experiencia::getPrecioBase() + (2 * this->lugarVisitados.size() * Experiencia::getTuristas().size());
     return resultado;

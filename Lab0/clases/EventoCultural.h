@@ -15,9 +15,7 @@ private:
 
 public:
     EventoCultural(std::string codigoReserva, std::string descripcion, int precioBase, DTFecha fecha, std::string ubicacion, bool usoCupon);
-    EventoCultural();
 
-    virtual ~EventoCultural();
     float calcularCosto();
 };
 

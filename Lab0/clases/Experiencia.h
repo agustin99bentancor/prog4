@@ -24,6 +24,7 @@ public:
     virtual ~Experiencia();
 
     void linkTurista(Turista* t);
+    void desvincularTurista(Turista* t);
 
     string getCodigoReserva();
     int getPrecioBase();

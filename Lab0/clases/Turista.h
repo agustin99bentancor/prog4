@@ -17,7 +17,8 @@ private:
 
 public:
     Turista(string ci, string nombre, string email);
-
+    ~Turista();
+    
     void linkExperiencia(Experiencia* exp);
     void desvincularExperiencia(Experiencia* exp);
     

@@ -10,8 +10,6 @@ EventoCultural::EventoCultural(std::string codigoReserva, std::string descripcio
     this->usoCupon = usoCupon;
 }
 
-EventoCultural::~EventoCultural() {}
-
 float EventoCultural::calcularCosto() {
     int cant = Experiencia::getTuristas().size();
     int pbase = Experiencia::getPrecioBase();

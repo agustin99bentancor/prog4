@@ -13,6 +13,16 @@ Turista::Turista(string ci, string nombre, string email) {
     this->email = email;
 }
 
+Turista::~Turista() {
+    for (set<Experiencia *>::iterator it = this->participa.begin(); it != this->participa.end(); ++it) {
+        Experiencia* exp = *it;
+        if (exp != NULL) {
+            exp->desvincularTurista(this);
+        }
+    }
+    this->participa.clear();
+}
+
 string Turista::getCi() {
     return this->ci;
 }

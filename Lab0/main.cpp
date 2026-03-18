@@ -28,6 +28,10 @@ void coleccion_eliminarExperiencia(Experiencia* exp){
 	map_experiencias.erase(exp->getCodigoReserva());
 }
 
+void printSeparador() {
+	std::cout << "========================================" << std::endl;
+}
+
 void coleccion_guardarTurista(Turista* tur){
 	turistas.push_back(tur);
 	std::pair<std::string, Turista*> entry(tur->getCi(), tur);
@@ -122,19 +126,9 @@ void parte_h(){
 
 void parte_i(){
     Experiencia* exp = coleccion_getExperiencia("TGR3257");
-
-    if (exp != NULL) {
-        std::set<Turista*> participantes = exp->getTuristas();
-        for (std::set<Turista*>::iterator it = participantes.begin(); it != participantes.end(); ++it) {
-            (*it)->desvincularExperiencia(exp);
-        }
-
-		coleccion_eliminarExperiencia(exp);
-
-        delete exp; 
-        
-        std::cout << "Eliminación de TGR3257 completada." << std::endl;
-    }
+	coleccion_eliminarExperiencia(exp);
+	delete exp; 
+	std::cout << "Eliminacion de TGR3257 completada." << std::endl;
 }
 
 void parte_j(){
@@ -159,28 +153,50 @@ void cleanUp(){
 }
 
 int main() {
-	std::cout << "parte_a" <<  std::endl;
+	printSeparador();
+	std::cout << "Parte-A (Agrego Alojamientos ALX5489 y ALJ4789 )" <<  std::endl;
 	parte_a();
-	std::cout << "parte_b" <<  std::endl;
+	printSeparador();
+
+	std::cout << "Parte-B (Agrego TourGuiado TGO4657 y TGR3257)" << std::endl;
 	parte_b();
-	std::cout << "parte_c" <<  std::endl;
+	printSeparador();
+
+	std::cout << "Parte-C (Agrego EventoCultural ECP1346)" << std::endl;
 	parte_c();
-	std::cout << "parte_d" <<  std::endl;
+	printSeparador();
+
+	std::cout << "Parte-D (ejecutar operador << getDT())" <<  std::endl;
 	parte_d();
-	std::cout << "parte_e" <<  std::endl;
+	printSeparador();
+
+	std::cout << "Parte-E (Agrego Turistas 4.951.278-9 y 1.535.442-0)" <<  std::endl;
 	parte_e();
-	std::cout << "parte_f" <<  std::endl;
+	printSeparador();
+
+	std::cout << "Parte-F (Ejecutar operador << toString())" <<  std::endl;
 	parte_f();
-	std::cout << "parte_g" <<  std::endl;
+	printSeparador();
+
+	std::cout << "Parte-G (Link Turistas y Experiencias)" <<  std::endl;
 	parte_g();
-	std::cout << "parte_h" <<  std::endl;
+	printSeparador();
+
+	std::cout << "Parte-H (Ejecutar listarExperiencias(10/12/2023, 0, 1000))" <<  std::endl;
 	parte_h();
-	std::cout << "parte_i" <<  std::endl;
+	printSeparador();
+	std::cout << "Parte-I (Eliminar Experiencia TGR3257)" <<  std::endl;
 	parte_i();
-	std::cout << "parte_j" <<  std::endl;
+	printSeparador();
+
+	std::cout << "Parte-J (Ejecutar listarExperiencias(10/10/2020, 0, 1000))" <<  std::endl;
 	parte_j();
-	std::cout << "parte_k" <<  std::endl;
+	printSeparador();
+
+	std::cout << "Parte-K (Ejecutar operador << getDT())" <<  std::endl;
 	parte_k();
+	printSeparador();
+
 	std::cout << "cleanUp" <<  std::endl;
 	cleanUp();
 	std::cout << "fin" <<  std::endl;

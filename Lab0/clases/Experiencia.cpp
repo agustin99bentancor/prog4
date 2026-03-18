@@ -12,6 +12,13 @@ Experiencia::Experiencia(string codigoReserva, string descripcion, int precioBas
 }
 
 Experiencia::~Experiencia() {
+    for (set<Turista *>::iterator it = this->turistas.begin(); it != this->turistas.end(); ++it) {
+        Turista* turista = *it;
+        if (turista != NULL) {
+            turista->desvincularExperiencia(this);
+        }
+    }
+    this->turistas.clear();
 }
 
 string Experiencia::getCodigoReserva() {
@@ -40,5 +47,11 @@ set<Turista *> Experiencia::getTuristas() {
 void Experiencia::linkTurista(Turista* t) {
     if (t != NULL) {
         this->turistas.insert(t);
+    }
+}
+
+void Experiencia::desvincularTurista(Turista* t) {
+    if (t != NULL) {
+        this->turistas.erase(t);
     }
 }

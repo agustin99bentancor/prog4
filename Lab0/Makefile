@@ -3,5 +3,4 @@ compilar-correr:
 	echo "Compilo bien, corriendo el resultado:"
 	./ejecutable-entrega
 valgrind:
-	clear
 	valgrind -s --leak-check=full ./ejecutable-entrega
