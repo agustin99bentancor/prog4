@@ -144,12 +144,22 @@ void parte_j(){
 
 void parte_k(){
 	    for (std::list<Experiencia*>::iterator it = experiencias.begin(); it != experiencias.end(); ++it) {
-        Experiencia* exp = *it;
-        std::cout << exp->getDT() << std::endl;
+        Experiencia* exp = *it;        std::cout << exp->getDT() << std::endl;
     }
 }
 
 void cleanUp(){
+    for (std::map<std::string, Experiencia*>::iterator it = map_experiencias.begin(); it != map_experiencias.end(); ++it) {
+        delete it->second;
+    }
+    map_experiencias.clear();
+    experiencias.clear();
+
+    for (std::map<std::string, Turista*>::iterator it = map_turistas.begin(); it != map_turistas.end(); ++it) {
+        delete it->second;
+    }
+    map_turistas.clear();
+    turistas.clear();
 }
 
 int main() {

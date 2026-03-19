@@ -1,0 +1,32 @@
+#include "Alojamiento.h"
+
+Alojamiento::Alojamiento(string codigoReserva, string descripcion, int precioBase, DTFecha fecha,
+                         string hotel, TipoRegimen regimen, int cantNoches)
+    : Experiencia(codigoReserva, descripcion, precioBase, fecha) 
+{
+    this->hotel = hotel;
+    this->regimen = regimen;
+    this->cantNoches = cantNoches;
+}
+
+
+float Alojamiento::calcularCosto() {
+    float costo = precioBase * cantNoches;
+    if (regimen == ALLInclusive) {
+        costo += 10 * cantNoches;
+    }
+
+    return costo;
+}
+
+string Alojamiento::getHotel() {
+    return hotel;
+}
+
+TipoRegimen Alojamiento::getRegimen() {
+    return regimen;
+}
+
+int Alojamiento::getCantNoches() {
+    return cantNoches;
+}
