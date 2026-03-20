@@ -17,6 +17,7 @@ using std::set;
 using std::list;
 using std::cout;
 using std::endl;
+using std::map;
 
 std::list<Experiencia*> experiencias;
 std::map<std::string, Experiencia*> map_experiencias;
@@ -82,9 +83,9 @@ void parte_c(){
 }
 
 void parte_d(){
-	for (std::list<Experiencia*>::iterator it = experiencias.begin(); it != experiencias.end(); ++it) {
+	for (list<Experiencia*>::iterator it = experiencias.begin(); it != experiencias.end(); ++it) {
 		Experiencia* exp = *it;
-		std::cout << exp->getDT();
+		cout << exp->getDT();
 	}
 }
 
@@ -123,9 +124,9 @@ void parte_h(){
 	Turista* vanesa = coleccion_getTurista("4.951.278-9");
 
     if (vanesa != NULL) {
-        std::set<std::string> resultado = vanesa->listarExperiencias(DTFecha(10, 12, 2023), 0, 1000);
-        for (std::set<std::string>::iterator it = resultado.begin(); it != resultado.end(); ++it) {
-            std::cout << *it << std::endl;
+        set<string> resultado = vanesa->listarExperiencias(DTFecha(10, 12, 2023), 0, 1000);
+        for (set<string>::iterator it = resultado.begin(); it != resultado.end(); ++it) {
+            cout << *it << endl;
         }
     }
 }
@@ -134,34 +135,34 @@ void parte_i(){
     Experiencia* exp = coleccion_getExperiencia("TGR3257");
 	coleccion_eliminarExperiencia(exp);
 	delete exp; 
-	std::cout << "Eliminacion de TGR3257 completada." << std::endl;
+	cout << "Eliminacion de TGR3257 completada." << endl;
 }
 
 void parte_j(){
     Turista* karen = coleccion_getTurista("1.535.442-0");
 
     if (karen != NULL) {
-        std::set<std::string> resultado = karen->listarExperiencias(DTFecha(10, 10, 2020), 0, 1000);
-        for (std::set<std::string>::iterator it = resultado.begin(); it != resultado.end(); ++it) {
-            std::cout << *it << std::endl;
+        set<string> resultado = karen->listarExperiencias(DTFecha(10, 10, 2020), 0, 1000);
+        for (set<string>::iterator it = resultado.begin(); it != resultado.end(); ++it) {
+            cout << *it << endl;
         }
     }
 }
 
 void parte_k(){
-	    for (std::list<Experiencia*>::iterator it = experiencias.begin(); it != experiencias.end(); ++it) {
-        Experiencia* exp = *it;        std::cout << exp->getDT() << std::endl;
+	    for (list<Experiencia*>::iterator it = experiencias.begin(); it != experiencias.end(); ++it) {
+        Experiencia* exp = *it;        cout << exp->getDT() << endl;
     }
 }
 
 void cleanUp(){
-    for (std::map<std::string, Experiencia*>::iterator it = map_experiencias.begin(); it != map_experiencias.end(); ++it) {
+    for (map<string, Experiencia*>::iterator it = map_experiencias.begin(); it != map_experiencias.end(); ++it) {
         delete it->second;
     }
     map_experiencias.clear();
     experiencias.clear();
 
-    for (std::map<std::string, Turista*>::iterator it = map_turistas.begin(); it != map_turistas.end(); ++it) {
+    for (map<string, Turista*>::iterator it = map_turistas.begin(); it != map_turistas.end(); ++it) {
         delete it->second;
     }
     map_turistas.clear();
