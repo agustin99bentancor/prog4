@@ -12,6 +12,12 @@
 #include "./datatypes/DTFecha.h"
 #include "./datatypes/DTExpe.h"
 
+using std::string;
+using std::set;
+using std::list;
+using std::cout;
+using std::endl;
+
 std::list<Experiencia*> experiencias;
 std::map<std::string, Experiencia*> map_experiencias;
 

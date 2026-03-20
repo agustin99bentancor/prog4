@@ -1,16 +1,17 @@
-
 #include "./TourGuiado.h"
 #include "./Turista.h"
 #include "../datatypes/DTFecha.h"
 
+using std::string;
+using std::set;
 
-TourGuiado::TourGuiado(std::string codigoReserva, std::string descripcion, int precioBase, DTFecha fecha, std::string agencia, std::set<std::string> lugarVisitados)
+TourGuiado::TourGuiado(string codigoReserva, string descripcion, int precioBase, DTFecha fecha, string agencia, set<string> lugaresVisitados)
     : Experiencia(codigoReserva, descripcion, precioBase, fecha) {
     this->agencia = agencia;
-    this->lugarVisitados= lugarVisitados;
+    this->lugaresVisitados = lugaresVisitados;
 }
 
 float TourGuiado::calcularCosto() {
-    int resultado = Experiencia::getPrecioBase() + (2 * this->lugarVisitados.size() * Experiencia::getTuristas().size());
+    int resultado = Experiencia::getPrecioBase() + (2 * this->lugaresVisitados.size() * Experiencia::getTuristas().size());
     return resultado;
 }

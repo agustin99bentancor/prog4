@@ -1,8 +1,8 @@
-#include <iostream>
-#include <string>
 #include "./Experiencia.h"
 #include "./Turista.h"
 
+using std::string;
+using std::set;
 
 Experiencia::Experiencia(string codigoReserva, string descripcion, int precioBase, DTFecha fecha) {
     this->codigoReserva = codigoReserva;
@@ -21,11 +21,11 @@ Experiencia::~Experiencia() {
     this->turistas.clear();
 }
 
-string Experiencia::getCodigoReserva() {
+string Experiencia::getCodigoReserva() const {
     return this->codigoReserva;
 }
 
-DTExpe Experiencia::getDT() {
+DTExpe Experiencia::getDT() const {
     set<string> nombresTuristas;
     for (set<Turista *>::iterator it = this->turistas.begin(); it != this->turistas.end(); ++it) {
         if (*it != NULL) {
@@ -36,11 +36,11 @@ DTExpe Experiencia::getDT() {
     return dt;
 }
 
-int Experiencia::getPrecioBase() {
+int Experiencia::getPrecioBase() const {
     return this->precioBase;
 }
 
-set<Turista *> Experiencia::getTuristas() {
+set<Turista *> Experiencia::getTuristas() const {
     return this->turistas;
 }
 

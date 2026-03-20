@@ -1,10 +1,9 @@
-
-#include <iostream>
-#include <string>
-#include <set>
 #include "Turista.h"
 #include "Experiencia.h"
 #include "../datatypes/DTFecha.h"
+
+using std::string;
+using std::set;
 
 
 Turista::Turista(string ci, string nombre, string email) {
@@ -23,30 +22,30 @@ Turista::~Turista() {
     this->participa.clear();
 }
 
-string Turista::getCi() {
+string Turista::getCi() const {
     return this->ci;
 }
 
-string Turista::getNombre() {
+string Turista::getNombre() const {
     return this->nombre;
 }
 
-string Turista::getEmail() {
+string Turista::getEmail() const {
     return this->email;
 }
 
-string Turista::toString() {
+string Turista::toString() const {
     return this->ci + "->" + this->nombre + "/" + this->email;
 }
 
 bool esPosterior(DTFecha fecha, DTFecha desde) {
-    if (fecha.get_anio() != desde.get_anio()) {
-        return fecha.get_anio() > desde.get_anio();
+    if (fecha.getAnio() != desde.getAnio()) {
+        return fecha.getAnio() > desde.getAnio();
     }
-    if (fecha.get_mes() != desde.get_mes()) {
-        return fecha.get_mes() > desde.get_mes();
+    if (fecha.getMes() != desde.getMes()) {
+        return fecha.getMes() > desde.getMes();
     }
-    return fecha.get_dia() > desde.get_dia();
+    return fecha.getDia() > desde.getDia();
 }
 
 set<string> Turista::listarExperiencias(DTFecha desde, float min, float max) {

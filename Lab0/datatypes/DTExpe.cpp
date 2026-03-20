@@ -1,6 +1,8 @@
 #include "DTExpe.h"
-#include "../clases/Turista.h"
-#include <iterator>
+
+using std::string;
+using std::set;
+using std::ostream;
 
 DTExpe::DTExpe() {
 }
