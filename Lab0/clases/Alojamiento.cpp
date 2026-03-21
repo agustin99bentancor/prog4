@@ -1,9 +1,10 @@
-
 #include "./Alojamiento.h"
 #include "./Turista.h"
 #include "../datatypes/DTFecha.h"
 
-Alojamiento::Alojamiento(std::string codigoReserva, std::string descripcion, int precioBase, DTFecha fecha, std::string hotel, TipoRegimen regimen, int cantNoches)
+using std::string;
+
+Alojamiento::Alojamiento(string codigoReserva, string descripcion, int precioBase, DTFecha fecha, string hotel, TipoRegimen regimen, int cantNoches)
     : Experiencia(codigoReserva, descripcion, precioBase, fecha) {
     this->hotel = hotel;
     this->regimen = regimen;

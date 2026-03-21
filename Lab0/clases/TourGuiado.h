@@ -12,10 +12,10 @@
 class TourGuiado: public Experiencia{
 private:
     std::string agencia;
-    std::set<std::string> lugarVisitados;
+    std::set<std::string> lugaresVisitados;
 
 public:
-    TourGuiado(std::string codigoReserva, std::string descripcion, int precioBase, DTFecha fecha, std::string agencia, std::set<std::string> lugarVisitados);
+    TourGuiado(std::string codigoReserva, std::string descripcion, int precioBase, DTFecha fecha, std::string agencia, std::set<std::string> lugaresVisitados);
 
     virtual float calcularCosto();
 };

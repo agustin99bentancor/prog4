@@ -7,29 +7,27 @@
 #include "../datatypes/DTFecha.h"
 #include "../datatypes/DTExpe.h"
 
-using namespace std;
-
 class Turista;
 
 class Experiencia {
 private:
-    string codigoReserva;
-    string descripcion;
+    std::string codigoReserva;
+    std::string descripcion;
     int precioBase;
     DTFecha fecha;
-    set<Turista *> turistas;
+    std::set<Turista *> turistas;
 
 public:
-    Experiencia(string codigoReserva, string descripcion, int precioBase, DTFecha fecha);
+    Experiencia(std::string codigoReserva, std::string descripcion, int precioBase, DTFecha fecha);
     virtual ~Experiencia();
 
     void linkTurista(Turista* t);
     void desvincularTurista(Turista* t);
 
-    string getCodigoReserva();
-    int getPrecioBase();
-    set<Turista *> getTuristas();
-    DTExpe getDT();
+    std::string getCodigoReserva() const;
+    int getPrecioBase() const;
+    std::set<Turista *> getTuristas() const;
+    DTExpe getDT() const;
     virtual float calcularCosto() = 0;
 };
 

@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <string>
-using namespace std;
 
 class DTFecha {
 private:
@@ -14,10 +13,10 @@ private:
 public:
     DTFecha();
     DTFecha(int dia, int mes, int anio);
-    int get_dia();
-    int get_mes();
-    int get_anio();
-    string toString() const;
+    int getDia() const;
+    int getMes() const;
+    int getAnio() const;
+    std::string toString() const;
 };
 
 #endif

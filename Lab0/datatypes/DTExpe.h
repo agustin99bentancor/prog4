@@ -4,26 +4,23 @@
 #include <iostream>
 #include <string>
 #include <set>
-
 #include "./DTFecha.h"
-
-using namespace std;
 
 class DTExpe {
 private:
-    string codigoReserva;
-    string descripcion;
+    std::string codigoReserva;
+    std::string descripcion;
     DTFecha fecha;
-    set<string> turistas;
+    std::set<std::string> turistas;
 public:
     DTExpe();
-    DTExpe(string codigoReserva,string descripcion,DTFecha fecha,set<string> turista);
-    string getCodigoReserva() const;
-    string getDescripcion() const;
+    DTExpe(std::string codigoReserva,std::string descripcion,DTFecha fecha,std::set<std::string> turista);
+    std::string getCodigoReserva() const;
+    std::string getDescripcion() const;
     DTFecha getFecha() const;
-    set<string> getTuristas() const;
+    std::set<std::string> getTuristas() const;
 };
 
-ostream& operator<<(ostream& os, const DTExpe& dtexpe);
+std::ostream& operator<<(std::ostream& os, const DTExpe& dtexpe);
 
 #endif

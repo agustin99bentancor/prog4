@@ -4,30 +4,29 @@
 #include <string>
 #include <set>
 #include "../datatypes/DTFecha.h"
-using namespace std;
 
 class Experiencia;
 
 class Turista {
 private:
-    string ci;
-    string nombre;
-    string email;
-    set<Experiencia *> participa;
+    std::string ci;
+    std::string nombre;
+    std::string email;
+    std::set<Experiencia *> participa;
 
 public:
-    Turista(string ci, string nombre, string email);
+    Turista(std::string ci, std::string nombre, std::string email);
     ~Turista();
     
     void linkExperiencia(Experiencia* exp);
     void desvincularExperiencia(Experiencia* exp);
     
-    string getCi();
-    string getNombre();
-    string getEmail();
+    std::string getCi() const;
+    std::string getNombre() const;
+    std::string getEmail() const;
     
-    string toString();
-    set<string> listarExperiencias(DTFecha desde, float min, float max);
+    std::string toString() const;
+    std::set<std::string> listarExperiencias(DTFecha desde, float min, float max);
 };
 
 #endif

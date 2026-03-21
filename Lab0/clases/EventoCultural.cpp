@@ -1,4 +1,3 @@
-
 #include "./EventoCultural.h"
 #include "./Turista.h"
 #include "../datatypes/DTFecha.h"

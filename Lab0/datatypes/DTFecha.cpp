@@ -1,6 +1,9 @@
 #include "DTFecha.h"
 #include <sstream>
 
+using std::string;
+using std::stringstream;
+
 DTFecha::DTFecha() {
 }
 
@@ -10,15 +13,15 @@ DTFecha::DTFecha(int dia, int mes, int anio) {
     this->anio = anio;
 }
 
-int DTFecha::get_dia() {
+int DTFecha::getDia() const {
     return this->dia;
 }
 
-int DTFecha::get_mes() {
+int DTFecha::getMes() const {
     return this->mes;
 }
 
-int DTFecha::get_anio() {
+int DTFecha::getAnio() const {
     return this->anio;
 }
 
