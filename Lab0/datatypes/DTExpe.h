@@ -13,8 +13,7 @@ private:
     DTFecha fecha;
     std::set<std::string> turistas;
 public:
-    DTExpe();
-    DTExpe(std::string codigoReserva,std::string descripcion,DTFecha fecha,std::set<std::string> turista);
+    DTExpe(std::string codigoReserva,std::string descripcion,DTFecha fechaF,std::set<std::string> turista);
     std::string getCodigoReserva() const;
     std::string getDescripcion() const;
     DTFecha getFecha() const;

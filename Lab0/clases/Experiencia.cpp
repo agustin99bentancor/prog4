@@ -4,11 +4,10 @@
 using std::string;
 using std::set;
 
-Experiencia::Experiencia(string codigoReserva, string descripcion, int precioBase, DTFecha fecha) {
+Experiencia::Experiencia(string codigoReserva, string descripcion, int precioBase, DTFecha fechaF): fecha(fechaF) {
     this->codigoReserva = codigoReserva;
     this->descripcion = descripcion;
     this->precioBase = precioBase;
-    this->fecha = fecha;
 }
 
 Experiencia::~Experiencia() {

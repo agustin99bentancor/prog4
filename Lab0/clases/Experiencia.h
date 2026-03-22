@@ -18,7 +18,7 @@ private:
     std::set<Turista *> turistas;
 
 public:
-    Experiencia(std::string codigoReserva, std::string descripcion, int precioBase, DTFecha fecha);
+    Experiencia(std::string codigoReserva, std::string descripcion, int precioBase, DTFecha fechaF);
     virtual ~Experiencia();
 
     void linkTurista(Turista* t);
