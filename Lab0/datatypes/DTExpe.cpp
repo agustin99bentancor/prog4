@@ -4,13 +4,9 @@ using std::string;
 using std::set;
 using std::ostream;
 
-DTExpe::DTExpe() {
-}
-
-DTExpe::DTExpe(string codigoReserva, string descripcion, DTFecha fecha, set<string> turistas) {
+DTExpe::DTExpe(string codigoReserva, string descripcion, DTFecha fechaF, set<string> turistas): fecha(fechaF) {
     this->codigoReserva = codigoReserva;
     this->descripcion = descripcion;
-    this->fecha = fecha;
     this->turistas = turistas;
 }
 

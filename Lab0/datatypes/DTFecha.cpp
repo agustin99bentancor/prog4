@@ -4,9 +4,6 @@
 using std::string;
 using std::stringstream;
 
-DTFecha::DTFecha() {
-}
-
 DTFecha::DTFecha(int dia, int mes, int anio) {
     this->dia = dia;
     this->mes = mes;

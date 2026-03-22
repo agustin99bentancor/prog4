@@ -9,9 +9,7 @@ private:
     int dia;
     int mes;
     int anio;
-
 public:
-    DTFecha();
     DTFecha(int dia, int mes, int anio);
     int getDia() const;
     int getMes() const;
