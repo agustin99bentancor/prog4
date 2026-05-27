@@ -1,4 +1,4 @@
-#include "../include/DTVehiculosConductor.h"
+#include "../include/dtypes/DTVehiculosConductor.h"
 
 DTVehiculosConductor::DTVehiculosConductor(std::vector<DTDetalleVehiculo> vehiculos)
     {
