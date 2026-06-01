@@ -2,7 +2,7 @@
 #include "../include/Fabrica.h"
 #include "../include/IControladorFechaActual.h"
 #include "../include/CargaDatos.h"
-#include "../include/DTFecha.h"
+#include "../include/dtypes/DTFecha.h"
 #include <iostream>
 #include <limits>
 #include <string>

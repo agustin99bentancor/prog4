@@ -2,17 +2,20 @@
 #define FABRICA_H
 
 #include "IControladorFechaActual.h"
+#include "IUsuario.h"
+#include "IReserva.h"
 
 class Fabrica {
 private:
+
     static Fabrica* instancia;
-
     Fabrica();
-
 public:
-    static Fabrica* getInstance();
 
+    static Fabrica* getInstance();
     IControladorFechaActual* getIControladorFechaActual();
+    IUsuario* getIControladorUsuario();
+    IReserva* getIControladorReserva();
 };
 
 #endif
