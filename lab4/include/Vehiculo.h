@@ -26,7 +26,7 @@ public:
     ~Vehiculo();
 
     std::set<DTListarViaje> getDTListarViajes();
-    std::string NicknameConductor();
+    std::string getNicknameConductor();
     DTUsuarioViaje getDatosConductor();
     std::string getNombreConductor();
     float getCalificacionConductor();

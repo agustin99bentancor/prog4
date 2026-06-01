@@ -36,7 +36,7 @@ public:
     DTConsultaViaje getDTcv();
     bool puedeReservar(std::string nickname, int asientos);
     void agregarReserva(Reserva* r);
-    int getCodigo();
+    static int obtenerCodigo();
 };
 
 #endif
