@@ -5,8 +5,9 @@
 #include <set>
 
 #include "dtypes/TipoLibreta.h"
-#include "Usuario.h"
 #include "dtypes/DTUsuario.h"
+
+class Usuario;
 
 class UsuarioHandler {
 private:

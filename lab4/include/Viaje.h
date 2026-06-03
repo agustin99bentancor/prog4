@@ -5,11 +5,12 @@
 #include <set>
 
 #include "dtypes/DTFecha.h"
-#include "Reserva.h"
 #include "dtypes/DTListarViaje.h"
 #include "dtypes/DTUsuarioViaje.h"
 #include "dtypes/DTConsultaViaje.h"
-#include "Vehiculo.h"
+
+class Reserva;
+class Vehiculo;
 
 class Viaje {
 private:

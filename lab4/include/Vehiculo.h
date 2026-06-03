@@ -8,8 +8,9 @@
 #include "dtypes/DTListarViaje.h"
 #include "dtypes/DTUsuarioViaje.h"
 #include "dtypes/DTVehiculosConductor.h"
-#include "Viaje.h"
-#include "Conductor.h"
+
+class Viaje;
+class Conductor;
 
 class Vehiculo {
 private:

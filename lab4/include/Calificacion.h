@@ -2,8 +2,9 @@
 #define CALIFICACION_H
 
 #include "dtypes/DTFecha.h"
-#include "Reserva.h"
-#include "Usuario.h"
+
+class Reserva;
+class Usuario;
 
 class Calificacion {
 private:

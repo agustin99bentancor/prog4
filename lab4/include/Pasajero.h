@@ -5,7 +5,8 @@
 
 #include "Usuario.h"
 #include "dtypes/DTListarViaje.h"
-#include "Reserva.h"
+
+class Reserva;
 
 class Pasajero : public Usuario {
 private:

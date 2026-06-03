@@ -1,4 +1,4 @@
-#include "../include/dtypes/DTDetalleReserva.h"
+#include "dtypes/DTDetalleReserva.h"
 
 DTDetalleReserva::DTDetalleReserva(int asientosReservados, DTFecha fecha, std::string pasajero) {
     this->asientosReservados = asientosReservados;

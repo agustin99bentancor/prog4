@@ -1,4 +1,4 @@
-#include "../include/ControladorFechaActual.h"
+#include "ControladorFechaActual.h"
 
 ControladorFechaActual* ControladorFechaActual::instancia = nullptr;
 

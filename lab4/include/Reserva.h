@@ -6,8 +6,9 @@
 #include "dtypes/DTFecha.h"
 #include "dtypes/DTListarViaje.h"
 #include "dtypes/DTUsuarioViaje.h"
-#include "Pasajero.h"
-#include "Viaje.h"
+
+class Pasajero;
+class Viaje;
 
 class Reserva {
 private:

@@ -4,11 +4,12 @@
 #include <string>
 #include <set>
 
-#include "Viaje.h"
-#include "Conductor.h"
-#include "Vehiculo.h"
 #include "dtypes/TipoVehiculo.h"
 #include "dtypes/DTFecha.h"
+
+class Viaje;
+class Conductor;
+class Vehiculo;
 
 class ViajeHandler {
 private:

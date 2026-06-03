@@ -4,9 +4,10 @@
 #include <string>
 #include <set>
 
-#include "Vehiculo.h"
 #include "dtypes/TipoVehiculo.h"
-#include "Conductor.h"
+
+class Vehiculo;
+class Conductor;
 
 class VehiculoHandler {
 private:

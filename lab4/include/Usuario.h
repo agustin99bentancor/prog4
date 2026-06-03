@@ -6,7 +6,8 @@
 
 #include "dtypes/DTUsuario.h"
 #include "dtypes/DTListarViaje.h"
-#include "Calificacion.h"
+
+class Calificacion;
 
 class Usuario {
 protected:
@@ -16,7 +17,7 @@ protected:
     std::string email;
     float calificacionPromedio;
 
-    std::set<Calificacion> realiza;
+    std::set<Calificacion*> realiza;
     
 public:
     Usuario(std::string nickname, std::string nombre, std::string contrasena, std::string email);
@@ -25,7 +26,7 @@ public:
     DTUsuario getDT();
     std::set<DTListarViaje> getDTListarViajes();
     bool existeCalificacion(std::string nicknameCalificado, int codigo);
-    void agregarCalificacion(Calificacion ca);
+    void agregarCalificacion(Calificacion* ca);
 };
 
 #endif

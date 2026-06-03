@@ -4,12 +4,13 @@
 #include <set>
 
 #include "Usuario.h"
-#include "Vehiculo.h"
 #include "dtypes/TipoLibreta.h"
 #include "dtypes/TipoVehiculo.h"
 #include "dtypes/DTListarViaje.h"
 #include "dtypes/DTVehiculosConductor.h"
 #include "dtypes/DTFecha.h"
+
+class Vehiculo;
 
 class Conductor : public Usuario {
 private:

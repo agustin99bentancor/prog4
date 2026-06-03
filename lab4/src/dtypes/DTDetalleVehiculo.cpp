@@ -1,4 +1,4 @@
-#include "../include/dtypes/DTDetalleVehiculo.h"
+#include "dtypes/DTDetalleVehiculo.h"
 
 DTDetalleVehiculo::DTDetalleVehiculo(std::string matricula, int capacidad, std::string marca, std::string modelo, TipoVehiculo tipo)
     {
