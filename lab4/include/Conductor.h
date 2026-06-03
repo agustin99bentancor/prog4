@@ -23,7 +23,7 @@ public:
     ~Conductor();
 
     bool tieneLibretaCompatible(TipoVehiculo tipo);
-    void agregarVehiculo(Vehiculo v);
+    void agregarVehiculo(Vehiculo* v);
     std::set<DTListarViaje> getDTListarViajes();
     std::set<DTVehiculosConductor> listarVehiculos();
     bool hayViajesFechaConductor(DTFecha fecha);

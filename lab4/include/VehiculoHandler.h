@@ -5,6 +5,7 @@
 #include <set>
 
 #include "dtypes/TipoVehiculo.h"
+#include "../include/Vehiculo.h"
 
 class Vehiculo;
 class Conductor;
@@ -18,11 +19,11 @@ private:
     VehiculoHandler();
 public:
 
-    static VehiculoHandler* getInstance();
+    static VehiculoHandler* getInstancia();
 
     bool existeVehiculo(std::string matricula);
-    void crearVehiculo(std::string matricula, int capacidad, std::string modelo, std::string marca, TipoVehiculo tipo, Conductor* c);
-    Vehiculo getVehiculo(std::string matricula);
+    Vehiculo* crearVehiculo(std::string matricula, int capacidad, std::string modelo, std::string marca, TipoVehiculo tipo, Conductor* c);
+    Vehiculo* getVehiculo(std::string matricula);
 };
 
 #endif

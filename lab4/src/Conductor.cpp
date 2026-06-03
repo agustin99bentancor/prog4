@@ -7,3 +7,11 @@ Conductor::Conductor(std::string nickname, std::string nombre, std::string contr
 }
 
 Conductor::~Conductor() {}
+
+bool Conductor::tieneLibretaCompatible(TipoVehiculo tipo){
+    return false;
+}
+
+void Conductor::agregarVehiculo(Vehiculo* v){
+    vehiculos.insert(v);
+}

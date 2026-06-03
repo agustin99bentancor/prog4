@@ -20,7 +20,7 @@ private:
     ViajeHandler();
 public:
 
-    static ViajeHandler* getInstance();
+    static ViajeHandler* getInstancia();
 
     Viaje* getViaje(int codigo);
     void crearVehiculo(std::string matricula, int capacidad, std::string modelo, std::string marca, TipoVehiculo tipo, Conductor* c);
