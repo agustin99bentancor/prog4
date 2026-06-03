@@ -1,8 +1,8 @@
-#include "../include/Menu.h"
-#include "../include/Fabrica.h"
-#include "../include/IControladorFechaActual.h"
-#include "../include/CargaDatos.h"
-#include "../include/DTFecha.h"
+#include "Menu.h"
+#include "Fabrica.h"
+#include "IControladorFechaActual.h"
+#include "CargaDatos.h"
+#include "dtypes/DTFecha.h"
 #include <iostream>
 #include <limits>
 #include <string>

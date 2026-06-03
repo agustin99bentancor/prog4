@@ -1,4 +1,4 @@
-#include "../include/dtypes/DTUsuarioViaje.h"
+#include "dtypes/DTUsuarioViaje.h"
 
 DTUsuarioViaje::DTUsuarioViaje(std::string nickname, TipoUsuario tipo)
     {

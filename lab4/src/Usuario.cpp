@@ -1,4 +1,5 @@
-#include "../include/Usuario.h"
+#include "Usuario.h"
+#include "Calificacion.h"
 
 Usuario::Usuario(std::string nickname, std::string nombre, std::string contrasena, std::string email) {
     this->nickname = nickname;

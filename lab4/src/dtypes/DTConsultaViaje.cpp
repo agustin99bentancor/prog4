@@ -1,4 +1,4 @@
-#include "../include/dtypes/DTConsultaViaje.h"
+#include "dtypes/DTConsultaViaje.h"
 
 DTConsultaViaje::DTConsultaViaje(int codigo, std::string marca, std::string modelo, std::string conductor, float calificacionProm, float precioTotal) {
     this->codigo = codigo;

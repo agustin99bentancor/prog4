@@ -1,4 +1,4 @@
-#include "../include/CargaDatos.h"
+#include "CargaDatos.h"
 #include <iostream>
 
 CargaDatos* CargaDatos::instancia = nullptr;
