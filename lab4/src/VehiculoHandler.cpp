@@ -11,9 +11,13 @@ VehiculoHandler* VehiculoHandler::getInstancia(){
     return instancia;
 }
 
-//ver si usar map en lugar de set, asi podemos usar clave para buscar
 bool VehiculoHandler::existeVehiculo(std::string matricula){
-    return true;
+    for(std::set<Vehiculo*>::iterator it = vehiculos.begin(); it != vehiculos.end(); ++it){
+        if((*it)->getMatricula() == matricula){
+            return true;
+        }
+    }
+    return false;
 }
 
 Vehiculo* VehiculoHandler::crearVehiculo(std::string matricula, int capacidad, std::string modelo, std::string marca, TipoVehiculo tipo, Conductor* c){

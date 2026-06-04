@@ -13,13 +13,21 @@ UsuarioHandler* UsuarioHandler::getInstancia(){
     return instancia;
 }
 
-//ver si usar map en lugar de set, asi podemos usar clave para buscar
 bool UsuarioHandler::existeUsuario(std::string nickname){
-    return true;
+    for(std::set<Usuario*>::iterator it = usuarios.begin(); it != usuarios.end(); ++it){
+        if((*it)->getNickname() == nickname){
+            return true;
+        }
+    }
+    return false;
 }
 
-//ver si usar map en lugar de set, asi podemos usar clave para buscar
 Usuario* UsuarioHandler::getUsuario(std::string nickname){
+    for(std::set<Usuario*>::iterator it = usuarios.begin(); it != usuarios.end(); ++it){
+        if((*it)->getNickname() == nickname){
+            return (*it);
+        }
+    }
     return nullptr;
 }
 
