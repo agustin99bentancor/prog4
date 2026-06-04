@@ -41,3 +41,22 @@ int ControladorUsuario::registrarVehiculo(std::string nickname, std::string matr
     }
     return 0;
 }
+
+std::set<DTUsuario> ControladorUsuario::listarUsuarios() {
+    std::set<DTUsuario> ret;
+    return ret;
+}
+
+std::set<DTListarViaje> ControladorUsuario::listarViajes(std::string nickname) {
+    std::set<DTListarViaje> ret;
+    return ret;
+}
+
+std::set<DTUsuarioViaje> ControladorUsuario::listarUsuariosViaje(int codigo) {
+    std::set<DTUsuarioViaje> ret;
+    return ret;
+}
+
+bool ControladorUsuario::calificarUsuario(std::string nicknameCalificado, int calificacion) {
+    return false;
+}
