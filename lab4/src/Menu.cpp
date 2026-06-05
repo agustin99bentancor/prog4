@@ -6,6 +6,7 @@
 #include <iostream>
 #include <limits>
 #include <string>
+#include <set>
 
 void Menu::altaUsuario() {
     int tipoUsuario;
@@ -34,7 +35,96 @@ void Menu::altaUsuario() {
         std::cout << "Ingrese CI: "; std::getline(std::cin, ci);
         //TODO: usuarioOk = controlador->altaPasajero(nickname, nombre, contrasena, email, ci)
     } else if (tipoUsuario == 2) {
+        bool tieneMotoProfesional = false;
+        bool tieneMotoAmateur = false;
+        bool tieneAutoProfesional = false;
+        bool tieneAutoAmateur = false;
+
+        int cantLibretas = 0;
+        int agregarLibreta = 1;
+
+        while (agregarLibreta == 1 && cantLibretas < 4) {
+            int tipoLibreta;
+            std::cout << "\n=== Registrar Libreta ===\n";
+            std::cout << "0. Moto (Profesional)\n";
+            std::cout << "1. Moto (Amateur)\n";
+            std::cout << "2. Auto (Profesional)\n";
+            std::cout << "3. Auto (Amateur)\n";
+            std::cout << "Seleccione el tipo de libreta: ";
+            std::cin >> tipoLibreta;
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+            bool yaExiste = false;
+            if (tipoLibreta == 0) {
+                if (tieneMotoProfesional) {
+                    yaExiste = true;
+                } else {
+                    tieneMotoProfesional = true;
+                    cantLibretas++;
+                }
+            } else if (tipoLibreta == 1) {
+                if (tieneMotoAmateur) {
+                    yaExiste = true;
+                } else {
+                    tieneMotoAmateur = true;
+                    cantLibretas++;
+                }
+            } else if (tipoLibreta == 2) {
+                if (tieneAutoProfesional) {
+                    yaExiste = true;
+                } else {
+                    tieneAutoProfesional = true;
+                    cantLibretas++;
+                }
+            } else if (tipoLibreta == 3) {
+                if (tieneAutoAmateur) {
+                    yaExiste = true;
+                } else {
+                    tieneAutoAmateur = true;
+                    cantLibretas++;
+                }
+            } else {
+                std::cout << "Opcion invalida.\n";
+                continue;
+            }
+
+            if (yaExiste) {
+                std::cout << "Esa libreta ya fue ingresada.\n";
+            } else {
+                std::cout << "Libreta agregada.\n";
+            }
+
+            if (cantLibretas < 4) {
+                std::cout << "¿Desea agregar otra libreta? (1: Si, 0: No): ";
+                std::cin >> agregarLibreta;
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            } else {
+                std::cout << "Se ha alcanzado el limite maximo de libretas.\n";
+            }
+        }
+
+        if (cantLibretas == 0) {
+            std::cout << "Debe ingresar al menos una libreta para registrar un conductor.\n";
+            return;
+        }
+
+        // Ejemplo de como armar el conjunto de libretas utilizando set
+        std::set<TipoLibreta> libretas;
+        if (tieneMotoProfesional) {
+            libretas.insert(TipoLibreta::MotoProfesional);
+        }
+        if (tieneMotoAmateur) {
+            libretas.insert(TipoLibreta::MotoAmateur);
+        }
+        if (tieneAutoProfesional) {
+            libretas.insert(TipoLibreta::AutoProfesional);
+        }
+        if (tieneAutoAmateur) {
+            libretas.insert(TipoLibreta::AutoAmateur);
+        }
+
         //TODO: usuarioOk = controlador->altaConductor(nickname, nombre, contrasena, email, libretas)
+
         int agregarVehiculo = 1;
         while (usuarioOk == true && agregarVehiculo == 1) {
             std::string matricula, marca, modelo;
@@ -70,7 +160,7 @@ void Menu::altaViaje() {
 
     std::cout << "Ingrese nickname del conductor: "; std::getline(std::cin, nickname);
     //TODO: Coleccion de DTVehiculosConductor = controlador->listarVehiculosConductor(nickname)
-    //TODO: Recorrer la coleccion y mostrar "> Matricula: xx, Capacidad: yy, Marca: zzz, Modelo: www, Tipo: ttt"
+    //TODO: Recorrer la coleccion y mostrar "> Matricula: xx, Marca: yy, Capacidad: www"
 
     std::cout << "Ingrese matricula del vehiculo a utilizar: "; std::getline(std::cin, matricula);
     bool matriculaValida = false;

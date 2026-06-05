@@ -1,7 +1,7 @@
-#include "../include/ControladorUsuario.h"
-#include "../include/UsuarioHandler.h"
-#include "../include/VehiculoHandler.h"
-#include "../include/Conductor.h"
+#include "ControladorUsuario.h"
+#include "UsuarioHandler.h"
+#include "VehiculoHandler.h"
+#include "Conductor.h"
 
 bool ControladorUsuario::altaPasajero(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::string ci) {
     UsuarioHandler* uh = UsuarioHandler::getInstancia();
@@ -34,10 +34,8 @@ int ControladorUsuario::registrarVehiculo(std::string nickname, std::string matr
         if(!libreta){
             return -2;
         }
-        if(libreta){
-            Vehiculo* v = vh->crearVehiculo(matricula, capacidad, modelo, marca, tipo, c);
-            c->agregarVehiculo(v);
-        }
+        Vehiculo* v = vh->crearVehiculo(matricula, capacidad, modelo, marca, tipo, c);
+        c->agregarVehiculo(v);
     }
     return 0;
 }
