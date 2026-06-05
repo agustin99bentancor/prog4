@@ -36,6 +36,7 @@ public:
     bool hayViajesFecha(DTFecha fecha);
     void asociarViaje(Viaje* cvi);
 
+    std::string getMatricula();
 };
 
 #endif

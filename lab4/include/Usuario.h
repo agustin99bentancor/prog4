@@ -27,6 +27,8 @@ public:
     std::set<DTListarViaje> getDTListarViajes();
     bool existeCalificacion(std::string nicknameCalificado, int codigo);
     void agregarCalificacion(Calificacion* ca);
+
+    std::string getNickname();
 };
 
 #endif
