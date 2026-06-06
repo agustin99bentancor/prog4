@@ -21,6 +21,7 @@ private:
     TipoVehiculo tipo;
 
     Conductor* conductor;
+    std::set<Viaje*> viajes;
 
 public:
     Vehiculo(std::string matricula, int capacidad, std::string marca, std::string modelo, TipoVehiculo tipo, Conductor* conductor);
@@ -35,7 +36,7 @@ public:
     bool hayViajesConductor(DTFecha fecha);
     bool hayViajesFecha(DTFecha fecha);
     void asociarViaje(Viaje* cvi);
-
+    int getCapacidad();
     std::string getMatricula();
 };
 

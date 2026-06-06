@@ -13,6 +13,8 @@ public:
     std::set<DTListarViaje> listarViajes(std::string nickname);
     std::set<DTUsuarioViaje> listarUsuariosViaje(int codigo);
     bool calificarUsuario(std::string nicknameCalificado, int calificacion);
+    std::set<DTVehiculosConductor> listarVehiculosConductor(std::string nickname);
+    bool altaViaje(std::string matricula, DTFecha fecha, std::string origen, std::string destino, int asientos, float precio);
 };
 
 #endif

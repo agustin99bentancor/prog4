@@ -12,3 +12,7 @@ Viaje::Viaje(int codigo, DTFecha fecha, std::string origen, std::string destino,
 }
 
 Viaje::~Viaje() {}
+
+DTFecha Viaje::getFecha() {
+    return this->fecha;
+}

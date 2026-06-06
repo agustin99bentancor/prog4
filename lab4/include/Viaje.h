@@ -38,6 +38,7 @@ public:
     bool puedeReservar(std::string nickname, int asientos);
     void agregarReserva(Reserva* r);
     static int obtenerCodigo();
+    DTFecha getFecha();
 };
 
 #endif

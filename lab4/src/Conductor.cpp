@@ -16,3 +16,12 @@ bool Conductor::tieneLibretaCompatible(TipoVehiculo tipo){
 void Conductor::agregarVehiculo(Vehiculo* v){
     vehiculos.insert(v);
 }
+
+bool Conductor::hayViajesFechaConductor(DTFecha fecha) {
+    for(std::set<Vehiculo*>::iterator it = vehiculos.begin(); it != vehiculos.end(); ++it){
+        if((*it)->hayViajesFecha(fecha)){
+            return true;
+        }
+    }
+    return false;
+}
