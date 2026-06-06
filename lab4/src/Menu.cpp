@@ -1,7 +1,8 @@
 #include "Menu.h"
 #include "Fabrica.h"
 #include "IControladorFechaActual.h"
-#include "ControladorUsuario.h"
+#include "Fabrica.h"
+#include "IUsuario.h"
 #include "CargaDatos.h"
 #include "dtypes/DTFecha.h"
 #include "dtypes/TipoVehiculo.h"
@@ -32,7 +33,7 @@ void Menu::altaUsuario() {
 
     bool usuarioOk = false;
 
-    ControladorUsuario* controlador = new ControladorUsuario();
+    IUsuario* controlador = Fabrica::getInstance()->getIUsuario();
 
     if (tipoUsuario == 1) {
         std::string ci;
