@@ -1,8 +1,10 @@
 #include "Menu.h"
 #include "Fabrica.h"
 #include "IControladorFechaActual.h"
+#include "ControladorUsuario.h"
 #include "CargaDatos.h"
 #include "dtypes/DTFecha.h"
+#include "dtypes/TipoVehiculo.h"
 #include <iostream>
 #include <limits>
 #include <string>
@@ -30,10 +32,12 @@ void Menu::altaUsuario() {
 
     bool usuarioOk = false;
 
+    ControladorUsuario* controlador = new ControladorUsuario();
+
     if (tipoUsuario == 1) {
         std::string ci;
         std::cout << "Ingrese CI: "; std::getline(std::cin, ci);
-        //TODO: usuarioOk = controlador->altaPasajero(nickname, nombre, contrasena, email, ci)
+        usuarioOk = controlador->altaPasajero(nickname, nombre, contrasena, email, ci);
     } else if (tipoUsuario == 2) {
         bool tieneMotoProfesional = false;
         bool tieneMotoAmateur = false;
@@ -123,7 +127,7 @@ void Menu::altaUsuario() {
             libretas.insert(TipoLibreta::AutoAmateur);
         }
 
-        //TODO: usuarioOk = controlador->altaConductor(nickname, nombre, contrasena, email, libretas)
+        usuarioOk = controlador->altaConductor(nickname, nombre, contrasena, email, libretas);
 
         int agregarVehiculo = 1;
         while (usuarioOk == true && agregarVehiculo == 1) {
@@ -137,8 +141,17 @@ void Menu::altaUsuario() {
             std::cout << "Ingrese modelo: "; std::getline(std::cin, modelo);
             std::cout << "Ingrese tipo (0: Auto, 1: Moto): "; std::cin >> tipo;
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            TipoVehiculo tipoV;
+            if (tipo == 0) {
+                tipoV = Auto;
+            } else if (tipo == 1) {
+                tipoV = Moto;
+            } else {
+                std::cout << "Tipo invalido.\n";
+                continue;
+            }
             int resultadoRegistrarVehiculo = -3;
-            //TODO: resultadoRegistrarVehiculo = controlador->registrarVehiculo(nickname, matricula, capacidad, marca, modelo, tipo)
+            resultadoRegistrarVehiculo = controlador->registrarVehiculo(nickname, matricula, capacidad, marca, modelo, tipoV);
             if (resultadoRegistrarVehiculo == -1) {
                 std::cout << "Ya existe un vehiculo con esa matricula.\n";
             } else if (resultadoRegistrarVehiculo == -2) {
