@@ -22,8 +22,7 @@ int Vehiculo::getCapacidad() {
 }
 
 bool Vehiculo::hayViajesConductor(DTFecha fecha) {
-    Conductor* c = this->conductor;
-    return c->hayViajesFechaConductor(fecha);
+    return conductor->hayViajesFechaConductor(fecha);
 }
 
 bool Vehiculo::hayViajesFecha(DTFecha fecha) {
@@ -37,4 +36,8 @@ bool Vehiculo::hayViajesFecha(DTFecha fecha) {
 
 void Vehiculo::asociarViaje(Viaje* cvi) {
     this->viajes.insert(cvi);
+}
+
+DTVehiculosConductor Vehiculo::getDTVehiculoConductor() {
+    return DTVehiculosConductor(matricula, modelo, capacidad);
 }

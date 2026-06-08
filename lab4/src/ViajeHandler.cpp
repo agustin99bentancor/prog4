@@ -1,4 +1,7 @@
 #include "../include/ViajeHandler.h"
+#include "Viaje.h"
+#include "Vehiculo.h"
+#include "Conductor.h"
 
 ViajeHandler* ViajeHandler::instancia = nullptr;
 
@@ -12,9 +15,14 @@ ViajeHandler* ViajeHandler::getInstancia(){
 }
 
 Viaje* ViajeHandler::crearViaje(Vehiculo* v, DTFecha fecha, std::string origen, std::string destino, int asientos, float precio){
-    //TODO: tiene vehiculo y no se usa 
-    //      tengo q conseguir el coigo nose como
-    Viaje* viaje = new Viaje(0, fecha, origen, destino, asientos, precio);
-    viajes.insert(viaje);
+    int codigo = obtenerCodigo();
+    Viaje* viaje = new Viaje(codigo, fecha, origen, destino, asientos, precio, v);
+    viajes[codigo] = viaje;
     return viaje;
+}
+
+int ViajeHandler::obtenerCodigo() {
+    if (viajes.empty())
+        return 1;
+    return viajes.rbegin()->first + 1;
 }

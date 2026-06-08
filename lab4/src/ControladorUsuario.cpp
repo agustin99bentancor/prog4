@@ -1,8 +1,8 @@
-#include "../include/ControladorUsuario.h"
-#include "../include/UsuarioHandler.h"
-#include "../include/VehiculoHandler.h"
-#include "../include/ViajeHandler.h"
-#include "../include/Conductor.h"
+#include "ControladorUsuario.h"
+#include "UsuarioHandler.h"
+#include "VehiculoHandler.h"
+#include "ViajeHandler.h"
+#include "Conductor.h"
 
 bool ControladorUsuario::altaPasajero(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::string ci) {
     UsuarioHandler* uh = UsuarioHandler::getInstancia();
@@ -56,30 +56,6 @@ std::set<DTListarViaje> ControladorUsuario::listarViajes(std::string nickname) {
 std::set<DTUsuarioViaje> ControladorUsuario::listarUsuariosViaje(int codigo) {
     std::set<DTUsuarioViaje> ret;
     return ret;
-}
-
-std::set<DTVehiculosConductor> ControladorUsuario::listarVehiculosConductor(std::string nickname) {
-    UsuarioHandler* uh = UsuarioHandler::getInstancia();
-    Conductor* c = (Conductor*)uh->getUsuario(nickname);
-    std::set<DTVehiculosConductor> vehiculos = c->listarVehiculos();
-    return vehiculos;
-}
-
-bool ControladorUsuario::altaViaje(std::string matricula, DTFecha fecha, std::string origen, std::string destino, int asientos, float precio) {
-    VehiculoHandler* vh = VehiculoHandler::getInstancia();
-    Vehiculo* v = vh->getVehiculo(matricula);
-    int capacidad = v->getCapacidad();
-    if(capacidad < asientos){
-        return false;
-    }
-    bool hayViajesFecha = v->hayViajesConductor(fecha);
-    if(hayViajesFecha){
-        return false;
-    }
-    ViajeHandler* viajeHandler = ViajeHandler::getInstancia();
-    Viaje* cvi = viajeHandler->crearViaje(v, fecha, origen, destino, asientos, precio);
-    v->asociarViaje(cvi);
-    return true;
 }
 
 bool ControladorUsuario::calificarUsuario(std::string nicknameCalificado, int calificacion) {

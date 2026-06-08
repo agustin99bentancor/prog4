@@ -25,7 +25,7 @@ private:
     Vehiculo* vehiculo;
 
 public:
-    Viaje(int codigo, DTFecha fecha, std::string origen, std::string destino, int asientosPublicados, float precio);
+    Viaje(int codigo, DTFecha fecha, std::string origen, std::string destino, int asientosPublicados, float precio, Vehiculo* v);
     ~Viaje();
 
     DTListarViaje getDTListarViaje();
@@ -37,8 +37,8 @@ public:
     DTConsultaViaje getDTcv();
     bool puedeReservar(std::string nickname, int asientos);
     void agregarReserva(Reserva* r);
-    static int obtenerCodigo();
     DTFecha getFecha();
+    int getCodigo();
 };
 
 #endif

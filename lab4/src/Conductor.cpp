@@ -25,3 +25,11 @@ bool Conductor::hayViajesFechaConductor(DTFecha fecha) {
     }
     return false;
 }
+
+std::vector<DTVehiculosConductor> Conductor::listarVehiculos() {
+    std::vector<DTVehiculosConductor> ret;
+    for(std::set<Vehiculo*>::iterator it = vehiculos.begin(); it != vehiculos.end(); ++it){
+        ret.push_back((*it)->getDTVehiculoConductor());
+    }
+    return ret;
+}

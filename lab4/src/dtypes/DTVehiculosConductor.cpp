@@ -1,8 +1,8 @@
 #include "dtypes/DTVehiculosConductor.h"
 
-DTVehiculosConductor::DTVehiculosConductor(std::string matricula, std::string marca, int capacidad) {
+DTVehiculosConductor::DTVehiculosConductor(std::string matricula, std::string modelo, int capacidad) {
     this->matricula = matricula;
-    this->modelo = marca;
+    this->modelo = modelo;
     this->capacidad = capacidad;
 }
 

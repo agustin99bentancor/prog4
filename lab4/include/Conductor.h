@@ -2,6 +2,7 @@
 #define CONDUCTOR_H
 
 #include <set>
+#include <vector>
 
 #include "Usuario.h"
 #include "dtypes/TipoLibreta.h"
@@ -24,8 +25,8 @@ public:
 
     bool tieneLibretaCompatible(TipoVehiculo tipo);
     void agregarVehiculo(Vehiculo* v);
-    std::set<DTListarViaje> getDTListarViajes();
-    std::set<DTVehiculosConductor> listarVehiculos();
+    std::vector<DTListarViaje> getDTListarViajes();
+    std::vector<DTVehiculosConductor> listarVehiculos();
     bool hayViajesFechaConductor(DTFecha fecha);
 };
 
