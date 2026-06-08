@@ -7,5 +7,5 @@ DTVehiculosConductor::DTVehiculosConductor(std::string matricula, std::string mo
 }
 
 std::string DTVehiculosConductor::getMatricula() { return matricula; }
-std::string DTVehiculosConductor::getModelo() { return modelo; }
+std::string DTVehiculosConductor::getMarca() { return marca; }
 int DTVehiculosConductor::getCapacidad() { return capacidad; }
