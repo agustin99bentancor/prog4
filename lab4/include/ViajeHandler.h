@@ -3,6 +3,7 @@
 
 #include <string>
 #include <set>
+#include <map>
 
 #include "dtypes/TipoVehiculo.h"
 #include "dtypes/DTFecha.h"
@@ -15,7 +16,7 @@ class ViajeHandler {
 private:
 
     static ViajeHandler* instancia;
-    std::set<Viaje*> viajes;
+    std::map<int, Viaje*> viajes;
 
     ViajeHandler();
 public:
@@ -25,7 +26,7 @@ public:
     Viaje* getViaje(int codigo);
     void crearVehiculo(std::string matricula, int capacidad, std::string modelo, std::string marca, TipoVehiculo tipo, Conductor* c);
     std::set<Viaje*> getViajes();
-    Viaje* crearViaje(Vehiculo v, DTFecha fecha, std::string origen, std::string destino, int asientos, float precio);
+    Viaje* crearViaje(Vehiculo* v, DTFecha fecha, std::string origen, std::string destino, int asientos, float precio);
 };
 
 #endif

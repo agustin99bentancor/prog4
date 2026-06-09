@@ -1,6 +1,7 @@
 #include "ControladorUsuario.h"
 #include "UsuarioHandler.h"
 #include "VehiculoHandler.h"
+#include "ViajeHandler.h"
 #include "Conductor.h"
 
 bool ControladorUsuario::altaPasajero(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::string ci) {

@@ -16,3 +16,28 @@ Vehiculo::~Vehiculo() {}
 std::string Vehiculo::getMatricula() {
     return matricula;
 }
+
+int Vehiculo::getCapacidad() {
+    return capacidad;
+}
+
+bool Vehiculo::hayViajesConductor(DTFecha fecha) {
+    return conductor->hayViajesFechaConductor(fecha);
+}
+
+bool Vehiculo::hayViajesFecha(DTFecha fecha) {
+    for(std::set<Viaje*>::iterator it = viajes.begin(); it != viajes.end(); ++it){
+        if((*it)->getFecha() == fecha){
+            return true;
+        }
+    }
+    return false;
+}
+
+void Vehiculo::asociarViaje(Viaje* cvi) {
+    this->viajes.insert(cvi);
+}
+
+DTVehiculosConductor Vehiculo::getDTVehiculoConductor() {
+    return DTVehiculosConductor(matricula, modelo, capacidad);
+}
