@@ -27,16 +27,14 @@ int ControladorUsuario::registrarVehiculo(std::string nickname, std::string matr
     if(existe){
         return -1;
     }
-    if(!existe){
-        UsuarioHandler* uh = UsuarioHandler::getInstancia();
-        Conductor* c = (Conductor*)uh->getUsuario(nickname);
-        bool libreta = c->tieneLibretaCompatible(tipo);
-        if(!libreta){
-            return -2;
-        }
-        Vehiculo* v = vh->crearVehiculo(matricula, capacidad, modelo, marca, tipo, c);
-        c->agregarVehiculo(v);
+    UsuarioHandler* uh = UsuarioHandler::getInstancia();
+    Conductor* c = (Conductor*)uh->getUsuario(nickname);
+    bool libreta = c->tieneLibretaCompatible(tipo);
+    if(!libreta){
+        return -2;
     }
+    Vehiculo* v = vh->crearVehiculo(matricula, capacidad, modelo, marca, tipo, c);
+    c->agregarVehiculo(v);
     return 0;
 }
 
