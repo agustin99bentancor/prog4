@@ -39,6 +39,7 @@ public:
     void agregarReserva(Reserva* r);
     DTFecha getFecha();
     int getCodigo();
+    void setVehiculo(Vehiculo* v);
 };
 
 #endif

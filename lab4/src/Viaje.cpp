@@ -21,3 +21,19 @@ DTFecha Viaje::getFecha() {
 int Viaje::getCodigo() {
     return this->codigo;
 }
+
+void Viaje::setVehiculo(Vehiculo* v) {
+    this->vehiculo = v;
+}
+
+DTUsuarioViaje Viaje::getDatosConductor() {
+    return vehiculo->getDatosConductor();
+}
+
+std::set<DTUsuarioViaje> Viaje::getDatosPasajeros() {
+    std::set<DTUsuarioViaje> ret;
+    for(std::set<Reserva*>::iterator it = reservas.begin(); it != reservas.end(); ++it){
+        ret.insert((*it)->getDatosPasajero());
+    }
+    return ret;
+}

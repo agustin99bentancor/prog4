@@ -40,3 +40,11 @@ void UsuarioHandler::crearConductor(std::string nickname, std::string nombre, st
     Conductor* u = new Conductor(nickname, nombre, contrasena, email, libretas);
     usuarios.insert(u);
 }
+
+std::set<DTUsuario> UsuarioHandler::getDTUsuarios() {
+    std::set<DTUsuario> ret;
+    for(std::set<Usuario*>::iterator it = usuarios.begin(); it != usuarios.end(); ++it){
+        ret.insert((*it)->getDT());
+    }
+    return ret;
+}

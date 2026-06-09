@@ -38,6 +38,7 @@ public:
     void asociarViaje(Viaje* cvi);
     int getCapacidad();
     std::string getMatricula();
+    std::set<Viaje*> getViajes();
 };
 
 #endif

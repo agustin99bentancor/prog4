@@ -3,6 +3,7 @@
 #include "VehiculoHandler.h"
 #include "ViajeHandler.h"
 #include "Conductor.h"
+#include "Viaje.h"
 
 bool ControladorUsuario::altaPasajero(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::string ci) {
     UsuarioHandler* uh = UsuarioHandler::getInstancia();
@@ -42,18 +43,26 @@ int ControladorUsuario::registrarVehiculo(std::string nickname, std::string matr
 }
 
 std::set<DTUsuario> ControladorUsuario::listarUsuarios() {
-    std::set<DTUsuario> ret;
-    return ret;
+    UsuarioHandler* uh = UsuarioHandler::getInstancia();
+    return  uh->getDTUsuarios();
 }
 
 std::set<DTListarViaje> ControladorUsuario::listarViajes(std::string nickname) {
-    std::set<DTListarViaje> ret;
+    UsuarioHandler* uh = UsuarioHandler::getInstancia();
+    Usuario* u = uh->getUsuario(nickname);
+    std::set<DTListarViaje> ret = u->getDTListarViajes();
     return ret;
 }
 
 std::set<DTUsuarioViaje> ControladorUsuario::listarUsuariosViaje(int codigo) {
-    std::set<DTUsuarioViaje> ret;
-    return ret;
+    //TODO: Nose esta funcion si quedo bien
+    //std::set<DTUsuarioViaje> ret;
+    ViajeHandler* vih = ViajeHandler::getInstancia();
+    Viaje* v = vih->getViaje(codigo);
+    DTUsuarioViaje conductor = v->getDatosConductor();
+    std::set<DTUsuarioViaje> pasajeros = v->getDatosPasajeros();
+    pasajeros.insert(conductor);
+    return pasajeros;
 }
 
 bool ControladorUsuario::calificarUsuario(std::string nicknameCalificado, int calificacion) {

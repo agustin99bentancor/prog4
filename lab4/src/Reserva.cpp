@@ -8,3 +8,11 @@ Reserva::Reserva(int asientosReservados, DTFecha fecha) {
 }
 
 Reserva::~Reserva() {}
+
+Viaje* Reserva::getViaje() {
+    return this->viaje;
+}
+
+DTUsuarioViaje Reserva::getDatosPasajero() {
+    return DTUsuarioViaje(pasajero->getNickname(), TipoUsuario::Pasajero);
+}

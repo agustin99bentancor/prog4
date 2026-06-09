@@ -17,6 +17,7 @@ ViajeHandler* ViajeHandler::getInstancia(){
 Viaje* ViajeHandler::crearViaje(Vehiculo* v, DTFecha fecha, std::string origen, std::string destino, int asientos, float precio){
     int codigo = obtenerCodigo();
     Viaje* viaje = new Viaje(codigo, fecha, origen, destino, asientos, precio, v);
+    viaje->setVehiculo(v);
     viajes[codigo] = viaje;
     return viaje;
 }

@@ -1,6 +1,7 @@
 #include "Vehiculo.h"
 #include "Viaje.h"
 #include "Conductor.h"
+#include "dtypes/TipoUsuario.h"
 
 Vehiculo::Vehiculo(std::string matricula, int capacidad, std::string marca, std::string modelo, TipoVehiculo tipo, Conductor* conductor) {
     this->matricula = matricula;
@@ -40,4 +41,21 @@ void Vehiculo::asociarViaje(Viaje* cvi) {
 
 DTVehiculosConductor Vehiculo::getDTVehiculoConductor() {
     return DTVehiculosConductor(matricula, modelo, capacidad);
+}
+
+std::set<Viaje*> Vehiculo::getViajes() {
+    return this->viajes;
+}
+
+std::set<DTListarViaje> Vehiculo::getDTListarViajes() {
+    std::set<DTListarViaje> ret;
+    for(std::set<Viaje*>::iterator it = viajes.begin(); it != viajes.end(); ++it){
+        ret.insert((*it)->getDTListarViaje());
+    }
+    return ret;
+}
+
+DTUsuarioViaje Vehiculo::getDatosConductor() {
+    DTUsuarioViaje res = DTUsuarioViaje(conductor->getNickname(), TipoUsuario::Conductor);
+    return res;
 }
