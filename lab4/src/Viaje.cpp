@@ -4,7 +4,7 @@
 
 int Viaje::codigoGlobal = 0;
 
-Viaje::Viaje(DTFecha fecha, std::string origen, std::string destino, int asientosPublicados, float precio, Vehiculo* v) {
+Viaje::Viaje(Vehiculo* v, DTFecha fecha, std::string origen, std::string destino, int asientosPublicados, float precio) {
     this->fecha = fecha;
     this->origen = origen;
     this->destino = destino;
@@ -25,6 +25,7 @@ int Viaje::getCodigo() {
 }
 
 int Viaje::obtenerCodigo() {
+    int cod = codigoGlobal;
     codigoGlobal++;
-    return codigoGlobal;
+    return cod;
 }

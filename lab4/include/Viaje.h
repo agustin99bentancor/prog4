@@ -27,7 +27,7 @@ private:
     Vehiculo* vehiculo;
 
 public:
-    Viaje(DTFecha fecha, std::string origen, std::string destino, int asientosPublicados, float precio, Vehiculo* v);
+    Viaje(Vehiculo* v, DTFecha fecha, std::string origen, std::string destino, int asientosPublicados, float precio);
     ~Viaje();
 
     DTListarViaje getDTListarViaje();
