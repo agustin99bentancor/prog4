@@ -23,12 +23,14 @@ public:
     Usuario(std::string nickname, std::string nombre, std::string contrasena, std::string email);
     virtual ~Usuario();
 
-    DTUsuario getDT();
+    DTUsuario getDT() const;
     std::set<DTListarViaje> getDTListarViajes();
     bool existeCalificacion(std::string nicknameCalificado, int codigo);
     void agregarCalificacion(Calificacion* ca);
 
-    std::string getNickname();
+    std::string getNickname() const;
+
+    std::string getNombre() const;
 };
 
 #endif

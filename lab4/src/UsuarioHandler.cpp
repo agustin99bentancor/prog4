@@ -1,87 +1,43 @@
-#include "ControladorUsuario.h"
 #include "UsuarioHandler.h"
-#include "VehiculoHandler.h"
+#include "Pasajero.h"
 #include "Conductor.h"
 
-bool ControladorUsuario::altaPasajero(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::string ci) {
-    UsuarioHandler* uh = UsuarioHandler::getInstancia();
-    bool existe = uh->existeUsuario(nickname);
-    if (!existe) {
-        uh->crearPasajero(nickname, nombre, contrasena, email, ci);
+UsuarioHandler* UsuarioHandler::instancia = nullptr;
+
+UsuarioHandler::UsuarioHandler() {}
+
+UsuarioHandler* UsuarioHandler::getInstancia() {
+    if (instancia == nullptr) {
+        instancia = new UsuarioHandler();
     }
-    return !existe;
+    return instancia;
 }
 
-bool ControladorUsuario::altaConductor(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::set<TipoLibreta> libretas) {
-    UsuarioHandler* uh = UsuarioHandler::getInstancia();
-    bool existe = uh->existeUsuario(nickname);
-    if (!existe) {
-        uh->crearConductor(nickname, nombre, contrasena, email, libretas);
-    }
-    return !existe;
-}
-
-int ControladorUsuario::registrarVehiculo(std::string nickname, std::string matricula, int capacidad, std::string marca, std::string modelo, TipoVehiculo tipo) {
-    VehiculoHandler* vh = VehiculoHandler::getInstancia();
-    bool existe = vh->existeVehiculo(matricula);
-    if (existe) {
-        return -1;
-    }
-    if (!existe) {
-        UsuarioHandler* uh = UsuarioHandler::getInstancia();
-        Conductor* c = (Conductor*)uh->getUsuario(nickname);
-        bool libreta = c->tieneLibretaCompatible(tipo);
-        if (!libreta) {
-            return -2;
+bool UsuarioHandler::existeUsuario(std::string nickname) {
+    for (std::set<Usuario*>::iterator it = usuarios.begin(); it != usuarios.end(); ++it) {
+        if ((*it)->getNickname() == nickname) {
+            return true;
         }
-        Vehiculo* v = vh->crearVehiculo(matricula, capacidad, modelo, marca, tipo, c);
-        c->agregarVehiculo(v);
     }
-    return 0;
+    return false;
 }
 
-std::set<DTUsuario> ControladorUsuario::listarUsuarios() {
-    std::set<DTUsuario> ret;
-    UsuarioHandler* uh = UsuarioHandler::getInstancia();
-
-    // Recorremos el conjunto 'usuarios' interno del Handler usando tu mismo estilo de iteradores
-    for (std::set<Usuario*>::iterator it = uh->usuarios.begin(); it != uh->usuarios.end(); ++it) {
-        // Extraemos los datos de cada objeto Usuario real del dominio
-        std::string nick = (*it)->getNickname();
-        std::string nom = (*it)->getNombre();
-
-        // Creamos el Data Transfer Object y lo metemos en el conjunto de retorno
-        DTUsuario dt(nick, nom);
-        ret.insert(dt);
+Usuario* UsuarioHandler::getUsuario(std::string nickname) {
+    for (std::set<Usuario*>::iterator it = usuarios.begin(); it != usuarios.end(); ++it) {
+        if ((*it)->getNickname() == nickname) {
+            return (*it);
+        }
     }
-
-    return ret;
+    return nullptr;
 }
 
-std::set<DTListarViaje> ControladorUsuario::listarViajes(std::string nickname) {
-    std::set<DTListarViaje> ret;
-    return ret;
+void UsuarioHandler::crearPasajero(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::string ci) {
+    Pasajero* u = new Pasajero(nickname, nombre, contrasena, email, ci);
+    usuarios.insert(u);
 }
 
-std::set<DTUsuarioViaje> ControladorUsuario::listarUsuariosViaje(int codigo) {
-    std::set<DTUsuarioViaje> ret;
-    return ret;
+void UsuarioHandler::crearConductor(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::set<TipoLibreta> libretas) {
+    Conductor* u = new Conductor(nickname, nombre, contrasena, email, libretas);
+    usuarios.insert(u);
 }
 
-bool ControladorUsuario::calificarUsuario(std::string nicknameCalificado, int calificacion) {
-    UsuarioHandler* uh = UsuarioHandler::getInstancia();
-
-    // 1. Validamos si el usuario existe usando tu método del Handler
-    bool existe = uh->existeUsuario(nicknameCalificado);
-    if (!existe) {
-        return false;
-    }
-
-    // 2. Traemos el puntero del objeto real
-    Usuario* u = uh->getUsuario(nicknameCalificado);
-
-    // 3. Le asignamos la calificación al objeto de negocio
-    u->agregarCalificacion(calificacion);
-
-    return true;
-}

@@ -253,7 +253,7 @@ void Menu::generarReserva() {
 void Menu::calificarUsuario() {
     // 0. Obtener el controlador desde la Fábrica
     Fabrica* fabrica = Fabrica::getInstance();
-    IUsuario* controlador = fabrica->getIControladorUsuario();
+    IUsuario* controlador = Fabrica::getInstance()->getIUsuario();
 
     // TODO: Coleccion de DTUsuario = controlador->listarUsuarios()
     std::set<DTUsuario> usuarios = controlador->listarUsuarios();
@@ -330,7 +330,7 @@ void Menu::calificarUsuario() {
     // TODO: Recorrer la coleccion y mostrar "> Nickname: xx, Tipo: yyy"
     std::cout << "\n--- Integrantes del viaje disponibles para calificar ---\n";
     for (const auto& uv : usuariosViaje) {
-        std::string tipoStr = (uv.getTipo() == Conductor) ? "Conductor" : "Pasajero";
+        std::string tipoStr = (uv.getTipo() == TipoUsuario::Conductor) ? "Conductor" : "Pasajero";
         std::cout << "> Nickname: " << uv.getNickname() << ", Tipo: " << tipoStr << "\n";
     }
 
