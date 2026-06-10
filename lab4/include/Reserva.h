@@ -26,6 +26,8 @@ public:
     DTUsuarioViaje getDatosPasajero();
     int getCodigoViaje();
     std::string getNickPasajero();
+    int getAsientosReservados();
+    DTFecha getFecha();
 };
 
 #endif

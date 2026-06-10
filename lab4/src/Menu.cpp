@@ -1,7 +1,6 @@
 #include "Menu.h"
 #include "Fabrica.h"
 #include "IControladorFechaActual.h"
-#include "Fabrica.h"
 #include "IUsuario.h"
 #include "CargaDatos.h"
 #include "dtypes/DTFecha.h"
@@ -10,6 +9,13 @@
 #include <limits>
 #include <string>
 #include <set>
+#include <map>
+#include "ViajeHandler.h"
+#include "Viaje.h"
+#include "dtypes/DTListarViaje.h"
+#include "dtypes/DTDetalleViaje.h"
+#include "dtypes/DTDetalleReserva.h"
+#include "dtypes/DTDetalleVehiculo.h"
 
 void Menu::altaUsuario() {
     int tipoUsuario;
@@ -298,34 +304,82 @@ void Menu::calificarUsuario() {
 }
 
 void Menu::eliminarViaje() {
-    //TODO: Coleccion de DTListarViaje = controlador->listarViajes()
-    //TODO: Recorrer la coleccion y mostrar "> Codigo: xx, Fecha: dd/mm/aaaa, Origen: zzz, Destino: www, Conductor: aaa"
+
+    std::vector<DTListarViaje> viajes =
+        ViajeHandler::getInstancia()->getDTListarViajes();
+
+    if (viajes.empty()) {
+        std::cout << "No hay viajes disponibles.\n";
+        return;
+    }
+
+    std::cout << "VIAJES DISPONIBLES:\n";
+    for (DTListarViaje v : viajes) {
+        std::cout
+            << "Codigo: " << v.getCodigo()
+            << ", Fecha: " << v.getFecha()
+            << ", Origen: " << v.getOrigen()
+            << ", Destino: " << v.getDestino()
+            << ", Conductor: " << v.getConductor()
+            << "\n";
+    }
+
     int codigo;
-    std::cout << "Ingrese codigo del viaje a eliminar: "; std::cin >> codigo;
+    std::cout << "\nIngrese codigo del viaje a eliminar: ";
+    std::cin >> codigo;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    bool codigoValido = false;
-    //TODO: Validar codigo en listado
-    if (!codigoValido) {
+
+    Viaje* viajeSeleccionado =
+        ViajeHandler::getInstancia()->getViaje(codigo);
+
+    if (viajeSeleccionado == nullptr) {
         std::cout << "Codigo invalido.\n";
         return;
     }
 
-    //TODO: DTDetalleViaje = controlador->detalleViaje(codigo)
-    //TODO: Mostrar detalle del viaje siguiendo el formato
-    //>> Viaje <<
-    //--- Matrícula: aa, Fecha: dd/mm/aaaa, Origen: zzz, Destino: www, Capacidad: bbb, Precio por asiento: qqq
-    //>> Vehiculo <<
-    //--- Matricula: mm, Capacidad: aa, Marca: bbb, Modelo: ccc, Tipo: ddd
-    //>> Reservas <<
-    //--- AsientosReservados: xx, Fecha: dd/mm/aaaa, Pasajero: aaa
+    DTDetalleViaje detalle = viajeSeleccionado->getDTDetalleViaje();
+
+    std::cout << "\n>> Viaje <<\n";
+    std::cout << "Codigo: " << detalle.getCodigo() << "\n";
+    std::cout << "Fecha: " << detalle.getFecha() << "\n";
+    std::cout << "Origen: " << detalle.getOrigen() << "\n";
+    std::cout << "Destino: " << detalle.getDestino() << "\n";
+    std::cout << "Asientos: " << detalle.getAsientosPublicados() << "\n";
+    std::cout << "Precio: " << detalle.getPrecio() << "\n";
+
+    DTDetalleVehiculo veh = detalle.getVehiculo();
+
+    std::cout << "\n>> Vehiculo <<\n";
+    std::cout << "Matricula: " << veh.getMatricula() << "\n";
+    std::cout << "Capacidad: " << veh.getCapacidad() << "\n";
+    std::cout << "Marca: " << veh.getMarca() << "\n";
+    std::cout << "Modelo: " << veh.getModelo() << "\n";
+
+    std::cout << "\n>> Reservas <<\n";
+
+    std::vector<DTDetalleReserva> reservas = detalle.getReservas();
+
+    if (reservas.empty()) {
+        std::cout << "No hay reservas.\n";
+    } else {
+        for (DTDetalleReserva r : reservas) {
+            std::cout
+                << "Asientos: " << r.getAsientosReservados()
+                << ", Fecha: " << r.getFecha()
+                << ", Pasajero: " << r.getPasajero()
+                << "\n";
+        }
+    }
+
     int confirmar;
-    std::cout << "¿Confirmar eliminacion? (1: Si, 0: No): "; std::cin >> confirmar;
+    std::cout << "\n¿Confirmar eliminacion? (1: Si, 0: No): ";
+    std::cin >> confirmar;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
     if (confirmar == 1) {
-        //TODO: controlador->eliminarViaje()
+        ViajeHandler::getInstancia()->eliminarViaje(codigo);
         std::cout << "Viaje eliminado exitosamente.\n";
     } else {
-        //TODO: controlador->cancelarEliminarViaje()
         std::cout << "Eliminacion cancelada.\n";
     }
 }

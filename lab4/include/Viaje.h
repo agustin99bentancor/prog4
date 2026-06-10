@@ -8,6 +8,7 @@
 #include "dtypes/DTListarViaje.h"
 #include "dtypes/DTUsuarioViaje.h"
 #include "dtypes/DTConsultaViaje.h"
+#include "dtypes/DTDetalleViaje.h"
 
 class Reserva;
 class Vehiculo;
@@ -42,6 +43,9 @@ public:
     DTFecha getFecha();
     int getCodigo();
     static int obtenerCodigo();
+    Vehiculo* getVehiculo();
+    void eliminarReservas();
+    DTDetalleViaje getDTDetalleViaje();
 };
 
 #endif

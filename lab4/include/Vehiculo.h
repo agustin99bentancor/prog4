@@ -8,6 +8,7 @@
 #include "dtypes/DTListarViaje.h"
 #include "dtypes/DTUsuarioViaje.h"
 #include "dtypes/DTVehiculosConductor.h"
+#include "dtypes/DTDetalleVehiculo.h"
 
 class Viaje;
 class Conductor;
@@ -38,6 +39,8 @@ public:
     void asociarViaje(Viaje* cvi);
     int getCapacidad();
     std::string getMatricula();
+void removerViaje(Viaje* v);
+DTDetalleVehiculo getDTDetalleVehiculo();
 };
 
 #endif

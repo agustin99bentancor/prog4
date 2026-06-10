@@ -1,6 +1,8 @@
 #include "Viaje.h"
 #include "Reserva.h"
 #include "Vehiculo.h"
+#include "dtypes/DTListarViaje.h"
+#include "dtypes/DTDetalleVehiculo.h"
 
 int Viaje::codigoGlobal = 0;
 
@@ -28,4 +30,52 @@ int Viaje::obtenerCodigo() {
     int cod = codigoGlobal;
     codigoGlobal++;
     return cod;
+}
+
+
+DTListarViaje Viaje::getDTListarViaje() {
+    return DTListarViaje(
+        this->codigo,
+        this->fecha,
+        this->origen,
+        this->destino,
+        this->vehiculo->getNicknameConductor()
+    );
+}
+
+Vehiculo* Viaje::getVehiculo() {
+    return this->vehiculo;
+}
+
+void Viaje::eliminarReservas() {
+    for (std::set<Reserva*>::iterator it = reservas.begin(); it != reservas.end(); ++it) {
+        delete *it;
+    }
+    reservas.clear();
+}
+
+DTDetalleViaje Viaje::getDTDetalleViaje() {
+
+    std::vector<DTDetalleReserva> res;
+
+    for (Reserva* r : reservas) {
+        res.push_back(
+            DTDetalleReserva(
+                r->getAsientosReservados(),
+                r->getFecha(),
+                r->getNickPasajero()
+            )
+        );
+    }
+
+    return DTDetalleViaje(
+        codigo,
+        fecha,
+        origen,
+        destino,
+        asientosPublicados,
+        precio,
+        vehiculo->getDTDetalleVehiculo(),
+        res
+    );
 }
