@@ -4,19 +4,43 @@
 #include "ViajeHandler.h"
 #include "VehiculoHandler.h"
 #include "Conductor.h"
+#include "Viaje.h"
+#include "Pasajero.h"
+#include "Reserva.h"
 
-std::set<std::string> listarPasajeros() {
-    std::set<std::string> ret;
+std::set<std::string> ControladorReserva::listarPasajeros() {
+    UsuarioHandler* uh = UsuarioHandler::getInstancia();
+    std::set<std::string> ret = uh->getPasajeros();
     return ret;
 }
 
-std::set<DTConsultaViaje> consultarViajes(DTFecha fecha, std::string origen, std::string destino, int asientos) {
-    std::set<DTConsultaViaje> ret;
+std::vector<DTConsultaViaje> ControladorReserva::consultarViajes(DTFecha fecha, std::string origen, std::string destino, int asientos) {
+    std::vector<DTConsultaViaje> ret;
+    ViajeHandler* vih = ViajeHandler::getInstancia();
+    std::set<Viaje*> viajes = vih->getViajes();
+
+    for(std::set<Viaje*>::iterator it = viajes.begin(); it != viajes.end(); ++it){
+        int reservados = (*it)->getAReservados();
+        if((*it)->getFecha() == fecha && (*it)->getOrigen() == origen && (*it)->getDestino() == destino && reservados + asientos <= (*it)->getAsientosPublicados()){
+            ret.push_back((*it)->getDTcv(asientos));
+        }
+    }
+    
     return ret;
 }
 
-bool generarReserva(std::string nickname, int codigo, int asientos) {
-    return false;
+bool ControladorReserva::generarReserva(std::string nickname, int codigo, int asientos) {
+    ViajeHandler* vih = ViajeHandler::getInstancia();
+    Viaje* vi = vih->getViaje(codigo);
+    if (!vi->puedeReservar(nickname, asientos)) {
+        return false;
+    }
+    UsuarioHandler* uh = UsuarioHandler::getInstancia();
+    Pasajero* p = (Pasajero*)uh->getUsuario(nickname);
+    Reserva* r = new Reserva(asientos, vi->getFecha(), p, vi);
+    vi->agregarReserva(r);
+    p->agregarReserva(r);
+    return true;
 }
 
 std::vector<DTVehiculosConductor> ControladorReserva::listarVehiculosConductor(std::string nickname) {

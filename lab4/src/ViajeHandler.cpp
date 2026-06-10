@@ -19,3 +19,15 @@ Viaje* ViajeHandler::crearViaje(Vehiculo* v, DTFecha fecha, std::string origen, 
     viajes[viaje->getCodigo()] = viaje;
     return viaje;
 }
+
+Viaje* ViajeHandler::getViaje(int codigo){
+    return viajes[codigo];
+}
+
+std::set<Viaje*> ViajeHandler::getViajes() {
+    std::set<Viaje*> ret;
+    for (auto& [codigo, viaje] : viajes) {
+        ret.insert(viaje);
+    }
+    return ret;
+}

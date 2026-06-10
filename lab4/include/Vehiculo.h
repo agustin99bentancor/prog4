@@ -37,7 +37,11 @@ public:
     bool hayViajesFecha(DTFecha fecha);
     void asociarViaje(Viaje* cvi);
     int getCapacidad();
+
     std::string getMatricula();
+    std::string getMarca();
+    std::string getModelo();
+    float getCalificacion();
 };
 
 #endif

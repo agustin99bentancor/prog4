@@ -40,3 +40,13 @@ void UsuarioHandler::crearConductor(std::string nickname, std::string nombre, st
     Conductor* u = new Conductor(nickname, nombre, contrasena, email, libretas);
     usuarios.insert(u);
 }
+
+std::set<std::string> UsuarioHandler::getPasajeros() {
+    std::set<std::string> ret;
+    for(std::set<Usuario*>::iterator it = usuarios.begin(); it != usuarios.end(); ++it){
+        if(dynamic_cast<Pasajero*>(*it) != nullptr){
+            ret.insert((*it)->getNickname());
+        }
+    }
+    return ret;
+}
