@@ -21,11 +21,13 @@ private:
     int asientosPublicados;
     float precio;
 
+    static int codigoGlobal;
+
     std::set<Reserva*> reservas;
     Vehiculo* vehiculo;
 
 public:
-    Viaje(int codigo, DTFecha fecha, std::string origen, std::string destino, int asientosPublicados, float precio, Vehiculo* v);
+    Viaje(Vehiculo* v, DTFecha fecha, std::string origen, std::string destino, int asientosPublicados, float precio);
     ~Viaje();
 
     DTListarViaje getDTListarViaje();
@@ -40,6 +42,7 @@ public:
     DTFecha getFecha();
     int getCodigo();
     void setVehiculo(Vehiculo* v);
+    static int obtenerCodigo();
 };
 
 #endif
