@@ -33,7 +33,7 @@ std::string Vehiculo::getNicknameConductor() {
     return conductor->getNickname();
 }
 
-float Vehiculo::getCalificacion() {
+float Vehiculo::getCalificacionConductor() {
     return conductor->getCalificacionPromedio();
 }
 

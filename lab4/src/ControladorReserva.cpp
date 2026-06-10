@@ -14,15 +14,15 @@ std::set<std::string> ControladorReserva::listarPasajeros() {
     return ret;
 }
 
-std::vector<DTConsultaViaje> ControladorReserva::consultarViajes(DTFecha fecha, std::string origen, std::string destino, int asientos) {
-    std::vector<DTConsultaViaje> ret;
+std::multiset<DTConsultaViaje> ControladorReserva::consultarViajes(DTFecha fecha, std::string origen, std::string destino, int asientos) {
+    std::multiset<DTConsultaViaje> ret;
     ViajeHandler* vih = ViajeHandler::getInstancia();
     std::set<Viaje*> viajes = vih->getViajes();
 
     for(std::set<Viaje*>::iterator it = viajes.begin(); it != viajes.end(); ++it){
         int reservados = (*it)->getAReservados();
         if((*it)->getFecha() == fecha && (*it)->getOrigen() == origen && (*it)->getDestino() == destino && reservados + asientos <= (*it)->getAsientosPublicados()){
-            ret.push_back((*it)->getDTcv(asientos));
+            ret.insert((*it)->getDTcv(asientos));
         }
     }
     

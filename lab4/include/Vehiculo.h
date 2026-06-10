@@ -41,7 +41,6 @@ public:
     std::string getMatricula();
     std::string getMarca();
     std::string getModelo();
-    float getCalificacion();
 };
 
 #endif

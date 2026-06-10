@@ -54,7 +54,7 @@ DTConsultaViaje Viaje::getDTcv(int asientos) {
     std::string marca = vehiculo->getMarca();
     std::string modelo = vehiculo->getModelo();
     std::string conductor = vehiculo->getNicknameConductor();
-    float calificacion = vehiculo->getCalificacion();
+    float calificacion = vehiculo->getCalificacionConductor();
     return DTConsultaViaje(codigo, marca, modelo, conductor, calificacion, precio * asientos);
 }
 
