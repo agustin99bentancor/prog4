@@ -3,6 +3,9 @@
 #include "VehiculoHandler.h"
 #include "Conductor.h"
 #include "Calificacion.h"
+#include "ViajeHandler.h"
+#include "Viaje.h"
+#include "dtypes/DTUsuarioViaje.h"
 
 bool ControladorUsuario::altaPasajero(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::string ci) {
     UsuarioHandler* uh = UsuarioHandler::getInstancia();
@@ -57,29 +60,76 @@ std::set<DTUsuario> ControladorUsuario::listarUsuarios() {
 }
 
 std::set<DTListarViaje> ControladorUsuario::listarViajes(std::string nickname) {
-    std::set<DTListarViaje> ret;
-    return ret;
+    UsuarioHandler* uh = UsuarioHandler::getInstancia();
+
+    Usuario* u = uh->getUsuario(nickname);
+
+    if (u == nullptr) {
+        return std::set<DTListarViaje>(); // Si no existe el usuario, retorna conjunto vacío
+    }
+
+    return u->getDTListarViajes();
 }
 
 std::set<DTUsuarioViaje> ControladorUsuario::listarUsuariosViaje(int codigo) {
     std::set<DTUsuarioViaje> ret;
+
+    ViajeHandler* vh = ViajeHandler::getInstancia();
+
+    Viaje* vi = vh->getViaje(codigo);
+
+    if (vi == nullptr) {
+        return ret;
+    }
+
+    DTUsuarioViaje cond = vi->getDatosConductor();
+    ret.insert(cond);
+
+    std::set<DTUsuarioViaje> pasajeros = vi->getDatosPasajeros();
+
+    for (std::set<DTUsuarioViaje>::iterator it = pasajeros.begin(); it != pasajeros.end(); ++it) {
+        ret.insert(*it);
+    }
+
     return ret;
 }
 
 bool ControladorUsuario::calificarUsuario(std::string nicknameCalificado, int calificacion) {
+   
     UsuarioHandler* uh = UsuarioHandler::getInstancia();
 
-    bool existe = uh->existeUsuario(nicknameCalificado);
-    if (!existe) {
+    std::string nicknameRecordado = this->nicknameRecordado;
+    int codigoViajeRecordado = this->codigoViajeRecordado;
+
+    Usuario* cdor = uh->getUsuario(nicknameRecordado);
+
+    Usuario* cdorCalificado = uh->getUsuario(nicknameCalificado);
+    if (cdor == nullptr || cdorCalificado == nullptr) {
         return false;
     }
 
-    Usuario* u = uh->getUsuario(nicknameCalificado);
+    ViajeHandler* vh = ViajeHandler::getInstancia();
 
-    DTFecha fechaActual(9, 6, 2026); // Modifica según los parámetros de tu DTFecha (dia, mes, anio)
-    Calificacion* nuevaCalificacion = new Calificacion(fechaActual, calificacion);
+    // 5: vi := getViaje(codigoViajeRecordado): Viaje
+    Viaje* vi = vh->getViaje(codigoViajeRecordado);
+    if (vi == nullptr) {
+        return false;
+    }
 
-    u->agregarCalificacion(nuevaCalificacion);
+    bool existe = cdor->existeCalificacion(nicknameCalificado, codigoViajeRecordado);
 
-    return true;
+    bool c1 = vi->pertenece(nicknameCalificado);
+
+    bool c2 = vi->pertenece(nicknameRecordado);
+
+    if (!existe && c1 && c2) {
+        DTFecha fechaActual(10, 6, 2026);
+        Calificacion* nuevaCalificacion = new Calificacion(fechaActual, calificacion);
+
+        cdorCalificado->agregarCalificacion(nuevaCalificacion);
+
+        return true;
+    }
+
+    return false;
 }

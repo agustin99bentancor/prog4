@@ -4,8 +4,12 @@
 #include "IUsuario.h"
 
 class ControladorUsuario : public IUsuario {
-public:
+private:
+    // Atributos de estado para recordar entre pasos del Caso de Uso (Pág. 13 y 14)
+    std::string nicknameRecordado;
+    int codigoViajeRecordado;
 
+public:
     bool altaPasajero(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::string ci);
     bool altaConductor(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::set<TipoLibreta> libretas);
     int registrarVehiculo(std::string nickname, std::string matricula, int capacidad, std::string marca, std::string modelo, TipoVehiculo tipo);

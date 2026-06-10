@@ -21,6 +21,9 @@ public:
     std::string getDestino() const;
     std::string getConductor() const;
 
+    bool operator<(const DTListarViaje& otro) const {
+        return this->codigo < otro.codigo;
+    }
 };
 
 #endif
