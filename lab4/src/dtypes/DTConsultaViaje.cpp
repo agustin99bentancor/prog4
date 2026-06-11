@@ -15,3 +15,10 @@ std::string DTConsultaViaje::getModelo() { return modelo; }
 std::string DTConsultaViaje::getConductor() { return conductor; }
 float DTConsultaViaje::getCalificacionProm() { return calificacionProm; }
 float DTConsultaViaje::getPrecioTotal() { return precioTotal; }
+
+bool DTConsultaViaje::operator<(const DTConsultaViaje& otro) const {
+    if (precioTotal != otro.precioTotal){
+        return precioTotal < otro.precioTotal;
+    }
+    return calificacionProm > otro.calificacionProm;
+}
