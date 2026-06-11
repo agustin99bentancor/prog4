@@ -44,8 +44,8 @@ int Viaje::obtenerCodigo() {
 
 int Viaje::getAReservados() {
     int reservados = 0;
-    for(std::set<Reserva*>::iterator it = reservas.begin(); it != reservas.end(); ++it){
-        reservados += (*it)->getAsientosReservados();
+    for(auto reserva : reservas){
+        reservados += reserva->getAsientosReservados();
     }
     return reservados;
 }
@@ -64,13 +64,13 @@ void Viaje::agregarReserva(Reserva* r) {
 
 bool Viaje::puedeReservar(std::string nickname, int asientos) {
     int reservados = 0;
-    for(std::set<Reserva*>::iterator it = reservas.begin(); it != reservas.end(); ++it){
-        int acc = (*it)->getAsientosReservados();
+    for(auto reserva : reservas){
+        int acc = reserva->getAsientosReservados();
         reservados += acc;
         if (reservados + asientos > asientosPublicados) {
             return false;
         }
-        std::string nick = (*it)->getNickPasajero();
+        std::string nick = reserva->getNickPasajero();
         if (nick == nickname) {
             return false;
         }

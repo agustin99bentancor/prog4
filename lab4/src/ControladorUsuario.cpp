@@ -34,7 +34,7 @@ int ControladorUsuario::registrarVehiculo(std::string nickname, std::string matr
     if(!libreta){
         return -2;
     }
-    Vehiculo* v = vh->crearVehiculo(matricula, capacidad, modelo, marca, tipo, c);
+    Vehiculo* v = vh->crearVehiculo(matricula, capacidad, marca, modelo, tipo, c);
     c->agregarVehiculo(v);
     return 0;
 }

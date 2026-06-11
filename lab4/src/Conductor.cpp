@@ -18,8 +18,8 @@ void Conductor::agregarVehiculo(Vehiculo* v){
 }
 
 bool Conductor::hayViajesFechaConductor(DTFecha fecha) {
-    for(std::set<Vehiculo*>::iterator it = vehiculos.begin(); it != vehiculos.end(); ++it){
-        if((*it)->hayViajesFecha(fecha)){
+    for(auto vehiculo : vehiculos){
+        if(vehiculo->hayViajesFecha(fecha)){
             return true;
         }
     }
@@ -28,8 +28,8 @@ bool Conductor::hayViajesFechaConductor(DTFecha fecha) {
 
 std::vector<DTVehiculosConductor> Conductor::listarVehiculos() {
     std::vector<DTVehiculosConductor> ret;
-    for(std::set<Vehiculo*>::iterator it = vehiculos.begin(); it != vehiculos.end(); ++it){
-        ret.push_back((*it)->getDTVehiculoConductor());
+    for(auto vehiculo : vehiculos){
+        ret.push_back(vehiculo->getDTVehiculoConductor());
     }
     return ret;
 }

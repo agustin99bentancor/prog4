@@ -2,6 +2,7 @@
 #define DT_VEHICULOS_CONDUCTOR_H
 
 #include <string>
+#include <iostream>
 
 class DTVehiculosConductor {
 private:
@@ -12,9 +13,11 @@ private:
 public:
   DTVehiculosConductor(std::string matricula, std::string modelo, int capacidad);
 
-  std::string getMatricula();
-  std::string getModelo();
-  int getCapacidad();
+  std::string getMatricula() const;
+  std::string getModelo() const;
+  int getCapacidad() const;
 };
+
+std::ostream& operator<<(std::ostream& os, const DTVehiculosConductor& dtvc);
 
 #endif
