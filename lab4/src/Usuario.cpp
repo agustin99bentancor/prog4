@@ -6,10 +6,15 @@ Usuario::Usuario(std::string nickname, std::string nombre, std::string contrasen
     this->nombre = nombre;
     this->contrasena = contrasena;
     this->email = email;
+    this->calificacionPromedio = 0.0;
 }
 
 Usuario::~Usuario() {}
 
 std::string Usuario::getNickname() {
     return nickname;
+}
+
+float Usuario::getCalificacionPromedio() {
+    return calificacionPromedio;
 }

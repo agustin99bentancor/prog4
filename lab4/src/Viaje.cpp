@@ -19,11 +19,23 @@ Viaje::Viaje(Vehiculo* v, DTFecha fecha, std::string origen, std::string destino
 Viaje::~Viaje() {}
 
 DTFecha Viaje::getFecha() {
-    return this->fecha;
+    return fecha;
 }
 
 int Viaje::getCodigo() {
-    return this->codigo;
+    return codigo;
+}
+
+std::string Viaje::getOrigen() {
+    return origen;
+}
+
+std::string Viaje::getDestino() {
+    return destino;
+}
+
+int Viaje::getAsientosPublicados() {
+    return asientosPublicados;
 }
 
 int Viaje::obtenerCodigo() {
@@ -32,50 +44,38 @@ int Viaje::obtenerCodigo() {
     return cod;
 }
 
-
-DTListarViaje Viaje::getDTListarViaje() {
-    return DTListarViaje(
-        this->codigo,
-        this->fecha,
-        this->origen,
-        this->destino,
-        this->vehiculo->getNicknameConductor()
-    );
-}
-
-Vehiculo* Viaje::getVehiculo() {
-    return this->vehiculo;
-}
-
-void Viaje::eliminarReservas() {
-    for (std::set<Reserva*>::iterator it = reservas.begin(); it != reservas.end(); ++it) {
-        delete *it;
+int Viaje::getAReservados() {
+    int reservados = 0;
+    for(std::set<Reserva*>::iterator it = reservas.begin(); it != reservas.end(); ++it){
+        reservados += (*it)->getAsientosReservados();
     }
-    reservas.clear();
+    return reservados;
 }
 
-DTDetalleViaje Viaje::getDTDetalleViaje() {
+DTConsultaViaje Viaje::getDTcv(int asientos) {
+    std::string marca = vehiculo->getMarca();
+    std::string modelo = vehiculo->getModelo();
+    std::string conductor = vehiculo->getNicknameConductor();
+    float calificacion = vehiculo->getCalificacionConductor();
+    return DTConsultaViaje(codigo, marca, modelo, conductor, calificacion, precio * asientos);
+}
 
-    std::vector<DTDetalleReserva> res;
+void Viaje::agregarReserva(Reserva* r) {
+    reservas.insert(r);
+}
 
-    for (Reserva* r : reservas) {
-        res.push_back(
-            DTDetalleReserva(
-                r->getAsientosReservados(),
-                r->getFecha(),
-                r->getNickPasajero()
-            )
-        );
+bool Viaje::puedeReservar(std::string nickname, int asientos) {
+    int reservados = 0;
+    for(std::set<Reserva*>::iterator it = reservas.begin(); it != reservas.end(); ++it){
+        int acc = (*it)->getAsientosReservados();
+        reservados += acc;
+        if (reservados + asientos > asientosPublicados) {
+            return false;
+        }
+        std::string nick = (*it)->getNickPasajero();
+        if (nick == nickname) {
+            return false;
+        }
     }
-
-    return DTDetalleViaje(
-        codigo,
-        fecha,
-        origen,
-        destino,
-        asientosPublicados,
-        precio,
-        vehiculo->getDTDetalleVehiculo(),
-        res
-    );
+    return true;
 }

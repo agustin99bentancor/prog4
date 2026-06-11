@@ -29,6 +29,7 @@ public:
     void agregarCalificacion(Calificacion* ca);
 
     std::string getNickname();
+    float getCalificacionPromedio();
 };
 
 #endif

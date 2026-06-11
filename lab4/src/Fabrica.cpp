@@ -23,5 +23,5 @@ IUsuario* Fabrica::getIUsuario() {
 }
 
 IReserva* Fabrica::getIReserva() {
-    return nullptr; // falta implementar ControladorReserva
+    return new ControladorReserva();
 }

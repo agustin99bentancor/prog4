@@ -179,12 +179,15 @@ void Menu::altaViaje() {
     float precio;
 
     std::cout << "Ingrese nickname del conductor: "; std::getline(std::cin, nickname);
-    //TODO: Coleccion de DTVehiculosConductor = controlador->listarVehiculosConductor(nickname)
-    //TODO: Recorrer la coleccion y mostrar "> Matricula: xx, Marca: yy, Capacidad: www"
+    IReserva* controlador = Fabrica::getInstance()->getIReserva();
+    std::vector<DTVehiculosConductor> vehiculosConductor = controlador->listarVehiculosConductor(nickname);
+
+    for(DTVehiculosConductor vehiculoConductor: vehiculosConductor){
+        std::cout << "> Matricula: " << vehiculoConductor.getMatricula() << ", Modelo: " << vehiculoConductor.getModelo() << ", Capacidad: " << vehiculoConductor.getCapacidad() << "\n";
+    }
 
     std::cout << "Ingrese matricula del vehiculo a utilizar: "; std::getline(std::cin, matricula);
-    bool matriculaValida = false;
-    //TODO: Validar matricula en listado
+    bool matriculaValida = controlador->existeVehiculo(matricula);
     if (!matriculaValida) {
         std::cout << "Matricula invalida.\n";
         return;
@@ -197,8 +200,7 @@ void Menu::altaViaje() {
     std::cout << "Ingrese cantidad de asientos: "; std::cin >> asientos;
     std::cout << "Ingrese precio por asiento: "; std::cin >> precio;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    bool viajeOk = false;
-    //TODO: viajeOk = controlador->altaViaje(matricula, DTFecha(dia, mes, anio), origen, destino, asientos, precio)
+    bool viajeOk = controlador->altaViaje(matricula, DTFecha(dia, mes, anio), origen, destino, asientos, precio);
     if (viajeOk) {
         std::cout << "Viaje registrado exitosamente.\n";
     } else {

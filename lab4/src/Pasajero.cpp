@@ -7,3 +7,7 @@ Pasajero::Pasajero(std::string nickname, std::string nombre, std::string contras
 }
 
 Pasajero::~Pasajero() {}
+
+void Pasajero::agregarReserva(Reserva* r) {
+    reservas.insert(r);
+}
