@@ -14,38 +14,31 @@ UsuarioHandler* UsuarioHandler::getInstancia(){
 }
 
 bool UsuarioHandler::existeUsuario(std::string nickname){
-    for(std::set<Usuario*>::iterator it = usuarios.begin(); it != usuarios.end(); ++it){
-        if((*it)->getNickname() == nickname){
-            return true;
-        }
-    }
-    return false;
+    return usuarios.find(nickname) != usuarios.end();
 }
 
 Usuario* UsuarioHandler::getUsuario(std::string nickname){
-    for(std::set<Usuario*>::iterator it = usuarios.begin(); it != usuarios.end(); ++it){
-        if((*it)->getNickname() == nickname){
-            return (*it);
-        }
+    if (usuarios.find(nickname) != usuarios.end()) {
+        return usuarios[nickname];
     }
     return nullptr;
 }
 
 void UsuarioHandler::crearPasajero(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::string ci){
     Pasajero* u = new Pasajero(nickname, nombre, contrasena, email, ci);
-    usuarios.insert(u);
+    usuarios[nickname] = u;
 }
 
 void UsuarioHandler::crearConductor(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::set<TipoLibreta> libretas){
     Conductor* u = new Conductor(nickname, nombre, contrasena, email, libretas);
-    usuarios.insert(u);
+    usuarios[nickname] = u;
 }
 
 std::set<std::string> UsuarioHandler::getPasajeros() {
     std::set<std::string> ret;
-    for(std::set<Usuario*>::iterator it = usuarios.begin(); it != usuarios.end(); ++it){
-        if(dynamic_cast<Pasajero*>(*it) != nullptr){
-            ret.insert((*it)->getNickname());
+    for(auto& [nickname, usuario] : usuarios){
+        if(dynamic_cast<Pasajero*>(usuario) != nullptr){
+            ret.insert(usuario->getNickname());
         }
     }
     return ret;

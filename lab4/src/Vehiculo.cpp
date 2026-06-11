@@ -42,8 +42,8 @@ bool Vehiculo::hayViajesConductor(DTFecha fecha) {
 }
 
 bool Vehiculo::hayViajesFecha(DTFecha fecha) {
-    for(std::set<Viaje*>::iterator it = viajes.begin(); it != viajes.end(); ++it){
-        if((*it)->getFecha() == fecha){
+    for(auto viaje : viajes){
+        if(viaje->getFecha() == fecha){
             return true;
         }
     }
