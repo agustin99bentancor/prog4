@@ -103,10 +103,6 @@ void Menu::altaUsuario() {
                 std::cout << "¿Desea agregar otra libreta? (1: Si, 0: No): ";
                 std::cin >> agregarLibreta;
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                if (std::cin.fail()) {
-                    std::cin.clear();
-                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                }
             } else {
                 std::cout << "Se ha alcanzado el limite maximo de libretas.\n";
             }
