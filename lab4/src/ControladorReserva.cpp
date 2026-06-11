@@ -66,3 +66,7 @@ bool ControladorReserva::altaViaje(std::string matricula, DTFecha fecha, std::st
     v->asociarViaje(cvi);
     return true;
 }
+
+bool ControladorReserva::existeVehiculo(std::string matricula){
+    return VehiculoHandler::getInstancia()->getVehiculo(matricula) != nullptr;
+}
