@@ -29,8 +29,8 @@ Vehiculo* VehiculoHandler::getVehiculo(std::string matricula){
     return nullptr;
 }
 
-Vehiculo* VehiculoHandler::crearVehiculo(std::string matricula, int capacidad, std::string modelo, std::string marca, TipoVehiculo tipo, Conductor* c){
-    Vehiculo* v = new Vehiculo(matricula, capacidad, modelo, marca, tipo, c);
+Vehiculo* VehiculoHandler::crearVehiculo(std::string matricula, int capacidad, std::string marca, std::string modelo, TipoVehiculo tipo, Conductor* c){
+    Vehiculo* v = new Vehiculo(matricula, capacidad, marca, modelo, tipo, c);
     vehiculos.insert(v);
     return v;
 }

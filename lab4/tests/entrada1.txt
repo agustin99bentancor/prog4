@@ -1,0 +1,37 @@
+1
+2
+conductor1
+Ana
+clave1
+ana@example.com
+0
+0
+veh1
+4
+Toyota
+Corolla
+1
+0
+1
+1
+pasajero1
+Luis
+clave2
+luis@example.com
+12345678
+2
+conductor1
+veh1
+1 1 2026
+Montevideo
+Punta
+2
+100.0
+3
+pasajero1
+1 1 2026
+Montevideo
+Punta
+1
+0
+8

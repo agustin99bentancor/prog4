@@ -1,0 +1,70 @@
+
+=== MENU PRINCIPAL ===
+1. Alta de Usuario
+2. Alta de Viaje
+3. Generar Reserva
+4. Calificar Usuario
+5. Eliminar Viaje
+6. Administrar Fecha Actual
+7. Cargar Datos
+8. Salir
+Ingrese una opcion: 1. Alta Pasajero
+2. Alta Conductor
+Seleccione: Ingrese nickname: Ingrese nombre: Ingrese contrasena: Ingrese email: 
+=== Registrar Libreta ===
+0. Moto (Profesional)
+1. Moto (Amateur)
+2. Auto (Profesional)
+3. Auto (Amateur)
+Seleccione el tipo de libreta: Libreta agregada.
+¿Desea agregar otra libreta? (1: Si, 0: No): 
+=== Registrar Vehiculo ===
+Ingrese matricula: Ingrese capacidad: Ingrese marca: Ingrese modelo: Ingrese tipo (0: Auto, 1: Moto): Vehiculo registrado exitosamente.
+¿Desea agregar otro vehiculo? (1: Si, 0: No): 
+=== MENU PRINCIPAL ===
+1. Alta de Usuario
+2. Alta de Viaje
+3. Generar Reserva
+4. Calificar Usuario
+5. Eliminar Viaje
+6. Administrar Fecha Actual
+7. Cargar Datos
+8. Salir
+Ingrese una opcion: 1. Alta Pasajero
+2. Alta Conductor
+Seleccione: Ingrese nickname: Ingrese nombre: Ingrese contrasena: Ingrese email: Ingrese CI: 
+=== MENU PRINCIPAL ===
+1. Alta de Usuario
+2. Alta de Viaje
+3. Generar Reserva
+4. Calificar Usuario
+5. Eliminar Viaje
+6. Administrar Fecha Actual
+7. Cargar Datos
+8. Salir
+Ingrese una opcion: Ingrese nickname del conductor: > Matricula: veh1, Modelo: Corolla, Capacidad: 4
+Ingrese matricula del vehiculo a utilizar: Ingrese fecha del viaje (dia mes anio): Ingrese origen: Ingrese destino: Ingrese cantidad de asientos: Ingrese precio por asiento: Viaje registrado exitosamente.
+
+=== MENU PRINCIPAL ===
+1. Alta de Usuario
+2. Alta de Viaje
+3. Generar Reserva
+4. Calificar Usuario
+5. Eliminar Viaje
+6. Administrar Fecha Actual
+7. Cargar Datos
+8. Salir
+Ingrese una opcion: > pasajero1
+Ingrese nickname del pasajero: Ingrese fecha del viaje a consultar (dia mes anio): Ingrese origen: Ingrese destino: Ingrese cantidad de asientos a reservar: > Codigo: 0, Marca: Toyota, Modelo: Corolla, Conductor: conductor1, CalificacionPromedio: 0, PrecioTotal: 100
+Ingrese codigo del viaje a reservar: Reserva realizada exitosamente.
+
+=== MENU PRINCIPAL ===
+1. Alta de Usuario
+2. Alta de Viaje
+3. Generar Reserva
+4. Calificar Usuario
+5. Eliminar Viaje
+6. Administrar Fecha Actual
+7. Cargar Datos
+8. Salir
+Ingrese una opcion: Saliendo del sistema...
