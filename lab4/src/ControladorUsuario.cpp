@@ -65,13 +65,20 @@ std::vector<DTListarViaje> ControladorUsuario::listarViajes() {
 }
 
 DTDetalleViaje ControladorUsuario::detalleViaje(int codigo) {
-    //implementar
+    //guarda en memoria el codigo
+    codigoViajeAEliminar = codigo;
+    ViajeHandler* vh = ViajeHandler::getInstancia();
+    Viaje* v = vh->getViaje(codigo);
+    DTDetalleViaje detalle = v->getDTDetalleViaje();
+    DTDetalleViaje dtvi(v->getCodigo(), v->getFecha(), v->getOrigen(), v->getDestino(), v->getAsientosPublicados(), v->getPrecio(), detalle.getVehiculo(), detalle.getReservas());
+    return dtvi;
 }
 
 void ControladorUsuario::eliminarViaje() {
-    //implementar
+    ViajeHandler* vh = ViajeHandler::getInstancia();
+    vh->eliminarViaje(codigoViajeAEliminar);
 }
 
 void ControladorUsuario::cancelarEliminarViaje() {
-    //implementar
+    codigoViajeAEliminar = CODIGO_NULO;
 }
