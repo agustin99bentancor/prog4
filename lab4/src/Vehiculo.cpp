@@ -21,13 +21,29 @@ int Vehiculo::getCapacidad() {
     return capacidad;
 }
 
+std::string Vehiculo::getMarca() {
+    return marca;
+}
+
+std::string Vehiculo::getModelo() {
+    return modelo;
+}
+
+std::string Vehiculo::getNicknameConductor() {
+    return conductor->getNickname();
+}
+
+float Vehiculo::getCalificacionConductor() {
+    return conductor->getCalificacionPromedio();
+}
+
 bool Vehiculo::hayViajesConductor(DTFecha fecha) {
     return conductor->hayViajesFechaConductor(fecha);
 }
 
 bool Vehiculo::hayViajesFecha(DTFecha fecha) {
-    for(std::set<Viaje*>::iterator it = viajes.begin(); it != viajes.end(); ++it){
-        if((*it)->getFecha() == fecha){
+    for(auto viaje : viajes){
+        if(viaje->getFecha() == fecha){
             return true;
         }
     }
@@ -35,7 +51,7 @@ bool Vehiculo::hayViajesFecha(DTFecha fecha) {
 }
 
 void Vehiculo::asociarViaje(Viaje* cvi) {
-    this->viajes.insert(cvi);
+    viajes.insert(cvi);
 }
 
 DTVehiculosConductor Vehiculo::getDTVehiculoConductor() {

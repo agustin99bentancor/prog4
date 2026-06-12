@@ -52,3 +52,16 @@ void ViajeHandler::eliminarViaje(int codigo) {
 
     delete v;
 }
+    if (viajes.find(codigo) != viajes.end()) {
+        return viajes[codigo];
+    }
+    return nullptr;
+}
+
+std::set<Viaje*> ViajeHandler::getViajes() {
+    std::set<Viaje*> ret;
+    for (auto& [codigo, viaje] : viajes) {
+        ret.insert(viaje);
+    }
+    return ret;
+}

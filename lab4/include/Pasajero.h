@@ -19,6 +19,7 @@ public:
     ~Pasajero();
 
     std::set<DTListarViaje> getDTListarViajes();
+    void agregarReserva(Reserva* r);
 };
 
 #endif

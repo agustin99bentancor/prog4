@@ -179,12 +179,21 @@ void Menu::altaViaje() {
     float precio;
 
     std::cout << "Ingrese nickname del conductor: "; std::getline(std::cin, nickname);
-    //TODO: Coleccion de DTVehiculosConductor = controlador->listarVehiculosConductor(nickname)
-    //TODO: Recorrer la coleccion y mostrar "> Matricula: xx, Marca: yy, Capacidad: www"
+    IReserva* controlador = Fabrica::getInstance()->getIReserva();
+    std::vector<DTVehiculosConductor> vehiculosConductor = controlador->listarVehiculosConductor(nickname);
+
+    for(DTVehiculosConductor vehiculoConductor: vehiculosConductor){
+        std::cout << "> " << vehiculoConductor << "\n";
+    }
 
     std::cout << "Ingrese matricula del vehiculo a utilizar: "; std::getline(std::cin, matricula);
     bool matriculaValida = false;
-    //TODO: Validar matricula en listado
+    for(DTVehiculosConductor vehiculoConductor: vehiculosConductor){
+        if(vehiculoConductor.getMatricula() == matricula){
+            matriculaValida = true;
+            break;
+        }
+    }
     if (!matriculaValida) {
         std::cout << "Matricula invalida.\n";
         return;
@@ -197,8 +206,7 @@ void Menu::altaViaje() {
     std::cout << "Ingrese cantidad de asientos: "; std::cin >> asientos;
     std::cout << "Ingrese precio por asiento: "; std::cin >> precio;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    bool viajeOk = false;
-    //TODO: viajeOk = controlador->altaViaje(matricula, DTFecha(dia, mes, anio), origen, destino, asientos, precio)
+    bool viajeOk = controlador->altaViaje(matricula, DTFecha(dia, mes, anio), origen, destino, asientos, precio);
     if (viajeOk) {
         std::cout << "Viaje registrado exitosamente.\n";
     } else {
@@ -207,13 +215,16 @@ void Menu::altaViaje() {
 }
 
 void Menu::generarReserva() {
-    //TODO: Colecion de String = controlador->listarPasajeros()
-    //TODO: Recorrer la colección y mostrar "> xx"
+    IReserva* controlador = Fabrica::getInstance()->getIReserva();
+    std::set<std::string> pasajeros = controlador->listarPasajeros();
+    for (auto pasajero : pasajeros) {
+        std::cout << "> " << pasajero << "\n";
+    }
     std::string nickname;
     std::cout << "Ingrese nickname del pasajero: "; std::getline(std::cin, nickname);
 
-    bool nicknameValido = false;
-    //TODO: Validar nickname en listado
+    bool nicknameValido = pasajeros.find(nickname) != pasajeros.end();
+
     if (!nicknameValido) {
         std::cout << "Nickname invalido.\n";
         return;
@@ -228,10 +239,12 @@ void Menu::generarReserva() {
     std::cout << "Ingrese cantidad de asientos a reservar: "; std::cin >> asientos;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    //TODO: Coleccion de DTConsultaViaje = controlador->consultarViajes(DTFecha(dia, mes, anio), origen, destino, asientos)
-    //TODO: Recorrer la coleccion y mostrar: "> Codigo: xx, Marca: yy, Modelo: zzz, Conductor: aaa, CalificacionPromedio: qqq, PrecioTotal: eee"
+    std::multiset<DTConsultaViaje> viajes = controlador->consultarViajes(DTFecha(dia, mes, anio), origen, destino, asientos);
+    for(DTConsultaViaje viaje: viajes){
+        std::cout << "> " << viaje << "\n";
+    }
 
-    bool hayViajes = false;//TODO: Validar coleccion vacía
+    bool hayViajes = !viajes.empty();
     if (!hayViajes) {
         std::cout << "No hay viajes disponibles.\n";
         return;
@@ -241,14 +254,18 @@ void Menu::generarReserva() {
     std::cout << "Ingrese codigo del viaje a reservar: "; std::cin >> codigo;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     bool codigoValido = false;
-    //TODO: Validar codigo en listado
+    for(DTConsultaViaje viaje: viajes){
+        if(viaje.getCodigo() == codigo){
+            codigoValido = true;
+            break;
+        }
+    }
     if (!codigoValido) {
         std::cout << "Codigo invalido.\n";
         return;
     }
 
-    bool reservaOk = false;
-    //TODO: reservaOk = controlador->generarReserva(nickname, codigo, asientos)
+    bool reservaOk = controlador->generarReserva(nickname, codigo, asientos);
     if (reservaOk) {
         std::cout << "Reserva realizada exitosamente.\n";
     } else {

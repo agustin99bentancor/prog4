@@ -19,7 +19,7 @@ private:
     Viaje* viaje;
 
 public:
-    Reserva(int asientosReservados, DTFecha fecha);
+    Reserva(int asientosReservados, DTFecha fecha, Pasajero* p, Viaje* v);
     ~Reserva();
 
     DTListarViaje getDTListarViaje();

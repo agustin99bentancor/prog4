@@ -37,9 +37,11 @@ public:
     bool pertenece(std::string nickname);
     Reserva* getReservaByNick(std::string nick);
     int getAReservados();
-    DTConsultaViaje getDTcv();
+    DTConsultaViaje getDTcv(int asientos);
     bool puedeReservar(std::string nickname, int asientos);
     void agregarReserva(Reserva* r);
+    static int obtenerCodigo();
+
     DTFecha getFecha();
     int getCodigo();
     static int obtenerCodigo();
