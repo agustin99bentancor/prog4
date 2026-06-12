@@ -304,82 +304,42 @@ void Menu::calificarUsuario() {
 }
 
 void Menu::eliminarViaje() {
-
-    std::vector<DTListarViaje> viajes =
-        ViajeHandler::getInstancia()->getDTListarViajes();
-
-    if (viajes.empty()) {
-        std::cout << "No hay viajes disponibles.\n";
-        return;
+    IUsuario* controlador = Fabrica::getInstance()->getIUsuario();
+    std::set<DTListarViaje> viajes = controlador->listarViajes();
+    for(auto viaje : viajes){
+        std::cout << "> " << viaje;
     }
-
-    std::cout << "VIAJES DISPONIBLES:\n";
-    for (DTListarViaje v : viajes) {
-        std::cout
-            << "Codigo: " << v.getCodigo()
-            << ", Fecha: " << v.getFecha()
-            << ", Origen: " << v.getOrigen()
-            << ", Destino: " << v.getDestino()
-            << ", Conductor: " << v.getConductor()
-            << "\n";
-    }
-
     int codigo;
-    std::cout << "\nIngrese codigo del viaje a eliminar: ";
-    std::cin >> codigo;
+    std::cout << "Ingrese codigo del viaje a eliminar: "; std::cin >> codigo;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-    Viaje* viajeSeleccionado =
-        ViajeHandler::getInstancia()->getViaje(codigo);
-
-    if (viajeSeleccionado == nullptr) {
+    bool codigoValido = false;
+    for(auto viaje : viajes){
+        if(viaje.getCodigo() == codigo){
+            codigoValido = true;
+            break;
+        }
+    }
+    if (!codigoValido) {
         std::cout << "Codigo invalido.\n";
         return;
     }
 
-    DTDetalleViaje detalle = viajeSeleccionado->getDTDetalleViaje();
-
-    std::cout << "\n>> Viaje <<\n";
-    std::cout << "Codigo: " << detalle.getCodigo() << "\n";
-    std::cout << "Fecha: " << detalle.getFecha() << "\n";
-    std::cout << "Origen: " << detalle.getOrigen() << "\n";
-    std::cout << "Destino: " << detalle.getDestino() << "\n";
-    std::cout << "Asientos: " << detalle.getAsientosPublicados() << "\n";
-    std::cout << "Precio: " << detalle.getPrecio() << "\n";
-
-    DTDetalleVehiculo veh = detalle.getVehiculo();
-
-    std::cout << "\n>> Vehiculo <<\n";
-    std::cout << "Matricula: " << veh.getMatricula() << "\n";
-    std::cout << "Capacidad: " << veh.getCapacidad() << "\n";
-    std::cout << "Marca: " << veh.getMarca() << "\n";
-    std::cout << "Modelo: " << veh.getModelo() << "\n";
-
-    std::cout << "\n>> Reservas <<\n";
-
-    std::vector<DTDetalleReserva> reservas = detalle.getReservas();
-
-    if (reservas.empty()) {
-        std::cout << "No hay reservas.\n";
-    } else {
-        for (DTDetalleReserva r : reservas) {
-            std::cout
-                << "Asientos: " << r.getAsientosReservados()
-                << ", Fecha: " << r.getFecha()
-                << ", Pasajero: " << r.getPasajero()
-                << "\n";
-        }
+    DTDetalleViaje detalle = controlador->detalleViaje(codigo);
+    std::cout << ">> Viaje <<\n" << "--- " << detalle.getVehiculo().getMatricula() << ", Fecha: " << detalle.getFecha() << ", Origen: " << detalle.getOrigen() << ", Destino: " << detalle.getDestino() << ", Capacidad: " << detalle.getAsientosPublicados() << ", Precio: " << detalle.getPrecio() << "\n";
+    std::cout << ">> Vehiculo <<\n" << "--- " << detalle.getVehiculo();
+    std::cout << ">> Reservas <<\n";
+    auto reservas = detalle.getReservas();
+    for(auto reserva : reservas){
+        std::cout << "--- " << reserva;        
     }
-
     int confirmar;
-    std::cout << "\n¿Confirmar eliminacion? (1: Si, 0: No): ";
-    std::cin >> confirmar;
+    std::cout << "¿Confirmar eliminacion? (1: Si, 0: No): "; std::cin >> confirmar;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
     if (confirmar == 1) {
-        ViajeHandler::getInstancia()->eliminarViaje(codigo);
+        controlador->eliminarViaje();
         std::cout << "Viaje eliminado exitosamente.\n";
     } else {
+        controlador->cancelarEliminarViaje()
         std::cout << "Eliminacion cancelada.\n";
     }
 }
