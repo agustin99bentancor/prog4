@@ -5,10 +5,10 @@
 #include <set>
 
 #include "dtypes/TipoVehiculo.h"
+#include "dtypes/DTDetalleVehiculo.h"
+#include "dtypes/DTVehiculosConductor.h"
 #include "dtypes/DTListarViaje.h"
 #include "dtypes/DTUsuarioViaje.h"
-#include "dtypes/DTVehiculosConductor.h"
-#include "dtypes/DTDetalleVehiculo.h"
 
 class Viaje;
 class Conductor;
@@ -25,23 +25,25 @@ private:
     std::set<Viaje*> viajes;
 
 public:
-    Vehiculo(std::string matricula, int capacidad, std::string marca, std::string modelo, TipoVehiculo tipo, Conductor* conductor);
+    Vehiculo(std::string matricula, int capacidad, std::string marca,
+             std::string modelo, TipoVehiculo tipo, Conductor* conductor);
+
     ~Vehiculo();
 
-    std::set<DTListarViaje> getDTListarViajes();
-    std::string getNicknameConductor();
-    DTUsuarioViaje getDatosConductor();
-    std::string getNombreConductor();
-    float getCalificacionConductor();
-    DTVehiculosConductor getDTVehiculoConductor();
-    bool hayViajesConductor(DTFecha fecha);
-    bool hayViajesFecha(DTFecha fecha);
-    void asociarViaje(Viaje* cvi);
-    int getCapacidad();
-
     std::string getMatricula();
+    int getCapacidad();
     std::string getMarca();
     std::string getModelo();
+
+    std::string getNicknameConductor();
+    float getCalificacionConductor();
+    bool hayViajesFecha(DTFecha fecha);
+    bool hayViajesConductor(DTFecha fecha);
+    DTVehiculosConductor getDTVehiculoConductor();
+    void asociarViaje(Viaje* v);
+    void removerViaje(Viaje* v);
+
+    DTDetalleVehiculo getDTDetalleVehiculo();
 };
 
 #endif

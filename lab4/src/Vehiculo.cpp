@@ -1,8 +1,10 @@
 #include "Vehiculo.h"
 #include "Viaje.h"
 #include "Conductor.h"
+#include "dtypes/DTDetalleVehiculo.h"
 
-Vehiculo::Vehiculo(std::string matricula, int capacidad, std::string marca, std::string modelo, TipoVehiculo tipo, Conductor* conductor) {
+Vehiculo::Vehiculo(std::string matricula, int capacidad, std::string marca,
+                   std::string modelo, TipoVehiculo tipo, Conductor* conductor) {
     this->matricula = matricula;
     this->capacidad = capacidad;
     this->marca = marca;
@@ -13,21 +15,10 @@ Vehiculo::Vehiculo(std::string matricula, int capacidad, std::string marca, std:
 
 Vehiculo::~Vehiculo() {}
 
-std::string Vehiculo::getMatricula() {
-    return matricula;
-}
-
-int Vehiculo::getCapacidad() {
-    return capacidad;
-}
-
-std::string Vehiculo::getMarca() {
-    return marca;
-}
-
-std::string Vehiculo::getModelo() {
-    return modelo;
-}
+std::string Vehiculo::getMatricula() { return matricula; }
+int Vehiculo::getCapacidad() { return capacidad; }
+std::string Vehiculo::getMarca() { return marca; }
+std::string Vehiculo::getModelo() { return modelo; }
 
 std::string Vehiculo::getNicknameConductor() {
     return conductor->getNickname();
@@ -37,41 +28,40 @@ float Vehiculo::getCalificacionConductor() {
     return conductor->getCalificacionPromedio();
 }
 
-bool Vehiculo::hayViajesConductor(DTFecha fecha) {
-    return conductor->hayViajesFechaConductor(fecha);
-}
-
-bool Vehiculo::hayViajesFecha(DTFecha fecha) {
-    for(std::set<Viaje*>::iterator it = viajes.begin(); it != viajes.end(); ++it){
-        if((*it)->getFecha() == fecha){
-            return true;
-        }
-    }
-    return false;
-}
-
-void Vehiculo::asociarViaje(Viaje* cvi) {
-    viajes.insert(cvi);
-}
-
-DTVehiculosConductor Vehiculo::getDTVehiculoConductor() {
-    return DTVehiculosConductor(matricula, modelo, capacidad);
-}
-
-std::string Vehiculo::getNicknameConductor() {
-    return this->conductor->getNickname();
+void Vehiculo::asociarViaje(Viaje* v) {
+    viajes.insert(v);
 }
 
 void Vehiculo::removerViaje(Viaje* v) {
     viajes.erase(v);
 }
 
-DTDetalleVehiculo Vehiculo::getDTDetalleVehiculo(){
+bool Vehiculo::hayViajesFecha(DTFecha fecha) {
+    for (Viaje* v : viajes) {
+        if (v->getFecha() == fecha)
+            return true;
+    }
+    return false;
+}
+
+bool Vehiculo::hayViajesConductor(DTFecha fecha) {
+    return hayViajesFecha(fecha);
+}
+
+
+DTVehiculosConductor Vehiculo::getDTVehiculoConductor() {
+    return DTVehiculosConductor(
+        matricula,
+        modelo,
+        capacidad
+    );
+}
+DTDetalleVehiculo Vehiculo::getDTDetalleVehiculo() {
     return DTDetalleVehiculo(
-        this->matricula,
-        this->capacidad,
-        this->marca,
-        this->modelo,
-        this->tipo
+        matricula,
+        capacidad,
+        marca,
+        modelo,
+        tipo
     );
 }

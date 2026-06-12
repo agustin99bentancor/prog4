@@ -70,3 +70,15 @@ bool ControladorReserva::altaViaje(std::string matricula, DTFecha fecha, std::st
 bool ControladorReserva::existeVehiculo(std::string matricula){
     return VehiculoHandler::getInstancia()->getVehiculo(matricula) != nullptr;
 }
+
+void ControladorReserva::eliminarViaje(int codigo) {
+    ViajeHandler::getInstancia()->eliminarViaje(codigo);
+}
+
+DTDetalleViaje ControladorReserva::obtenerDetalleViaje(int codigo) {
+    return ViajeHandler::getInstancia()->obtenerDetalleViaje(codigo);
+}
+
+std::vector<DTListarViaje> ControladorReserva::listarViajes() {
+    return ViajeHandler::getInstancia()->getDTListarViajes();
+}

@@ -6,31 +6,36 @@
 #include <map>
 #include <vector>
 
-#include "dtypes/TipoVehiculo.h"
 #include "dtypes/DTFecha.h"
 #include "dtypes/DTListarViaje.h"
+#include "dtypes/DTDetalleViaje.h"
 
 class Viaje;
-class Conductor;
 class Vehiculo;
+class Conductor;
 
 class ViajeHandler {
 private:
-
     static ViajeHandler* instancia;
     std::map<int, Viaje*> viajes;
 
     ViajeHandler();
-public:
 
+public:
     static ViajeHandler* getInstancia();
 
     Viaje* getViaje(int codigo);
-    void crearVehiculo(std::string matricula, int capacidad, std::string modelo, std::string marca, TipoVehiculo tipo, Conductor* c);
+
+    Viaje* crearViaje(Vehiculo* v, DTFecha fecha,
+                      std::string origen, std::string destino,
+                      int asientos, float precio);
+
     std::set<Viaje*> getViajes();
-    Viaje* crearViaje(Vehiculo* v, DTFecha fecha, std::string origen, std::string destino, int asientos, float precio);
 
     std::vector<DTListarViaje> getDTListarViajes();
+
+    DTDetalleViaje obtenerDetalleViaje(int codigo);
+
     void eliminarViaje(int codigo);
 };
 

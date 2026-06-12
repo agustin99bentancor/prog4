@@ -4,6 +4,7 @@
 #include "dtypes/DTListarViaje.h"
 #include "dtypes/DTDetalleVehiculo.h"
 
+
 int Viaje::codigoGlobal = 0;
 
 Viaje::Viaje(Vehiculo* v, DTFecha fecha, std::string origen, std::string destino, int asientosPublicados, float precio) {
@@ -34,6 +35,10 @@ std::string Viaje::getDestino() {
     return destino;
 }
 
+Vehiculo* Viaje::getVehiculo() {
+    return vehiculo;
+}
+
 int Viaje::getAsientosPublicados() {
     return asientosPublicados;
 }
@@ -60,6 +65,16 @@ DTConsultaViaje Viaje::getDTcv(int asientos) {
     return DTConsultaViaje(codigo, marca, modelo, conductor, calificacion, precio * asientos);
 }
 
+DTListarViaje Viaje::getDTListarViaje() {
+    return DTListarViaje(
+        codigo,
+        fecha,
+        origen,
+        destino,
+        vehiculo->getNicknameConductor()
+    );
+}
+
 void Viaje::agregarReserva(Reserva* r) {
     reservas.insert(r);
 }
@@ -78,4 +93,32 @@ bool Viaje::puedeReservar(std::string nickname, int asientos) {
         }
     }
     return true;
+}
+
+
+void Viaje::eliminarReservas() {
+    for (std::set<Reserva*>::iterator it = reservas.begin(); it != reservas.end(); ++it) {
+        delete *it;
+    }
+    reservas.clear();
+}
+
+DTDetalleViaje Viaje::getDTDetalleViaje() {
+
+    std::vector<DTDetalleReserva> datosReservas;
+
+    for (Reserva* r : reservas) {
+        datosReservas.push_back(r->getDetalleReserva());
+    }
+
+    return DTDetalleViaje(
+        codigo,
+        fecha,
+        origen,
+        destino,
+        asientosPublicados,
+        precio,
+        vehiculo->getDTDetalleVehiculo(),
+        datosReservas
+    );
 }

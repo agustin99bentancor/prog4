@@ -4,6 +4,7 @@
 #include "Conductor.h"
 
 
+
 ViajeHandler* ViajeHandler::instancia = nullptr;
 
 ViajeHandler::ViajeHandler() {}
@@ -33,14 +34,15 @@ std::set<Viaje*> ViajeHandler::getViajes() {
     return ret;
 }
 
-Viaje* ViajeHandler::getViaje(int codigo){
+
+DTDetalleViaje ViajeHandler::obtenerDetalleViaje(int codigo) {
     auto it = viajes.find(codigo);
 
-    if (it != viajes.end()) {
-        return it->second;
+    if (it == viajes.end()) {
+        throw std::invalid_argument("Viaje no existe");
     }
 
-    return nullptr;
+    return it->second->getDTDetalleViaje();
 }
 
 std::vector<DTListarViaje> ViajeHandler::getDTListarViajes() {
@@ -52,15 +54,22 @@ std::vector<DTListarViaje> ViajeHandler::getDTListarViajes() {
 
     return ret;
 }
+
 void ViajeHandler::eliminarViaje(int codigo) {
 
-    Viaje* v = viajes.at(codigo);
+    auto it = viajes.find(codigo);
 
-    v->eliminarReservas();
+    if (it == viajes.end()) {
+        return;
+    }
+
+    Viaje* v = it->second;
+
+    v->eliminarReservas();         
 
     v->getVehiculo()->removerViaje(v);
 
-    viajes.erase(codigo);
-
     delete v;
+
+    viajes.erase(it);
 }
