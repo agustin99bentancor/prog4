@@ -6,9 +6,11 @@
 #include "dtypes/DTFecha.h"
 #include "dtypes/DTListarViaje.h"
 #include "dtypes/DTUsuarioViaje.h"
+#include "dtypes/DTDetalleReserva.h"
 
 class Pasajero;
 class Viaje;
+class Calificacion;
 
 class Reserva {
 private:
@@ -17,6 +19,7 @@ private:
 
     Pasajero* pasajero;
     Viaje* viaje;
+    Calificacion* calificacion;
 
 public:
     Reserva(int asientosReservados, DTFecha fecha, Pasajero* p, Viaje* v);
@@ -26,8 +29,12 @@ public:
     DTUsuarioViaje getDatosPasajero();
     int getCodigoViaje();
     std::string getNickPasajero();
-
+    DTFecha getFecha();
     int getAsientosReservados();
+    DTDetalleReserva getDetalleReserva();
+    void setCalificacion(Calificacion* c);
+    Calificacion* getCalificacion();
+
 };
 
 #endif

@@ -1,0 +1,30 @@
+*   [33m8b57089[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge pull request #16 from agustin99bentancor/lucas-lab4
+[31m|[m[32m\[m  
+[31m|[m * [33m356f7b0[m[33m ([m[1;31morigin/lucas-lab4[m[33m)[m quito anidación innecesaria en ControladorUsuario::registrarVehiculo
+[31m|[m[31m/[m  
+[31m|[m * [33mc76e9bc[m[33m ([m[1;31morigin/Ignacio[m[33m)[m "Caso de uso Calificar Usuario e interfaz listos"
+[31m|[m[31m/[m  
+[31m|[m * [33ma11a95b[m[33m ([m[1;31morigin/alta-viaje[m[33m)[m cambios menores alta viaje
+[31m|[m * [33mbfce693[m Cambiando obtenerCodigo para que sea igual al diagrama de comunicacion
+[31m|[m [34m|[m * [33m0d8dcc3[m[33m ([m[1;31morigin/Calificar-usuarios[m[33m)[m calificar usaurio
+[31m|[m [34m|[m[34m/[m  
+[31m|[m *   [33ma3f1e3e[m Merge branch 'main' into alta-viaje
+[31m|[m [36m|[m[31m\[m  
+[31m|[m [36m|[m[31m/[m  
+[31m|[m[31m/[m[36m|[m   
+* [36m|[m   [33m103cd6f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32msofia[m[33m)[m Merge pull request #14 from agustin99bentancor/brandon
+[1;32m|[m[1;33m\[m [36m\[m  
+[1;32m|[m * [36m|[m [33m2c63475[m[33m ([m[1;31morigin/brandon[m[33m)[m Cambiando controlador por interfaz en Menu.cpp
+[1;32m|[m * [36m|[m [33mcc9c606[m Agregando altaUsuario a Menu.cpp
+[1;32m|[m * [36m|[m [33m62acba5[m Realizando ajustes publicados en eva
+[1;32m|[m[1;32m/[m [36m/[m  
+[1;32m|[m * [33m51f9383[m Redondeando altaViaje
+[1;32m|[m * [33mab9f424[m alta viaje
+[1;32m|[m[1;32m/[m  
+*   [33m61798a3[m Merge pull request #13 from agustin99bentancor/lucas-lab4
+[1;34m|[m[1;35m\[m  
+[1;34m|[m * [33md1a1d8f[m operaciones para Alta de Usuario completadas; COMPILA.
+[1;34m|[m * [33mc4490ca[m agrego Conductor::tieneLibretaCompatible para Alta de Usuario
+[1;34m|[m * [33mec3dffc[m agrego las operaciones de manejo de colecciones que restaban para Alta de Usuario
+[1;34m|[m * [33m8c1c832[m implemento operaciones de sistema para Alta de Usuarios. Hay suboperaciones indefinidas porque falta decidir cómo implementar el tema de las claves en las colecciones, sin estas se hace difícil poder operar con las colecciones.
+[1;34m|[m[1;34m/[m  

@@ -16,6 +16,13 @@ private:
 
 public:
     Calificacion(DTFecha fecha, int puntaje);
+
+    void setReserva(Reserva* r);
+    void setUsuario(Usuario* u);
+
+    Reserva* getReserva();
+    Usuario* getUsuario();
+
     ~Calificacion();
 };
 

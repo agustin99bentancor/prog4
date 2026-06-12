@@ -8,6 +8,7 @@
 #include "dtypes/DTListarViaje.h"
 #include "dtypes/DTUsuarioViaje.h"
 #include "dtypes/DTConsultaViaje.h"
+#include "dtypes/DTDetalleViaje.h"
 
 class Reserva;
 class Vehiculo;
@@ -46,6 +47,11 @@ public:
     std::string getOrigen();
     std::string getDestino();
     int getAsientosPublicados();
+    Vehiculo* getVehiculo();
+    void eliminarReservas();
+    void eliminarCalificaciones();
+    DTDetalleViaje getDTDetalleViaje();
+    void desasociarVehiculo();
 };
 
 #endif

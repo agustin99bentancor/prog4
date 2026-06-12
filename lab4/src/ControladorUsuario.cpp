@@ -57,3 +57,19 @@ std::set<DTUsuarioViaje> ControladorUsuario::listarUsuariosViaje(int codigo) {
 bool ControladorUsuario::calificarUsuario(std::string nicknameCalificado, int calificacion) {
     return false;
 }
+
+void ControladorUsuario::eliminarViaje(int codigo) {
+    return ViajeHandler::getInstancia()->eliminarViaje(codigo);
+}
+
+DTDetalleViaje ControladorUsuario::obtenerDetalleViaje(int codigo) {
+    return ViajeHandler::getInstancia()->obtenerDetalleViaje(codigo);
+}
+
+std::vector<DTListarViaje> ControladorUsuario::listarViajes() {
+    return ViajeHandler::getInstancia()->getDTListarViajes();
+}
+
+std::string ControladorUsuario::cancelarEliminarViaje(int codigo) {
+    return "Se ha cancelado la eliminacion del Viaje con el codigo " + std::to_string(codigo);
+}

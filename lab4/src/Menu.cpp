@@ -1,7 +1,6 @@
 #include "Menu.h"
 #include "Fabrica.h"
 #include "IControladorFechaActual.h"
-#include "Fabrica.h"
 #include "IUsuario.h"
 #include "CargaDatos.h"
 #include "dtypes/DTFecha.h"
@@ -10,6 +9,13 @@
 #include <limits>
 #include <string>
 #include <set>
+#include <map>
+#include "ViajeHandler.h"
+#include "Viaje.h"
+#include "dtypes/DTListarViaje.h"
+#include "dtypes/DTDetalleViaje.h"
+#include "dtypes/DTDetalleReserva.h"
+#include "dtypes/DTDetalleVehiculo.h"
 
 void Menu::altaUsuario() {
     int tipoUsuario;
@@ -315,35 +321,69 @@ void Menu::calificarUsuario() {
 }
 
 void Menu::eliminarViaje() {
-    //TODO: Coleccion de DTListarViaje = controlador->listarViajes()
-    //TODO: Recorrer la coleccion y mostrar "> Codigo: xx, Fecha: dd/mm/aaaa, Origen: zzz, Destino: www, Conductor: aaa"
-    int codigo;
-    std::cout << "Ingrese codigo del viaje a eliminar: "; std::cin >> codigo;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    bool codigoValido = false;
-    //TODO: Validar codigo en listado
-    if (!codigoValido) {
-        std::cout << "Codigo invalido.\n";
+
+    IUsuario* controlador = Fabrica::getInstance()->getIUsuario();
+    std::vector<DTListarViaje> viajes = controlador->listarViajes();
+
+    if (viajes.empty()) {
+        std::cout << "No hay viajes disponibles.\n";
         return;
     }
 
-    //TODO: DTDetalleViaje = controlador->detalleViaje(codigo)
-    //TODO: Mostrar detalle del viaje siguiendo el formato
-    //>> Viaje <<
-    //--- Matrícula: aa, Fecha: dd/mm/aaaa, Origen: zzz, Destino: www, Capacidad: bbb, Precio por asiento: qqq
-    //>> Vehiculo <<
-    //--- Matricula: mm, Capacidad: aa, Marca: bbb, Modelo: ccc, Tipo: ddd
-    //>> Reservas <<
-    //--- AsientosReservados: xx, Fecha: dd/mm/aaaa, Pasajero: aaa
-    int confirmar;
-    std::cout << "¿Confirmar eliminacion? (1: Si, 0: No): "; std::cin >> confirmar;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    if (confirmar == 1) {
-        //TODO: controlador->eliminarViaje()
-        std::cout << "Viaje eliminado exitosamente.\n";
+    for (DTListarViaje v : viajes) {
+        std::cout
+            << "Codigo: " << v.getCodigo()
+            << ", Fecha: " << v.getFecha()
+            << ", Origen: " << v.getOrigen()
+            << ", Destino: " << v.getDestino()
+            << ", Conductor: " << v.getConductor()
+            << "\n";
+    }
+
+    int codigo;
+    std::cout << "\nIngrese codigo del viaje: ";
+    std::cin >> codigo;
+
+    DTDetalleViaje detalle = controlador->obtenerDetalleViaje(codigo);
+    std::cout << "\n-- Viaje --\n";
+    std::cout << "Codigo: " << detalle.getCodigo() << "\n";
+    std::cout << "Fecha del Viaje: " << detalle.getFecha() << "\n";
+    std::cout << "Origen: " << detalle.getOrigen() << "\n";
+    std::cout << "Destino: " << detalle.getDestino() << "\n";
+    std::cout << "Asientos Publicados: " << detalle.getAsientosPublicados() << "\n";
+    std::cout << "Precio por asiento: " << detalle.getPrecio() << "\n";
+
+    DTDetalleVehiculo v = detalle.getVehiculo();
+    std::cout << "\n-- Vehiculo asociado al Viaje --\n";
+    std::cout << "Matricula: " << v.getMatricula() << "\n";
+    std::cout << "Marca: " << v.getMarca() << "\n";
+    std::cout << "Modelo: " << v.getModelo() << "\n";
+    std::cout << "Capacidad: " << v.getCapacidad() << "\n";
+    std::cout << "Tipo de vehiculo: " << v.getTipo() << "\n";
+
+    std::cout << "\n-- Reservas asociadas al Viaje--\n";
+    std::vector<DTDetalleReserva> reservas = detalle.getReservas();
+    if (reservas.empty()) {
+        std::cout << "No hay reservas.\n";
     } else {
-        //TODO: controlador->cancelarEliminarViaje()
-        std::cout << "Eliminacion cancelada.\n";
+       for (DTDetalleReserva r : reservas) {
+          std::cout << "Pasajero: " << r.getPasajero()
+                    << ", Fecha: " << r.getFecha()
+                    << ", Asientos: " << r.getAsientosReservados()
+                    << "\n";
+        }
+    }
+
+    int confirmar;
+    std::cout << "\n¿Confirmar eliminacion? (1: Si, 0: No): ";
+    std::cin >> confirmar;
+
+    if (confirmar == 1) {
+    controlador->eliminarViaje(codigo);
+    std::cout << "Eliminado correctamente\n";
+    }
+    else {
+    std::cout << controlador->cancelarEliminarViaje(codigo) << std::endl;
     }
 }
 
