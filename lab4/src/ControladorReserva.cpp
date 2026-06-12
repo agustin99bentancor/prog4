@@ -83,6 +83,7 @@ DTDetalleViaje ControladorReserva::detalleViaje(int codigo) {
 void ControladorReserva::eliminarViaje() {
     ViajeHandler* vh = ViajeHandler::getInstancia();
     vh->eliminarViaje(codigoViajeAEliminar);
+    codigoViajeAEliminar = CODIGO_NULO;
 }
 
 void ControladorReserva::cancelarEliminarViaje() {
