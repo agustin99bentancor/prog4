@@ -345,15 +345,22 @@ void Menu::eliminarViaje() {
     std::cin >> codigo;
 
     DTDetalleViaje detalle = controlador->obtenerDetalleViaje(codigo);
+    std::cout << "\n-- Viaje --\n";
+    std::cout << "Codigo: " << detalle.getCodigo() << "\n";
+    std::cout << "Fecha del Viaje: " << detalle.getFecha() << "\n";
+    std::cout << "Origen: " << detalle.getOrigen() << "\n";
+    std::cout << "Destino: " << detalle.getDestino() << "\n";
+    std::cout << "Asientos Publicados: " << detalle.getAsientosPublicados() << "\n";
+    std::cout << "Precio: " << detalle.getPrecio() << "\n";
 
     DTDetalleVehiculo v = detalle.getVehiculo();
-    std::cout << "\n-- Vehiculo --\n";
+    std::cout << "\n-- Vehiculo asociado al Viaje --\n";
     std::cout << "Matricula: " << v.getMatricula() << "\n";
     std::cout << "Marca: " << v.getMarca() << "\n";
     std::cout << "Modelo: " << v.getModelo() << "\n";
     std::cout << "Capacidad: " << v.getCapacidad() << "\n";
 
-    std::cout << "\n-- Reservas --\n";
+    std::cout << "\n-- Reservas asociadas al Viaje--\n";
     std::vector<DTDetalleReserva> reservas = detalle.getReservas();
     if (reservas.empty()) {
         std::cout << "No hay reservas.\n";
