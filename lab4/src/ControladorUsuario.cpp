@@ -3,6 +3,7 @@
 #include "VehiculoHandler.h"
 #include "ViajeHandler.h"
 #include "Conductor.h"
+#include "Viaje.h"
 
 bool ControladorUsuario::altaPasajero(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::string ci) {
     UsuarioHandler* uh = UsuarioHandler::getInstancia();
@@ -56,4 +57,21 @@ std::set<DTUsuarioViaje> ControladorUsuario::listarUsuariosViaje(int codigo) {
 
 bool ControladorUsuario::calificarUsuario(std::string nicknameCalificado, int calificacion) {
     return false;
+}
+
+std::vector<DTListarViaje> ControladorUsuario::listarViajes() {
+    ViajeHandler* vh = ViajeHandler::getInstancia();
+    return vh->getDTListarViajes();
+}
+
+DTDetalleViaje ControladorUsuario::detalleViaje(int codigo) {
+    //implementar
+}
+
+void ControladorUsuario::eliminarViaje() {
+    //implementar
+}
+
+void ControladorUsuario::cancelarEliminarViaje() {
+    //implementar
 }

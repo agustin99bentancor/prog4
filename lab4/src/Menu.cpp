@@ -305,7 +305,7 @@ void Menu::calificarUsuario() {
 
 void Menu::eliminarViaje() {
     IUsuario* controlador = Fabrica::getInstance()->getIUsuario();
-    std::set<DTListarViaje> viajes = controlador->listarViajes();
+    std::vector<DTListarViaje> viajes = controlador->listarViajes();
     for(auto viaje : viajes){
         std::cout << "> " << viaje;
     }
@@ -326,11 +326,11 @@ void Menu::eliminarViaje() {
 
     DTDetalleViaje detalle = controlador->detalleViaje(codigo);
     std::cout << ">> Viaje <<\n" << "--- " << detalle.getVehiculo().getMatricula() << ", Fecha: " << detalle.getFecha() << ", Origen: " << detalle.getOrigen() << ", Destino: " << detalle.getDestino() << ", Capacidad: " << detalle.getAsientosPublicados() << ", Precio: " << detalle.getPrecio() << "\n";
-    std::cout << ">> Vehiculo <<\n" << "--- " << detalle.getVehiculo();
+    std::cout << ">> Vehiculo <<\n" << "--- " << detalle.getVehiculo() << "\n";
     std::cout << ">> Reservas <<\n";
     auto reservas = detalle.getReservas();
     for(auto reserva : reservas){
-        std::cout << "--- " << reserva;        
+        std::cout << "--- " << reserva << "\n";        
     }
     int confirmar;
     std::cout << "¿Confirmar eliminacion? (1: Si, 0: No): "; std::cin >> confirmar;
@@ -339,7 +339,7 @@ void Menu::eliminarViaje() {
         controlador->eliminarViaje();
         std::cout << "Viaje eliminado exitosamente.\n";
     } else {
-        controlador->cancelarEliminarViaje()
+        controlador->cancelarEliminarViaje();
         std::cout << "Eliminacion cancelada.\n";
     }
 }

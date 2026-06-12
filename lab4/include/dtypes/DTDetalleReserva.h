@@ -13,9 +13,11 @@ private:
 public:
     DTDetalleReserva(int asientosReservados, DTFecha fecha, std::string pasajero);
 
-    int getAsientosReservados();
-    DTFecha getFecha();
-    std::string getPasajero();
+    int getAsientosReservados() const;
+    DTFecha getFecha() const;
+    std::string getPasajero() const;
 };
+
+std::ostream& operator<<(std::ostream& os, const DTDetalleReserva& v);
 
 #endif

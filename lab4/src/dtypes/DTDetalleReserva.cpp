@@ -6,6 +6,12 @@ DTDetalleReserva::DTDetalleReserva(int asientosReservados, DTFecha fecha, std::s
     this->pasajero = pasajero;
 }
 
-int DTDetalleReserva::getAsientosReservados() { return asientosReservados; }
-DTFecha DTDetalleReserva::getFecha() { return fecha; }
-std::string DTDetalleReserva::getPasajero() { return pasajero; }
+int DTDetalleReserva::getAsientosReservados() const { return asientosReservados; }
+DTFecha DTDetalleReserva::getFecha() const { return fecha; }
+std::string DTDetalleReserva::getPasajero() const { return pasajero; }
+
+std::ostream& operator<<(std::ostream& os, const DTDetalleReserva& r) {
+    std::ostream& ret = os;
+    ret << "AsientosReservados: " << r.getAsientosReservados() << ", Fecha: " << r.getFecha() << ", Pasajero: " << r.getPasajero();
+    return ret;
+}
