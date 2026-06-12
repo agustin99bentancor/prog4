@@ -19,9 +19,11 @@ IControladorFechaActual* Fabrica::getIControladorFechaActual() {
 }
 
 IUsuario* Fabrica::getIUsuario() {
-    return new ControladorUsuario();
+    static ControladorUsuario instancia;
+    return &instancia;
 }
 
 IReserva* Fabrica::getIReserva() {
-    return new ControladorReserva();
+    static ControladorReserva instancia;
+    return &instancia;
 }
