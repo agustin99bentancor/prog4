@@ -351,7 +351,7 @@ void Menu::eliminarViaje() {
     std::cout << "Origen: " << detalle.getOrigen() << "\n";
     std::cout << "Destino: " << detalle.getDestino() << "\n";
     std::cout << "Asientos Publicados: " << detalle.getAsientosPublicados() << "\n";
-    std::cout << "Precio: " << detalle.getPrecio() << "\n";
+    std::cout << "Precio por asiento: " << detalle.getPrecio() << "\n";
 
     DTDetalleVehiculo v = detalle.getVehiculo();
     std::cout << "\n-- Vehiculo asociado al Viaje --\n";
