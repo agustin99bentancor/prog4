@@ -11,7 +11,6 @@ DTFecha DTDetalleReserva::getFecha() const { return fecha; }
 std::string DTDetalleReserva::getPasajero() const { return pasajero; }
 
 std::ostream& operator<<(std::ostream& os, const DTDetalleReserva& r) {
-    std::ostream& ret = os;
-    ret << "AsientosReservados: " << r.getAsientosReservados() << ", Fecha: " << r.getFecha() << ", Pasajero: " << r.getPasajero();
-    return ret;
+    os << "AsientosReservados: " << r.getAsientosReservados() << ", Fecha: " << r.getFecha() << ", Pasajero: " << r.getPasajero();
+    return os;
 }

@@ -1,8 +1,6 @@
 #include "Viaje.h"
 #include "Reserva.h"
 #include "Vehiculo.h"
-#include "dtypes/DTListarViaje.h"
-#include "dtypes/DTDetalleVehiculo.h"
 
 int Viaje::codigoGlobal = 0;
 
@@ -16,7 +14,12 @@ Viaje::Viaje(Vehiculo* v, DTFecha fecha, std::string origen, std::string destino
     this->codigo = obtenerCodigo();
 }
 
-Viaje::~Viaje() {}
+Viaje::~Viaje() {
+    vehiculo->removerViaje(this);
+    for (auto reserva : reservas) {
+        delete reserva;
+    }
+}
 
 DTFecha Viaje::getFecha() {
     return fecha;
@@ -44,65 +47,18 @@ int Viaje::obtenerCodigo() {
     return cod;
 }
 
-
 DTListarViaje Viaje::getDTListarViaje() {
-    return DTListarViaje(
-        this->codigo,
-        this->fecha,
-        this->origen,
-        this->destino,
-        this->vehiculo->getNicknameConductor()
-    );
-}
-
-Vehiculo* Viaje::getVehiculo() {
-    return this->vehiculo;
-}
-
-void Viaje::eliminarReservas() {
-    for (std::set<Reserva*>::iterator it = reservas.begin(); it != reservas.end(); ++it) {
-        delete *it;
-    }
-    reservas.clear();
+    return DTListarViaje(codigo, fecha, origen, destino, vehiculo->getNicknameConductor());
 }
 
 DTDetalleViaje Viaje::getDTDetalleViaje() {
-
     std::vector<DTDetalleReserva> res;
-
-    for (Reserva* r : reservas) {
-        res.push_back(
-            DTDetalleReserva(
-                r->getAsientosReservados(),
-                r->getFecha(),
-                r->getNickPasajero()
-            )
-        );
+    for (Reserva* reserva : reservas) {
+        res.push_back(reserva->getDTDetalleReserva());
     }
-
-    return DTDetalleViaje(
-        codigo,
-        fecha,
-        origen,
-        destino,
-        asientosPublicados,
-        precio,
-        vehiculo->getDTDetalleVehiculo(),
-        res
-    );
+    return DTDetalleViaje(codigo, fecha, origen, destino, asientosPublicados, precio, vehiculo->getDTDetalleVehiculo(), res);
 }
 
-std::string Viaje::getOrigen(){
-    return origen;
-}
-std::string Viaje::getDestino(){
-    return destino;
-}
-int Viaje::getAsientosPublicados(){
-    return asientosPublicados;
-}
-float Viaje::getPrecio(){
-    return precio;
 int Viaje::getAReservados() {
     int reservados = 0;
     for(auto reserva : reservas){

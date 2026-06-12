@@ -9,13 +9,6 @@
 #include <limits>
 #include <string>
 #include <set>
-#include <map>
-#include "ViajeHandler.h"
-#include "Viaje.h"
-#include "dtypes/DTListarViaje.h"
-#include "dtypes/DTDetalleViaje.h"
-#include "dtypes/DTDetalleReserva.h"
-#include "dtypes/DTDetalleVehiculo.h"
 
 void Menu::altaUsuario() {
     int tipoUsuario;
@@ -321,34 +314,40 @@ void Menu::calificarUsuario() {
 }
 
 void Menu::eliminarViaje() {
-    IUsuario* controlador = Fabrica::getInstance()->getIUsuario();
+    IReserva* controlador = Fabrica::getInstance()->getIReserva();
     std::vector<DTListarViaje> viajes = controlador->listarViajes();
     for(auto viaje : viajes){
         std::cout << "> " << viaje;
     }
+
     int codigo;
     std::cout << "Ingrese codigo del viaje a eliminar: "; std::cin >> codigo;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     bool codigoValido = false;
+
     for(auto viaje : viajes){
         if(viaje.getCodigo() == codigo){
             codigoValido = true;
             break;
         }
     }
+
     if (!codigoValido) {
         std::cout << "Codigo invalido.\n";
         return;
     }
 
     DTDetalleViaje detalle = controlador->detalleViaje(codigo);
-    std::cout << ">> Viaje <<\n" << "--- " << detalle.getVehiculo().getMatricula() << ", Fecha: " << detalle.getFecha() << ", Origen: " << detalle.getOrigen() << ", Destino: " << detalle.getDestino() << ", Capacidad: " << detalle.getAsientosPublicados() << ", Precio: " << detalle.getPrecio() << "\n";
-    std::cout << ">> Vehiculo <<\n" << "--- " << detalle.getVehiculo() << "\n";
-    std::cout << ">> Reservas <<\n";
+    std::cout << ">> Viaje <<" << "\n";
+    std::cout << "--- " << detalle.getVehiculo().getMatricula() << ", Fecha: " << detalle.getFecha() << ", Origen: " << detalle.getOrigen() << ", Destino: " << detalle.getDestino() << ", Capacidad: " << detalle.getAsientosPublicados() << ", Precio: " << detalle.getPrecio() << "\n";
+    std::cout << ">> Vehiculo <<" << "\n";
+    std::cout << "--- " << detalle.getVehiculo() << "\n";
+    std::cout << ">> Reservas <<" << "\n";
     auto reservas = detalle.getReservas();
     for(auto reserva : reservas){
         std::cout << "--- " << reserva << "\n";        
     }
+
     int confirmar;
     std::cout << "¿Confirmar eliminacion? (1: Si, 0: No): "; std::cin >> confirmar;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

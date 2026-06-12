@@ -4,10 +4,6 @@
 #include "IUsuario.h"
 
 class ControladorUsuario : public IUsuario {
-private:
-    int CODIGO_NULO = -1;
-    int codigoViajeAEliminar;
-
 public:
 
     bool altaPasajero(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::string ci);
@@ -17,10 +13,6 @@ public:
     std::set<DTListarViaje> listarViajes(std::string nickname);
     std::set<DTUsuarioViaje> listarUsuariosViaje(int codigo);
     bool calificarUsuario(std::string nicknameCalificado, int calificacion);
-    std::vector<DTListarViaje> listarViajes();
-    DTDetalleViaje detalleViaje(int codigo);
-    void eliminarViaje();
-    void cancelarEliminarViaje();
 };
 
 #endif

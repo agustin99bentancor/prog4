@@ -7,4 +7,7 @@ Calificacion::Calificacion(DTFecha fecha, int puntaje) {
     this->puntaje = puntaje;
 }
 
-Calificacion::~Calificacion() {}
+Calificacion::~Calificacion() {
+    realiza->eliminarRealiza(this);
+    califica->eliminarRecibe(this);
+}

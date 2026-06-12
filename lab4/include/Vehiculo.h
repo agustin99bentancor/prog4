@@ -37,11 +37,11 @@ public:
     bool hayViajesConductor(DTFecha fecha);
     bool hayViajesFecha(DTFecha fecha);
     void asociarViaje(Viaje* cvi);
+    void removerViaje(Viaje* v);
     int getCapacidad();
 
     std::string getMatricula();
-void removerViaje(Viaje* v);
-DTDetalleVehiculo getDTDetalleVehiculo();
+    DTDetalleVehiculo getDTDetalleVehiculo();
     std::string getMarca();
     std::string getModelo();
 };

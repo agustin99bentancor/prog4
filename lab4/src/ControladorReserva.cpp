@@ -19,10 +19,10 @@ std::multiset<DTConsultaViaje> ControladorReserva::consultarViajes(DTFecha fecha
     ViajeHandler* vih = ViajeHandler::getInstancia();
     std::set<Viaje*> viajes = vih->getViajes();
 
-    for(std::set<Viaje*>::iterator it = viajes.begin(); it != viajes.end(); ++it){
-        int reservados = (*it)->getAReservados();
-        if((*it)->getFecha() == fecha && (*it)->getOrigen() == origen && (*it)->getDestino() == destino && reservados + asientos <= (*it)->getAsientosPublicados()){
-            ret.insert((*it)->getDTcv(asientos));
+    for(auto viaje : viajes){
+        int reservados = viaje->getAReservados();
+        if(viaje->getFecha() == fecha && viaje->getOrigen() == origen && viaje->getDestino() == destino && reservados + asientos <= viaje->getAsientosPublicados()){
+            ret.insert(viaje->getDTcv(asientos));
         }
     }
     
@@ -65,4 +65,26 @@ bool ControladorReserva::altaViaje(std::string matricula, DTFecha fecha, std::st
     Viaje* cvi = vih->crearViaje(v, fecha, origen, destino, asientos, precio);
     v->asociarViaje(cvi);
     return true;
+}
+
+std::vector<DTListarViaje> ControladorReserva::listarViajes() {
+    ViajeHandler* vh = ViajeHandler::getInstancia();
+    return vh->getDTListarViajes();
+}
+
+DTDetalleViaje ControladorReserva::detalleViaje(int codigo) {
+    codigoViajeAEliminar = codigo;
+    ViajeHandler* vh = ViajeHandler::getInstancia();
+    Viaje* v = vh->getViaje(codigo);
+    DTDetalleViaje dtvi = v->getDTDetalleViaje();
+    return dtvi;
+}
+
+void ControladorReserva::eliminarViaje() {
+    ViajeHandler* vh = ViajeHandler::getInstancia();
+    vh->eliminarViaje(codigoViajeAEliminar);
+}
+
+void ControladorReserva::cancelarEliminarViaje() {
+    codigoViajeAEliminar = CODIGO_NULO;
 }

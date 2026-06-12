@@ -2,13 +2,16 @@
 #define RESERVA_H
 
 #include <string>
+#include <set>
 
 #include "dtypes/DTFecha.h"
 #include "dtypes/DTListarViaje.h"
 #include "dtypes/DTUsuarioViaje.h"
+#include "dtypes/DTDetalleReserva.h"
 
 class Pasajero;
 class Viaje;
+class Calificacion;
 
 class Reserva {
 private:
@@ -17,6 +20,7 @@ private:
 
     Pasajero* pasajero;
     Viaje* viaje;
+    std::set<Calificacion*> calificaciones;
 
 public:
     Reserva(int asientosReservados, DTFecha fecha, Pasajero* p, Viaje* v);
@@ -28,6 +32,7 @@ public:
     std::string getNickPasajero();
     int getAsientosReservados();
     DTFecha getFecha();
+    DTDetalleReserva getDTDetalleReserva();
 };
 
 #endif

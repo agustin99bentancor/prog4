@@ -44,15 +44,10 @@ public:
 
     DTFecha getFecha();
     int getCodigo();
-    static int obtenerCodigo();
-    Vehiculo* getVehiculo();
-    void eliminarReservas();
     DTDetalleViaje getDTDetalleViaje();
-
     std::string getOrigen();
     std::string getDestino();
     int getAsientosPublicados();
-    float getPrecio();
 };
 
 #endif

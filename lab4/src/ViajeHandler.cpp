@@ -3,7 +3,6 @@
 #include "Vehiculo.h"
 #include "Conductor.h"
 
-
 ViajeHandler* ViajeHandler::instancia = nullptr;
 
 ViajeHandler::ViajeHandler() {}
@@ -22,40 +21,24 @@ Viaje* ViajeHandler::crearViaje(Vehiculo* v, DTFecha fecha, std::string origen, 
 }
 
 Viaje* ViajeHandler::getViaje(int codigo){
-    auto it = viajes.find(codigo);
-
-    if (it != viajes.end()) {
-        return it->second;
+    if (viajes.find(codigo) != viajes.end()) {
+        return viajes[codigo];
     }
-
     return nullptr;
 }
 
 std::vector<DTListarViaje> ViajeHandler::getDTListarViajes() {
     std::vector<DTListarViaje> ret;
-
-    for (auto it = viajes.begin(); it != viajes.end(); ++it) {
-        ret.push_back(it->second->getDTListarViaje());
+    for (auto& [codigo, viaje] : viajes) {
+        ret.push_back(viaje->getDTListarViaje());
     }
-
     return ret;
 }
+
 void ViajeHandler::eliminarViaje(int codigo) {
-
-    Viaje* v = viajes.at(codigo);
-
-    v->eliminarReservas();
-
-    v->getVehiculo()->removerViaje(v);
-
+    Viaje* v = viajes[codigo];
     viajes.erase(codigo);
-
     delete v;
-}
-    if (viajes.find(codigo) != viajes.end()) {
-        return viajes[codigo];
-    }
-    return nullptr;
 }
 
 std::set<Viaje*> ViajeHandler::getViajes() {

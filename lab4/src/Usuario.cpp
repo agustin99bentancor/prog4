@@ -18,3 +18,11 @@ std::string Usuario::getNickname() {
 float Usuario::getCalificacionPromedio() {
     return calificacionPromedio;
 }
+
+void Usuario::eliminarRealiza(Calificacion* ca) {
+    realiza.erase(ca);
+}
+
+void Usuario::eliminarRecibe(Calificacion* ca) {
+    recibe.erase(ca);
+}
