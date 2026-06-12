@@ -79,3 +79,16 @@ DTDetalleViaje Viaje::getDTDetalleViaje() {
         res
     );
 }
+
+std::string Viaje::getOrigen(){
+    return origen;
+}
+std::string Viaje::getDestino(){
+    return destino;
+}
+int Viaje::getAsientosPublicados(){
+    return asientosPublicados;
+}
+float Viaje::getPrecio(){
+    return precio;
+}
