@@ -2,7 +2,7 @@
 #define VEHICULO_HANDLER_H
 
 #include <string>
-#include <set>
+#include <map>
 
 #include "dtypes/TipoVehiculo.h"
 #include "../include/Vehiculo.h"
@@ -14,7 +14,7 @@ class VehiculoHandler {
 private:
 
     static VehiculoHandler* instancia;
-    std::set<Vehiculo*> vehiculos;
+    std::map<std::string, Vehiculo*> vehiculos;
 
     VehiculoHandler();
 public:

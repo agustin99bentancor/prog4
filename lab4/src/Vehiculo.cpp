@@ -37,9 +37,10 @@ void Vehiculo::removerViaje(Viaje* v) {
 }
 
 bool Vehiculo::hayViajesFecha(DTFecha fecha) {
-    for (Viaje* v : viajes) {
-        if (v->getFecha() == fecha)
+    for (auto viaje : viajes) {
+        if (viaje->getFecha() == fecha) {
             return true;
+        }
     }
     return false;
 }

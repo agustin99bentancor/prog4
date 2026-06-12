@@ -3,6 +3,7 @@
 
 #include <string>
 #include <set>
+#include <map>
 
 #include "dtypes/TipoLibreta.h"
 #include "dtypes/DTUsuario.h"
@@ -13,7 +14,7 @@ class UsuarioHandler {
 private:
 
     static UsuarioHandler* instancia;
-    std::set<Usuario*> usuarios;
+    std::map<std::string, Usuario*> usuarios;
 
     UsuarioHandler();
 public:

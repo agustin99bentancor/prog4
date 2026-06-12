@@ -23,7 +23,10 @@ Viaje* ViajeHandler::crearViaje(Vehiculo* v, DTFecha fecha, std::string origen, 
 }
 
 Viaje* ViajeHandler::getViaje(int codigo){
-    return viajes[codigo];
+    if (viajes.find(codigo) != viajes.end()) {
+        return viajes[codigo];
+    }
+    return nullptr;
 }
 
 std::set<Viaje*> ViajeHandler::getViajes() {
