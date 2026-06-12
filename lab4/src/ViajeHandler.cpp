@@ -23,10 +23,10 @@ Viaje* ViajeHandler::crearViaje(Vehiculo* v, DTFecha fecha, std::string origen, 
 }
 
 Viaje* ViajeHandler::getViaje(int codigo){
-    if (viajes.find(codigo) != viajes.end()) {
-        return viajes[codigo];
-    }
-    return nullptr;
+   if (viajes.find(codigo) != viajes.end()) {
+    return viajes[codigo];
+  }
+ return nullptr;
 }
 
 std::set<Viaje*> ViajeHandler::getViajes() {
@@ -70,7 +70,7 @@ void ViajeHandler::eliminarViaje(int codigo) {
 
     v->eliminarReservas();         
 
-    v->getVehiculo()->removerViaje(v);
+    v->desasociarVehiculo();
 
     delete v;
 

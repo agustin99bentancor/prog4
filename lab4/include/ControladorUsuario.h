@@ -13,6 +13,9 @@ public:
     std::set<DTListarViaje> listarViajes(std::string nickname);
     std::set<DTUsuarioViaje> listarUsuariosViaje(int codigo);
     bool calificarUsuario(std::string nicknameCalificado, int calificacion);
+    void eliminarViaje(int codigo);
+    DTDetalleViaje obtenerDetalleViaje(int codigo);
+    std::vector<DTListarViaje> listarViajes();
 };
 
 #endif

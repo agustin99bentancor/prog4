@@ -322,9 +322,8 @@ void Menu::calificarUsuario() {
 
 void Menu::eliminarViaje() {
 
-    IReserva* reserva = Fabrica::getInstance()->getIReserva();
-
-    std::vector<DTListarViaje> viajes = reserva->listarViajes();
+    IUsuario* controlador = Fabrica::getInstance()->getIUsuario();
+    std::vector<DTListarViaje> viajes = controlador->listarViajes();
 
     if (viajes.empty()) {
         std::cout << "No hay viajes disponibles.\n";
@@ -345,7 +344,7 @@ void Menu::eliminarViaje() {
     std::cout << "\nIngrese codigo del viaje: ";
     std::cin >> codigo;
 
-    DTDetalleViaje detalle = reserva->obtenerDetalleViaje(codigo);
+    DTDetalleViaje detalle = controlador->obtenerDetalleViaje(codigo);
 
     std::cout << "\n>> Viaje <<\n";
     std::cout << "Codigo: " << detalle.getCodigo() << "\n";
@@ -358,7 +357,7 @@ void Menu::eliminarViaje() {
     std::cin >> confirmar;
 
     if (confirmar == 1) {
-    reserva->eliminarViaje(codigo);
+    controlador->eliminarViaje(codigo);
     std::cout << "Eliminado correctamente\n";
     }
     else {

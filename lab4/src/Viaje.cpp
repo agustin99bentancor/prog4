@@ -122,3 +122,10 @@ DTDetalleViaje Viaje::getDTDetalleViaje() {
         datosReservas
     );
 }
+
+void Viaje::desasociarVehiculo() {
+    if (vehiculo != nullptr) {
+        vehiculo->removerViaje(this);
+        vehiculo = nullptr;
+    }
+}

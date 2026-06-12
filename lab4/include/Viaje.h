@@ -51,6 +51,7 @@ public:
     void eliminarReservas();
     void eliminarCalificaciones();
     DTDetalleViaje getDTDetalleViaje();
+    void desasociarVehiculo();
 };
 
 #endif
