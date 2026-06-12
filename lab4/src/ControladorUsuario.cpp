@@ -69,3 +69,7 @@ DTDetalleViaje ControladorUsuario::obtenerDetalleViaje(int codigo) {
 std::vector<DTListarViaje> ControladorUsuario::listarViajes() {
     return ViajeHandler::getInstancia()->getDTListarViajes();
 }
+
+std::string ControladorUsuario::cancelarEliminarViaje(int codigo) {
+    return "Se ha cancelado la eliminacion del Viaje con el codigo " + std::to_string(codigo);
+}

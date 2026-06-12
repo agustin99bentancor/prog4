@@ -24,7 +24,7 @@ public:
     virtual std::set<DTUsuarioViaje> listarUsuariosViaje(int codigo) = 0;
     virtual bool calificarUsuario(std::string nicknameCalificado, int calificacion) = 0;
     virtual void eliminarViaje(int codigo) = 0;
-    virtual DTDetalleViaje obtenerDetalleViaje(int codigo) = 0;
+    virtual std::string cancelarEliminarViaje(int codigo) = 0;    virtual DTDetalleViaje obtenerDetalleViaje(int codigo) = 0;
     virtual std::vector<DTListarViaje> listarViajes() = 0;
 };
 

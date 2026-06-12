@@ -359,6 +359,7 @@ void Menu::eliminarViaje() {
     std::cout << "Marca: " << v.getMarca() << "\n";
     std::cout << "Modelo: " << v.getModelo() << "\n";
     std::cout << "Capacidad: " << v.getCapacidad() << "\n";
+    std::cout << "Tipo de vehiculo: " << v.getTipo() << "\n";
 
     std::cout << "\n-- Reservas asociadas al Viaje--\n";
     std::vector<DTDetalleReserva> reservas = detalle.getReservas();
@@ -382,7 +383,7 @@ void Menu::eliminarViaje() {
     std::cout << "Eliminado correctamente\n";
     }
     else {
-    std::cout << "Cancelado\n";
+    std::cout << controlador->cancelarEliminarViaje(codigo) << std::endl;
     }
 }
 
