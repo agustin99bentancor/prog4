@@ -15,3 +15,11 @@ void Pasajero::agregarReserva(Reserva* r) {
 void Pasajero::eliminarReserva(Reserva* r) {
     reservas.erase(r);
 }
+
+std::vector<DTListarViaje> Pasajero::getDTListarViajes() {
+    std::vector<DTListarViaje> ret;
+    for (auto reserva : reservas) {
+        ret.push_back(reserva->getDTListarViaje());
+    }
+    return ret;
+}

@@ -65,3 +65,19 @@ void Vehiculo::removerViaje(Viaje* v) {
 DTDetalleVehiculo Vehiculo::getDTDetalleVehiculo(){
     return DTDetalleVehiculo(matricula, capacidad, marca, modelo, tipo);
 }
+
+std::vector<DTListarViaje> Vehiculo::getDTListarViajes() {
+    std::vector<DTListarViaje> ret;
+    for(auto viaje : viajes){
+        ret.push_back(viaje->getDTListarViaje());
+    }
+    return ret;
+}
+
+DTUsuarioViaje Vehiculo::getDatosConductor() {
+    return DTUsuarioViaje(conductor->getNickname(), TipoUsuario::Conductor);
+}
+
+std::string Vehiculo::getNombreConductor() {
+    return conductor->getNombre();
+}

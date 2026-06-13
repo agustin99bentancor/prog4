@@ -5,7 +5,7 @@
 
 class ControladorReserva : public IReserva {
 private:
-    int CODIGO_NULO = -1;
+    static const int CODIGO_NULO = -1;
     int codigoViajeAEliminar;
 
 public:

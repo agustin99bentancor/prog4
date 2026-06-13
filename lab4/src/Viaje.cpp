@@ -70,7 +70,7 @@ int Viaje::getAReservados() {
 DTConsultaViaje Viaje::getDTcv(int asientos) {
     std::string marca = vehiculo->getMarca();
     std::string modelo = vehiculo->getModelo();
-    std::string conductor = vehiculo->getNicknameConductor();
+    std::string conductor = vehiculo->getNombreConductor();
     float calificacion = vehiculo->getCalificacionConductor();
     return DTConsultaViaje(codigo, marca, modelo, conductor, calificacion, precio * asientos);
 }
@@ -93,4 +93,37 @@ bool Viaje::puedeReservar(std::string nickname, int asientos) {
         }
     }
     return true;
+}
+
+DTUsuarioViaje Viaje::getDatosConductor() {
+    return vehiculo->getDatosConductor();
+}
+
+std::vector<DTUsuarioViaje> Viaje::getDatosPasajeros() {
+    std::vector<DTUsuarioViaje> ret;
+    for (Reserva* reserva : reservas) {
+        ret.push_back(reserva->getDatosPasajero());
+    }
+    return ret;
+}
+
+bool Viaje::pertenece(std::string nickname) {
+    if (vehiculo->getNicknameConductor() == nickname) {
+        return true;
+    }
+    for (Reserva* reserva : reservas) {
+        if (reserva->getNickPasajero() == nickname) {
+            return true;
+        }
+    }
+    return false;
+}
+
+Reserva* Viaje::getReservaByNick(std::string nick) {
+    for (Reserva* reserva : reservas) {
+        if (reserva->getNickPasajero() == nick) {
+            return reserva;
+        }
+    }
+    return nullptr;
 }

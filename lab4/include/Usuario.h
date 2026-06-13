@@ -3,6 +3,7 @@
 
 #include <string>
 #include <set>
+#include <vector>
 
 #include "dtypes/DTUsuario.h"
 #include "dtypes/DTListarViaje.h"
@@ -25,14 +26,16 @@ public:
     virtual ~Usuario();
 
     DTUsuario getDT();
-    std::set<DTListarViaje> getDTListarViajes();
+    virtual std::vector<DTListarViaje> getDTListarViajes() = 0;
     bool existeCalificacion(std::string nicknameCalificado, int codigo);
-    void agregarCalificacion(Calificacion* ca);
+    void agregarRealiza(Calificacion* ca);
+    void agregarRecibe(Calificacion* ca);
     void eliminarRealiza(Calificacion* ca);
     void eliminarRecibe(Calificacion* ca);
 
     std::string getNickname();
     float getCalificacionPromedio();
+    std::string getNombre();
 };
 
 #endif

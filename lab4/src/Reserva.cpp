@@ -28,3 +28,19 @@ std::string Reserva::getNickPasajero() {
 DTDetalleReserva Reserva::getDTDetalleReserva() {
     return DTDetalleReserva(asientosReservados, fecha, pasajero->getNickname());
 }
+
+DTListarViaje Reserva::getDTListarViaje() {
+    return viaje->getDTListarViaje();
+}
+
+DTUsuarioViaje Reserva::getDatosPasajero() {
+    return DTUsuarioViaje(pasajero->getNickname(), TipoUsuario::Pasajero);
+}
+
+void Reserva::agregarCalificacion(Calificacion* ca) {
+    calificaciones.insert(ca);
+}
+
+int Reserva::getCodigoViaje() {
+    return viaje->getCodigo();
+}

@@ -33,3 +33,12 @@ std::vector<DTVehiculosConductor> Conductor::listarVehiculos() {
     }
     return ret;
 }
+
+std::vector<DTListarViaje> Conductor::getDTListarViajes() {
+    std::vector<DTListarViaje> ret;
+    for(auto vehiculo : vehiculos){
+        std::vector<DTListarViaje> dtlvs = vehiculo->getDTListarViajes();
+        ret.insert(ret.end(), dtlvs.begin(), dtlvs.end());
+    }
+    return ret;
+}

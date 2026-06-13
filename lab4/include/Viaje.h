@@ -33,7 +33,7 @@ public:
 
     DTListarViaje getDTListarViaje();
     DTUsuarioViaje getDatosConductor();
-    std::set<DTUsuarioViaje> getDatosPasajeros();
+    std::vector<DTUsuarioViaje> getDatosPasajeros();
     bool pertenece(std::string nickname);
     Reserva* getReservaByNick(std::string nick);
     int getAReservados();

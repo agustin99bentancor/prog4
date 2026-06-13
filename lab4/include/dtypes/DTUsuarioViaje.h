@@ -3,6 +3,7 @@
 
 #include "TipoUsuario.h"
 #include <string>
+#include <iostream>
 
 class DTUsuarioViaje {
 private:
@@ -12,8 +13,10 @@ private:
 public:
     DTUsuarioViaje(std::string nickname, TipoUsuario tipo);
 
-    std::string getNickname();
-    TipoUsuario getTipo();
+    std::string getNickname() const;
+    TipoUsuario getTipo() const;
 };
+
+std::ostream& operator<<(std::ostream& os, const DTUsuarioViaje& dtUsuarioViaje);
 
 #endif

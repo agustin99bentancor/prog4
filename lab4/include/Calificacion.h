@@ -18,6 +18,12 @@ private:
 public:
     Calificacion(DTFecha fecha, int puntaje);
     ~Calificacion();
+
+    void setCalificador(Usuario* u);
+    void setCalificado(Usuario* u);
+    void setReserva(Reserva* r);
+    Usuario* getCalificado();
+    Reserva* getReserva();
 };
 
 #endif

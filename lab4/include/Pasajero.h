@@ -18,7 +18,7 @@ public:
     Pasajero(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::string documento);
     ~Pasajero();
 
-    std::set<DTListarViaje> getDTListarViajes();
+    std::vector<DTListarViaje> getDTListarViajes();
     void agregarReserva(Reserva* r);
     void eliminarReserva(Reserva* r);
 };

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <set>
+#include <vector>
 
 #include "dtypes/TipoVehiculo.h"
 #include "dtypes/DTListarViaje.h"
@@ -28,7 +29,7 @@ public:
     Vehiculo(std::string matricula, int capacidad, std::string marca, std::string modelo, TipoVehiculo tipo, Conductor* conductor);
     ~Vehiculo();
 
-    std::set<DTListarViaje> getDTListarViajes();
+    std::vector<DTListarViaje> getDTListarViajes();
     std::string getNicknameConductor();
     DTUsuarioViaje getDatosConductor();
     std::string getNombreConductor();
