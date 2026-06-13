@@ -27,6 +27,20 @@ Viaje* ViajeHandler::getViaje(int codigo){
     return nullptr;
 }
 
+std::vector<DTListarViaje> ViajeHandler::getDTListarViajes() {
+    std::vector<DTListarViaje> ret;
+    for (auto& [codigo, viaje] : viajes) {
+        ret.push_back(viaje->getDTListarViaje());
+    }
+    return ret;
+}
+
+void ViajeHandler::eliminarViaje(int codigo) {
+    Viaje* v = viajes[codigo];
+    viajes.erase(codigo);
+    delete v;
+}
+
 std::set<Viaje*> ViajeHandler::getViajes() {
     std::set<Viaje*> ret;
     for (auto& [codigo, viaje] : viajes) {

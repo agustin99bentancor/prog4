@@ -11,3 +11,7 @@ Pasajero::~Pasajero() {}
 void Pasajero::agregarReserva(Reserva* r) {
     reservas.insert(r);
 }
+
+void Pasajero::eliminarReserva(Reserva* r) {
+    reservas.erase(r);
+}

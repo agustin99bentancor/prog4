@@ -18,6 +18,7 @@ protected:
     float calificacionPromedio;
 
     std::set<Calificacion*> realiza;
+    std::set<Calificacion*> recibe;
     
 public:
     Usuario(std::string nickname, std::string nombre, std::string contrasena, std::string email);
@@ -27,6 +28,8 @@ public:
     std::set<DTListarViaje> getDTListarViajes();
     bool existeCalificacion(std::string nicknameCalificado, int codigo);
     void agregarCalificacion(Calificacion* ca);
+    void eliminarRealiza(Calificacion* ca);
+    void eliminarRecibe(Calificacion* ca);
 
     std::string getNickname();
     float getCalificacionPromedio();

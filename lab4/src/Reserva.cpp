@@ -1,5 +1,6 @@
 #include "Reserva.h"
 #include "Pasajero.h"
+#include "Calificacion.h"
 #include "Viaje.h"
 
 Reserva::Reserva(int asientosReservados, DTFecha fecha, Pasajero* p, Viaje* v) {
@@ -9,7 +10,12 @@ Reserva::Reserva(int asientosReservados, DTFecha fecha, Pasajero* p, Viaje* v) {
     this->viaje = v;
 }
 
-Reserva::~Reserva() {}
+Reserva::~Reserva() {
+    for (auto calificacion : calificaciones) {
+        delete calificacion;
+    }
+    pasajero->eliminarReserva(this);
+}
 
 int Reserva::getAsientosReservados() {
     return asientosReservados;
@@ -17,4 +23,8 @@ int Reserva::getAsientosReservados() {
 
 std::string Reserva::getNickPasajero() {
     return pasajero->getNickname();
+}
+
+DTDetalleReserva Reserva::getDTDetalleReserva() {
+    return DTDetalleReserva(asientosReservados, fecha, pasajero->getNickname());
 }

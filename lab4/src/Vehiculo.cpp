@@ -57,3 +57,11 @@ void Vehiculo::asociarViaje(Viaje* cvi) {
 DTVehiculosConductor Vehiculo::getDTVehiculoConductor() {
     return DTVehiculosConductor(matricula, modelo, capacidad);
 }
+
+void Vehiculo::removerViaje(Viaje* v) {
+    viajes.erase(v);
+}
+
+DTDetalleVehiculo Vehiculo::getDTDetalleVehiculo(){
+    return DTDetalleVehiculo(matricula, capacidad, marca, modelo, tipo);
+}

@@ -20,6 +20,7 @@ public:
 
     std::set<DTListarViaje> getDTListarViajes();
     void agregarReserva(Reserva* r);
+    void eliminarReserva(Reserva* r);
 };
 
 #endif

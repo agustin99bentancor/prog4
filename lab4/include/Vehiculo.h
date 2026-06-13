@@ -8,6 +8,7 @@
 #include "dtypes/DTListarViaje.h"
 #include "dtypes/DTUsuarioViaje.h"
 #include "dtypes/DTVehiculosConductor.h"
+#include "dtypes/DTDetalleVehiculo.h"
 
 class Viaje;
 class Conductor;
@@ -36,9 +37,11 @@ public:
     bool hayViajesConductor(DTFecha fecha);
     bool hayViajesFecha(DTFecha fecha);
     void asociarViaje(Viaje* cvi);
+    void removerViaje(Viaje* v);
     int getCapacidad();
 
     std::string getMatricula();
+    DTDetalleVehiculo getDTDetalleVehiculo();
     std::string getMarca();
     std::string getModelo();
 };

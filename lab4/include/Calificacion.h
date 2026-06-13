@@ -13,6 +13,7 @@ private:
 
     Reserva* reserva;
     Usuario* califica;
+    Usuario* realiza;
 
 public:
     Calificacion(DTFecha fecha, int puntaje);

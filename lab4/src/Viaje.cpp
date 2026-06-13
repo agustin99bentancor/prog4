@@ -14,7 +14,12 @@ Viaje::Viaje(Vehiculo* v, DTFecha fecha, std::string origen, std::string destino
     this->codigo = obtenerCodigo();
 }
 
-Viaje::~Viaje() {}
+Viaje::~Viaje() {
+    vehiculo->removerViaje(this);
+    for (auto reserva : reservas) {
+        delete reserva;
+    }
+}
 
 DTFecha Viaje::getFecha() {
     return fecha;
@@ -40,6 +45,18 @@ int Viaje::obtenerCodigo() {
     int cod = codigoGlobal;
     codigoGlobal++;
     return cod;
+}
+
+DTListarViaje Viaje::getDTListarViaje() {
+    return DTListarViaje(codigo, fecha, origen, destino, vehiculo->getNicknameConductor());
+}
+
+DTDetalleViaje Viaje::getDTDetalleViaje() {
+    std::vector<DTDetalleReserva> res;
+    for (Reserva* reserva : reservas) {
+        res.push_back(reserva->getDTDetalleReserva());
+    }
+    return DTDetalleViaje(codigo, fecha, origen, destino, asientosPublicados, precio, vehiculo->getDTDetalleVehiculo(), res);
 }
 
 int Viaje::getAReservados() {
