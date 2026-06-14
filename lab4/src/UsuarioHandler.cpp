@@ -43,3 +43,11 @@ std::set<std::string> UsuarioHandler::getPasajeros() {
     }
     return ret;
 }
+
+std::vector<DTUsuario> UsuarioHandler::getDTUsuarios() {
+    std::vector<DTUsuario> ret;
+    for(auto& [nickname, usuario] : usuarios){
+        ret.push_back(usuario->getDT());
+    }
+    return ret;
+}

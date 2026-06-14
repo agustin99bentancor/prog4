@@ -31,8 +31,8 @@ public:
     int getCodigoViaje();
     std::string getNickPasajero();
     int getAsientosReservados();
-    DTFecha getFecha();
     DTDetalleReserva getDTDetalleReserva();
+    void agregarCalificacion(Calificacion* ca);
 };
 
 #endif

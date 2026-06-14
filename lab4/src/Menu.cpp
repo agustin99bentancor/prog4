@@ -267,45 +267,78 @@ void Menu::generarReserva() {
 }
 
 void Menu::calificarUsuario() {
-    //TODO: Coleccion de DTUsuario = controlador->listarUsuarios()
-    //TODO: Recorrer la coleccion y mostrar "> Nickname: xx, Nombre: yyy"
+    IUsuario* controlador = Fabrica::getInstance()->getIUsuario();
+    std::vector<DTUsuario> usuarios = controlador->listarUsuarios();
+
+    for(DTUsuario usuario: usuarios){
+        std::cout << "> " << usuario << "\n";
+    }
+
     std::string nickname;
     std::cout << "Ingrese su nickname: "; std::getline(std::cin, nickname);
     bool nicknameValido = false;
-    //TODO: Validar nickname en listado
+    
+    for(DTUsuario usuario: usuarios){
+        if(usuario.getNickname() == nickname){
+            nicknameValido = true;
+            break;
+        }
+    }
+
     if (!nicknameValido) {
         std::cout << "Nickname invalido.\n";
         return;
     }
 
-    //TODO: Coleccion de DTListarViaje = controlador->listarViajes(nickname)
-    //TODO: Recorrer la coleccion y mostrar "> Codigo: xx, Fecha: dd/mm/aaaa, Origen: zzz, Destino: www, Conductor: aaa"
+    std::vector<DTListarViaje> viajes = controlador->listarViajes(nickname);
+
+    for(DTListarViaje viaje: viajes){
+        std::cout << "> " << viaje << "\n";
+    }
+
     int codigo;
     std::cout << "Ingrese codigo del viaje: "; std::cin >> codigo;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     bool codigoValido = false;
-    //TODO: Validar codigo en listado
+    
+    for(DTListarViaje viaje: viajes){
+        if(viaje.getCodigo() == codigo){
+            codigoValido = true;
+            break;
+        }
+    }
+
     if (!codigoValido) {
         std::cout << "Codigo invalido.\n";
         return;
     }
 
-    //TODO: Coleccion de DTUsuarioViaje = Controlador->listarUsuariosViaje(codigo)
-    //TODO: Recorrer la coleccion y mostrar "> Nickname: xx, Tipo: yyy"
+    std::vector<DTUsuarioViaje> usuariosViaje = controlador->listarUsuariosViaje(codigo);
+    for(DTUsuarioViaje usuarioViaje : usuariosViaje) {
+        std::cout << "> " << usuarioViaje << "\n";
+    }
+
     std::string nicknameCalificado;
     int calificacion;
     std::cout << "Ingrese nickname del usuario a calificar: "; std::getline(std::cin, nicknameCalificado);
     std::cout << "Ingrese calificacion (1-5): "; std::cin >> calificacion;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     bool nicknameCalificadoValido = false;
-    //TODO: Validar nickname en listado
+
+    for(DTUsuarioViaje usuarioViaje : usuariosViaje) {
+        if(usuarioViaje.getNickname() == nicknameCalificado){
+            nicknameCalificadoValido = true;
+            break;
+        }
+    }
+
     if (!nicknameCalificadoValido) {
         std::cout << "Nickname invalido.\n";
         return;
     }
 
-    bool calificacionOk = false;
-    //TODO: calificacionOk = Controlador->calificarUsuario(nicknameCalificado, calificacion)
+    bool calificacionOk = controlador->calificarUsuario(nicknameCalificado, calificacion);
+
     if (calificacionOk) {
         std::cout << "Calificacion exitosa.\n";
     } else {

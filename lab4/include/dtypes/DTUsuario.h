@@ -2,6 +2,7 @@
 #define DT_USUARIO_H
 
 #include <string>
+#include <iostream>
 
 class DTUsuario {
 private:
@@ -11,8 +12,10 @@ private:
 public:
     DTUsuario(std::string nickname, std::string nombre);
 
-    std::string getNickname();
-    std::string getNombre();
+    std::string getNickname() const;
+    std::string getNombre() const;
 };
+
+std::ostream& operator<<(std::ostream& os, const DTUsuario& dtUsuario);
 
 #endif
