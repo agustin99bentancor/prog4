@@ -7,6 +7,7 @@
 #include "Viaje.h"
 #include "Pasajero.h"
 #include "Reserva.h"
+#include "ControladorFechaActual.h"
 
 std::set<std::string> ControladorReserva::listarPasajeros() {
     UsuarioHandler* uh = UsuarioHandler::getInstancia();
@@ -37,7 +38,8 @@ bool ControladorReserva::generarReserva(std::string nickname, int codigo, int as
     }
     UsuarioHandler* uh = UsuarioHandler::getInstancia();
     Pasajero* p = (Pasajero*)uh->getUsuario(nickname);
-    Reserva* r = new Reserva(asientos, vi->getFecha(), p, vi);
+
+    Reserva* r = new Reserva(asientos, ControladorFechaActual::getInstance()->getFecha(), p, vi);
     vi->agregarReserva(r);
     p->agregarReserva(r);
     return true;

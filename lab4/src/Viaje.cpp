@@ -2,7 +2,7 @@
 #include "Reserva.h"
 #include "Vehiculo.h"
 
-int Viaje::codigoGlobal = 0;
+int Viaje::codigoGlobal = 1;
 
 Viaje::Viaje(Vehiculo* v, DTFecha fecha, std::string origen, std::string destino, int asientosPublicados, float precio) {
     this->fecha = fecha;
