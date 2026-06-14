@@ -12,6 +12,7 @@ private:
 
 public:
     static ControladorFechaActual* getInstance();
+    static void liberarMemoria();
 
     DTFecha getFecha();
     void setFecha(DTFecha nuevaFecha);

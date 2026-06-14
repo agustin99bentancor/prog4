@@ -19,6 +19,7 @@ public:
     std::vector<DTListarViaje> listarViajes(std::string nickname);
     std::vector<DTUsuarioViaje> listarUsuariosViaje(int codigo);
     bool calificarUsuario(std::string nicknameCalificado, int calificacion);
+    static void liberarMemoria();
 };
 
 #endif

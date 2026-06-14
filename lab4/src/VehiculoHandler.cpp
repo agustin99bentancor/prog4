@@ -11,6 +11,17 @@ VehiculoHandler* VehiculoHandler::getInstancia(){
     return instancia;
 }
 
+void VehiculoHandler::liberarMemoria() {
+    delete instancia;
+    instancia = nullptr;
+}
+
+VehiculoHandler::~VehiculoHandler() {
+    for (auto& [matricula, vehiculo] : vehiculos) {
+        delete vehiculo;
+    }
+}
+
 bool VehiculoHandler::existeVehiculo(std::string matricula){
     return vehiculos.find(matricula) != vehiculos.end();
 }

@@ -13,6 +13,7 @@ private:
 public:
 
     static Fabrica* getInstance();
+    static void liberarMemoria();
     IControladorFechaActual* getIControladorFechaActual();
     IUsuario* getIUsuario();
     IReserva* getIReserva();
