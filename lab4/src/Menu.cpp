@@ -350,7 +350,7 @@ void Menu::eliminarViaje() {
     IReserva* controlador = Fabrica::getInstance()->getIReserva();
     std::vector<DTListarViaje> viajes = controlador->listarViajes();
     for(auto viaje : viajes){
-        std::cout << "> " << viaje;
+        std::cout << "> " << viaje << "\n";
     }
 
     int codigo;
@@ -372,7 +372,7 @@ void Menu::eliminarViaje() {
 
     DTDetalleViaje detalle = controlador->detalleViaje(codigo);
     std::cout << ">> Viaje <<" << "\n";
-    std::cout << "--- " << detalle.getVehiculo().getMatricula() << ", Fecha: " << detalle.getFecha() << ", Origen: " << detalle.getOrigen() << ", Destino: " << detalle.getDestino() << ", Capacidad: " << detalle.getAsientosPublicados() << ", Precio: " << detalle.getPrecio() << "\n";
+    std::cout << "--- Codigo: " << detalle.getCodigo() << ", Fecha: " << detalle.getFecha() << ", Origen: " << detalle.getOrigen() << ", Destino: " << detalle.getDestino() << ", AsientosPublicados: " << detalle.getAsientosPublicados() << ", Precio por asiento: " << detalle.getPrecio() << "\n";
     std::cout << ">> Vehiculo <<" << "\n";
     std::cout << "--- " << detalle.getVehiculo() << "\n";
     std::cout << ">> Reservas <<" << "\n";

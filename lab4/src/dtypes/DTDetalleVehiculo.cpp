@@ -17,6 +17,6 @@ std::string DTDetalleVehiculo::getModelo() const { return modelo; }
 TipoVehiculo DTDetalleVehiculo::getTipo() const { return tipo; }
 
 std::ostream& operator<<(std::ostream& os, const DTDetalleVehiculo& v) {
-    os << "Matricula: " << v.getMatricula() << ", Capacidad: " << v.getCapacidad() << ", Marca: " << v.getMarca() << ", Modelo: " << v.getModelo() << ", Tipo: " << v.getTipo();
+    os << "Matricula: " << v.getMatricula() << ", Capacidad: " << v.getCapacidad() << ", Marca: " << v.getMarca() << ", Modelo: " << v.getModelo() << ", Tipo: " << (v.getTipo() == TipoVehiculo::Auto ? "Auto" : "Moto");
     return os;
 }
