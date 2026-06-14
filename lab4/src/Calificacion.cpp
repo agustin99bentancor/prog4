@@ -5,23 +5,20 @@
 Calificacion::Calificacion(DTFecha fecha, int puntaje) {
     this->fecha = fecha;
     this->puntaje = puntaje;
-    this->realiza = realiza;
-    this->califica = califica;
-    this->reserva = reserva;
 
 }
 
 Calificacion::~Calificacion() {
-    realiza->eliminarRealiza(this);
-    califica->eliminarRecibe(this);
+    calificador->eliminarRealiza(this);
+    calificado->eliminarRecibe(this);
 }
 
 void Calificacion::setCalificador(Usuario* u) {
-    califica = u;
+    calificador = u;
 }
 
 void Calificacion::setCalificado(Usuario* u) {
-    realiza = u;
+    calificado = u;
 }
 
 void Calificacion::setReserva(Reserva* r) {
@@ -29,7 +26,7 @@ void Calificacion::setReserva(Reserva* r) {
 }
 
 Usuario* Calificacion::getCalificado() {
-    return califica;
+    return calificado;
 }
 
 Reserva* Calificacion::getReserva() {
