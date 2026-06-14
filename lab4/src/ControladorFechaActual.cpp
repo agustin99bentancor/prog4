@@ -13,6 +13,11 @@ ControladorFechaActual* ControladorFechaActual::getInstance() {
     return instancia;
 }
 
+void ControladorFechaActual::liberarMemoria() {
+    delete instancia;
+    instancia = nullptr;
+}
+
 DTFecha ControladorFechaActual::getFecha() {
     return fechaActual;
 }

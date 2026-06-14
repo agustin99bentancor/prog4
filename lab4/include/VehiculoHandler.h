@@ -20,6 +20,8 @@ private:
 public:
 
     static VehiculoHandler* getInstancia();
+    static void liberarMemoria();
+    ~VehiculoHandler();
 
     bool existeVehiculo(std::string matricula);
     Vehiculo* crearVehiculo(std::string matricula, int capacidad, std::string modelo, std::string marca, TipoVehiculo tipo, Conductor* c);

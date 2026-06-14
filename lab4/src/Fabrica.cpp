@@ -14,6 +14,13 @@ Fabrica* Fabrica::getInstance() {
     return instancia;
 }
 
+void Fabrica::liberarMemoria() {
+    ControladorFechaActual::liberarMemoria();
+    ControladorUsuario::liberarMemoria();
+    delete instancia;
+    instancia = nullptr;
+}
+
 IControladorFechaActual* Fabrica::getIControladorFechaActual() {
     return ControladorFechaActual::getInstance();
 }

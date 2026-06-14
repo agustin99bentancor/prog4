@@ -24,6 +24,8 @@ private:
 public:
 
     static ViajeHandler* getInstancia();
+    static void liberarMemoria();
+    ~ViajeHandler();
 
     Viaje* getViaje(int codigo);
     std::set<Viaje*> getViajes();

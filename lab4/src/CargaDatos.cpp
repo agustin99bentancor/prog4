@@ -18,6 +18,11 @@ CargaDatos* CargaDatos::getInstance() {
     return instancia;
 }
 
+void CargaDatos::liberarMemoria() {
+    delete instancia;
+    instancia = nullptr;
+}
+
 void CargaDatos::cargarDatos() {
     if (datosCargados) {
         std::cout << "Error: Los datos ya han sido cargados anteriormente.\n";
@@ -113,6 +118,10 @@ void CargaDatos::cargarDatos() {
     controladorUsuario->listarViajes("carlos_r");
     controladorUsuario->listarUsuariosViaje(12);
     controladorUsuario->calificarUsuario("nacho_f", 5);
+
+    //Liberamos memoria
+    delete controladorUsuario;
+    delete controladorReserva;
 
     datosCargados = true;
     std::cout << "Datos cargados exitosamente.\n";

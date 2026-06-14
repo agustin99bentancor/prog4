@@ -13,6 +13,17 @@ UsuarioHandler* UsuarioHandler::getInstancia(){
     return instancia;
 }
 
+void UsuarioHandler::liberarMemoria() {
+    delete instancia;
+    instancia = nullptr;
+}
+
+UsuarioHandler::~UsuarioHandler() {
+    for (auto& [nickname, usuario] : usuarios) {
+        delete usuario;
+    }
+}
+
 bool UsuarioHandler::existeUsuario(std::string nickname){
     return usuarios.find(nickname) != usuarios.end();
 }

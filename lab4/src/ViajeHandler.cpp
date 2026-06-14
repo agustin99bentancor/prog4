@@ -14,6 +14,17 @@ ViajeHandler* ViajeHandler::getInstancia(){
     return instancia;
 }
 
+void ViajeHandler::liberarMemoria() {
+    delete instancia;
+    instancia = nullptr;
+}
+
+ViajeHandler::~ViajeHandler() {
+    for (auto& [codigo, viaje] : viajes) {
+        delete viaje;
+    }
+}
+
 Viaje* ViajeHandler::crearViaje(Vehiculo* v, DTFecha fecha, std::string origen, std::string destino, int asientos, float precio){
     Viaje* viaje = new Viaje(v, fecha, origen, destino, asientos, precio);
     viajes[viaje->getCodigo()] = viaje;

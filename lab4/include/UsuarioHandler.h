@@ -21,6 +21,8 @@ private:
 public:
 
     static UsuarioHandler* getInstancia();
+    static void liberarMemoria();
+    ~UsuarioHandler();
 
     bool existeUsuario(std::string nickname);
     void crearPasajero(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::string ci);

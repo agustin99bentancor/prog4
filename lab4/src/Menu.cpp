@@ -164,6 +164,8 @@ void Menu::altaUsuario() {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
     }
+
+    delete controlador;
 }
 
 void Menu::altaViaje() {
@@ -205,6 +207,8 @@ void Menu::altaViaje() {
     } else {
         std::cout << "Error al registrar el viaje.\n";
     }
+
+    delete controlador;
 }
 
 void Menu::generarReserva() {
@@ -264,6 +268,8 @@ void Menu::generarReserva() {
     } else {
         std::cout << "Error al realizar la reserva.\n";
     }
+    
+    delete controlador;
 }
 
 void Menu::calificarUsuario() {
@@ -344,6 +350,8 @@ void Menu::calificarUsuario() {
     } else {
         std::cout << "Error al calificar.\n";
     }
+    
+    delete controlador;
 }
 
 void Menu::eliminarViaje() {
@@ -391,6 +399,8 @@ void Menu::eliminarViaje() {
         controlador->cancelarEliminarViaje();
         std::cout << "Eliminacion cancelada.\n";
     }
+
+    delete controlador;
 }
 
 void Menu::administrarFechaActual() {
@@ -422,6 +432,11 @@ void Menu::administrarFechaActual() {
 
 void Menu::cargarDatos() {
     CargaDatos::getInstance()->cargarDatos();
+}
+
+void Menu::liberarMemoria() {
+    Fabrica::liberarMemoria();
+    CargaDatos::liberarMemoria();
 }
 
 void Menu::mostrarMenu() {
@@ -464,6 +479,8 @@ void Menu::mostrarMenu() {
                 break;
             case 8:
                 std::cout << "Saliendo del sistema...\n";
+                liberarMemoria();
+
                 break;
             default:
                 std::cout << "Opcion invalida.\n";

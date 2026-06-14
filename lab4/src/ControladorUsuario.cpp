@@ -123,3 +123,9 @@ bool ControladorUsuario::calificarUsuario(std::string nicknameCalificado, int ca
     codigoViajeCalificacion = CODIGO_NULO;
     return true;
 }
+
+void ControladorUsuario::liberarMemoria() {
+    ViajeHandler::liberarMemoria();
+    UsuarioHandler::liberarMemoria();
+    VehiculoHandler::liberarMemoria();
+}
