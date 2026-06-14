@@ -114,6 +114,11 @@ void CargaDatos::cargarDatos() {
     controladorUsuario->listarUsuariosViaje(12);
     controladorUsuario->calificarUsuario("nacho_f", 5);
 
+    //Liberamos memoria
+    delete controladorUsuario;
+    delete controladorReserva;
+    delete controladorFecha;
+
     datosCargados = true;
     std::cout << "Datos cargados exitosamente.\n";
 }
