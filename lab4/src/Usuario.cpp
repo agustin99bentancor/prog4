@@ -30,6 +30,13 @@ void Usuario::agregarRealiza(Calificacion* ca) {
 
 void Usuario::agregarRecibe(Calificacion* ca) {
     recibe.insert(ca);
+    int acc = 0;
+    int cant = 0;
+    for(auto r: recibe){
+        acc += r->getPuntaje();
+        cant++;
+    }
+    calificacionPromedio = acc/cant;
 }
 
 void Usuario::eliminarRealiza(Calificacion* ca) {

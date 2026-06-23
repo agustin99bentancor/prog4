@@ -24,6 +24,7 @@ public:
     void setReserva(Reserva* r);
     Usuario* getCalificado();
     Reserva* getReserva();
+    int getPuntaje();
 };
 
 #endif
